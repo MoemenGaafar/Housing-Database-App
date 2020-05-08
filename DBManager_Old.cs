@@ -11,8 +11,8 @@ namespace DBapplication
     public class DBManager
     {
         SqlConnection myConnection;
-    
-    public DBManager()
+
+        public DBManager()
         {
             myConnection = new SqlConnection(Properties.Settings.Default.ConnectionString);
             try
@@ -27,21 +27,12 @@ namespace DBapplication
             }
         }
 
-        public int ExecuteNonQuery(string storedProcedureName, Dictionary<string, object> parameters)
+        public int ExecuteNonQuery(string query)
         {
             try
             {
-                SqlCommand myCommand = new SqlCommand(storedProcedureName, myConnection);
-
-                myCommand.CommandType = CommandType.StoredProcedure;
-
-                foreach (KeyValuePair<string, object> Param in parameters)
-                {
-                    myCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                }
-
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
                 return myCommand.ExecuteNonQuery();
-               
             }
             catch (Exception ex)
             {
@@ -50,22 +41,11 @@ namespace DBapplication
             }
         }
 
-        public DataTable ExecuteReader(string storedProcedureName, Dictionary<string, object> parameters)
+        public DataTable ExecuteReader(string query)
         {
             try
             {
-                SqlCommand myCommand = new SqlCommand(storedProcedureName, myConnection);
-
-                myCommand.CommandType = CommandType.StoredProcedure;
-
-                if (parameters != null)
-                {
-                    foreach (KeyValuePair<string, object> Param in parameters)
-                    {
-                        myCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                    }
-                }
-
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
                 SqlDataReader reader = myCommand.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -79,7 +59,6 @@ namespace DBapplication
                     reader.Close();
                     return null;
                 }
-               
             }
             catch (Exception ex)
             {
@@ -88,29 +67,17 @@ namespace DBapplication
             }
         }
 
-        public object ExecuteScalar(string storedProcedureName, Dictionary<string, object> parameters)
+        public object ExecuteScalar(string query)
         {
             try
             {
-                SqlCommand myCommand = new SqlCommand(storedProcedureName, myConnection);
-
-                myCommand.CommandType = CommandType.StoredProcedure;
-
-                if (parameters != null)
-                {
-                    foreach (KeyValuePair<string, object> Param in parameters)
-                    {
-                        myCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                    }
-                }
-
-                return myCommand.ExecuteScalar();            
-
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
+                return myCommand.ExecuteScalar();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return 0;
             }
         }
 
@@ -125,6 +92,8 @@ namespace DBapplication
                 Console.WriteLine(e.Message);
             }
         }
-    }
-    }
 
+        
+    }
+}
+;

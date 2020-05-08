@@ -41,6 +41,7 @@
             this.radioButton_Company = new System.Windows.Forms.RadioButton();
             this.radioButton_Citizen = new System.Windows.Forms.RadioButton();
             this.radioButton_Bank = new System.Windows.Forms.RadioButton();
+            this.Btn_SignUp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -180,6 +181,17 @@
             this.radioButton_Bank.Text = "Bank";
             this.radioButton_Bank.UseVisualStyleBackColor = true;
             // 
+            // Btn_SignUp
+            // 
+            this.Btn_SignUp.Location = new System.Drawing.Point(246, 439);
+            this.Btn_SignUp.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_SignUp.Name = "Btn_SignUp";
+            this.Btn_SignUp.Size = new System.Drawing.Size(100, 28);
+            this.Btn_SignUp.TabIndex = 13;
+            this.Btn_SignUp.Text = "Sign Up";
+            this.Btn_SignUp.UseVisualStyleBackColor = true;
+            this.Btn_SignUp.Click += new System.EventHandler(this.Btn_SignUp_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -188,6 +200,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(359, 480);
+            this.Controls.Add(this.Btn_SignUp);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.TxtBx_username);
@@ -219,5 +232,6 @@
         private System.Windows.Forms.RadioButton radioButton_Company;
         private System.Windows.Forms.RadioButton radioButton_Citizen;
         private System.Windows.Forms.RadioButton radioButton_Bank;
+        private System.Windows.Forms.Button Btn_SignUp;
     }
 }

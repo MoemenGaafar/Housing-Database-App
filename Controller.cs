@@ -19,44 +19,56 @@ namespace DBapplication
 
         //checks the username/password and returns the priviledges associated with this user
         //Returns 0 in case of error
-        public bool CheckPassword_Citizen(int id, string password)
+        public DataTable CheckPassword_Citizen(int id, string password)
         {
-            string query = "SELECT * FROM Citizen WHERE NationalId = '" + id + "' AND Password = '" + password + "';";
-            object placeholder = dbMan.ExecuteScalar(query);
-            if (placeholder == null) return false;
-            else return true;
+            string StoredProcedureName = StoredProcedures.CheckPassword_Citizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalId", id);
+            Parameters.Add("@Password", password);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
-        public bool CheckPassword_Employee(int id, string password)
+        public DataTable CheckPassword_Employee(int id, string password)
         {
-            string query = "SELECT * FROM Employee WHERE NationalId = '" + id + "' AND Password = '" + password + "';";
-            object placeholder = dbMan.ExecuteScalar(query);
-            if (placeholder == null) return false;
-            else return true;
-        }
-
-        public bool CheckPassword_Company(int id, string password)
-        {
-            string query = "SELECT * FROM Company WHERE CID = '" + id + "' AND Password = '" + password + "';";
-            object placeholder = dbMan.ExecuteScalar(query);
-            if (placeholder == null) return false;
-            else return true;
+            string StoredProcedureName = StoredProcedures.CheckPassword_Employee;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalId", id);
+            Parameters.Add("@Password", password);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
-        public bool CheckPassword_Bank(string name, string password)
+        public DataTable CheckPassword_Company(int id, string password)
         {
-            string query = "SELECT * FROM Bank WHERE Name = '" + name + "' AND Password = '" + password + "';";
-            object placeholder = dbMan.ExecuteScalar(query);
-            if (placeholder == null) return false;
-            else return true;
+            string StoredProcedureName = StoredProcedures.CheckPassword_Company;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", id);
+            Parameters.Add("@Password", password);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
-        public bool CheckPassword_Admin(string name, string password)
+        public DataTable CheckPassword_Bank(string name, string password)
         {
-            string query = "SELECT * FROM Administrator WHERE Username = '" + name + "' AND Password = '" + password + "';";
-            object placeholder = dbMan.ExecuteScalar(query);
-            if (placeholder == null) return false;
-            else return true;
+            string StoredProcedureName = StoredProcedures.CheckPassword_Bank;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", name);
+            Parameters.Add("@Password", password);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
+
+        public DataTable CheckPassword_Admin(string name, string password)
+        {
+            string StoredProcedureName = StoredProcedures.CheckPassword_Admin;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", name);
+            Parameters.Add("@Password", password);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        /////////////////////////////////////// Sign Up Queries /////////////////////////////////////////////
+        //public int SignUpBank(string name, string password, int transfees)
+        //{
+        //    string query = "INSERT INTO Bank Values('" + name + "', '" + password + "', '" + transfees + "');";
+        //    return dbMan.ExecuteNonQuery(query);
+        //}
 
         public void TerminateConnection()
         {

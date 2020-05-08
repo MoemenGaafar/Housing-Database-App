@@ -27,7 +27,7 @@ namespace Housing_Database_Project
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            bool found = false;
+            DataTable found = null;
 
             if (!(radioButton_Bank.Checked || radioButton_Citizen.Checked || radioButton_Company.Checked || radioButton_Employee.Checked || radioButton_Admin.Checked)
                  || TxtBx_username.Text == "" || TxtBx_pass.Text == "")
@@ -41,7 +41,7 @@ namespace Housing_Database_Project
                 if (radioButton_Citizen.Checked)
                 {
                     found = controllerObj.CheckPassword_Citizen(Convert.ToInt32(TxtBx_username.Text), TxtBx_pass.Text);
-                    if (found)
+                    if (found != null)
                     {
                         CitizenFunctionalities CF = new CitizenFunctionalities();
                         CF.Show(this);
@@ -51,7 +51,7 @@ namespace Housing_Database_Project
                 else if (radioButton_Employee.Checked)
                 {
                     found = controllerObj.CheckPassword_Employee(Convert.ToInt32(TxtBx_username.Text), TxtBx_pass.Text);
-                    if (found)
+                    if (found != null)
                     {
                         EmployeeFunctionalities EF = new EmployeeFunctionalities();
                         EF.Show(this);
@@ -61,7 +61,7 @@ namespace Housing_Database_Project
                 else if (radioButton_Company.Checked)
                 {
                     found = controllerObj.CheckPassword_Company(Convert.ToInt32(TxtBx_username.Text), TxtBx_pass.Text);
-                    if (found)
+                    if (found != null)
                     {
                         CompanyFunctionalities CF2 = new CompanyFunctionalities();
                         CF2.Show(this);
@@ -71,7 +71,7 @@ namespace Housing_Database_Project
                 else if (radioButton_Bank.Checked)
                 {
                     found = controllerObj.CheckPassword_Bank(TxtBx_username.Text, TxtBx_pass.Text);
-                    if (found)
+                    if (found != null)
                     {
                         BankFunctionalities BF = new BankFunctionalities();
                         BF.Show(this);
@@ -81,7 +81,7 @@ namespace Housing_Database_Project
                 else if (radioButton_Admin.Checked)
                 {
                     found = controllerObj.CheckPassword_Admin(TxtBx_username.Text, TxtBx_pass.Text);
-                    if (found)
+                    if (found != null)
                     {
                         AdminFunctionalities AF = new AdminFunctionalities();
                         AF.Show(this);
@@ -89,7 +89,7 @@ namespace Housing_Database_Project
                     }
                 }
 
-                if(!found) MessageBox.Show("WRONG USERNAME OR PASSWORD!!!");
+                if(found == null) MessageBox.Show("WRONG USERNAME OR PASSWORD!!!");
                 
             }
             catch
@@ -105,5 +105,9 @@ namespace Housing_Database_Project
             Application.Exit();
         }
 
+        private void Btn_SignUp_Click(object sender, EventArgs e)
+        {
+            new SignUp().Show();
+        }
     }
 }
