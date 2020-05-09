@@ -73,7 +73,7 @@ namespace Housing_Database_Project
                     found = controllerObj.CheckPassword_Bank(TxtBx_username.Text, TxtBx_pass.Text);
                     if (found != null)
                     {
-                        BankFunctionalities BF = new BankFunctionalities();
+                        BankFunctionalities BF = new BankFunctionalities(TxtBx_username.Text);
                         BF.Show(this);
                         this.Hide();
                     }
@@ -108,6 +108,16 @@ namespace Housing_Database_Project
         private void Btn_SignUp_Click(object sender, EventArgs e)
         {
             new SignUp().Show();
+        }
+
+        private void TxtBx_username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

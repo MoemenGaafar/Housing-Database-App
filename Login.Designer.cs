@@ -47,10 +47,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 439);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(15, 549);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(112, 35);
             this.button1.TabIndex = 11;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
@@ -59,31 +59,33 @@
             // TxtBx_username
             // 
             this.TxtBx_username.BackColor = System.Drawing.Color.White;
-            this.TxtBx_username.Location = new System.Drawing.Point(139, 268);
-            this.TxtBx_username.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtBx_username.Location = new System.Drawing.Point(156, 335);
+            this.TxtBx_username.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtBx_username.Name = "TxtBx_username";
-            this.TxtBx_username.Size = new System.Drawing.Size(132, 22);
+            this.TxtBx_username.Size = new System.Drawing.Size(148, 26);
             this.TxtBx_username.TabIndex = 7;
+            this.TxtBx_username.TextChanged += new System.EventHandler(this.TxtBx_username_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Black;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(62, 268);
+            this.label2.Location = new System.Drawing.Point(70, 335);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 17);
+            this.label2.Size = new System.Drawing.Size(83, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Username";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Btn_Login
             // 
             this.Btn_Login.AutoEllipsis = true;
-            this.Btn_Login.Location = new System.Drawing.Point(64, 369);
-            this.Btn_Login.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Login.Location = new System.Drawing.Point(72, 461);
+            this.Btn_Login.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Btn_Login.Name = "Btn_Login";
-            this.Btn_Login.Size = new System.Drawing.Size(181, 28);
+            this.Btn_Login.Size = new System.Drawing.Size(204, 35);
             this.Btn_Login.TabIndex = 9;
             this.Btn_Login.Text = "&Login";
             this.Btn_Login.UseVisualStyleBackColor = true;
@@ -91,11 +93,11 @@
             // 
             // TxtBx_pass
             // 
-            this.TxtBx_pass.Location = new System.Drawing.Point(139, 318);
-            this.TxtBx_pass.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtBx_pass.Location = new System.Drawing.Point(156, 398);
+            this.TxtBx_pass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtBx_pass.Name = "TxtBx_pass";
             this.TxtBx_pass.PasswordChar = '*';
-            this.TxtBx_pass.Size = new System.Drawing.Size(132, 22);
+            this.TxtBx_pass.Size = new System.Drawing.Size(148, 26);
             this.TxtBx_pass.TabIndex = 8;
             // 
             // label1
@@ -103,10 +105,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(62, 318);
+            this.label1.Location = new System.Drawing.Point(70, 398);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.Size = new System.Drawing.Size(78, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Password";
             // 
@@ -119,9 +121,11 @@
             this.groupBox1.Controls.Add(this.radioButton_Citizen);
             this.groupBox1.Controls.Add(this.radioButton_Bank);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(43, 140);
+            this.groupBox1.Location = new System.Drawing.Point(48, 175);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(255, 106);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(287, 132);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Account Type";
@@ -129,9 +133,10 @@
             // radioButton_Admin
             // 
             this.radioButton_Admin.AutoSize = true;
-            this.radioButton_Admin.Location = new System.Drawing.Point(96, 76);
+            this.radioButton_Admin.Location = new System.Drawing.Point(108, 95);
+            this.radioButton_Admin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButton_Admin.Name = "radioButton_Admin";
-            this.radioButton_Admin.Size = new System.Drawing.Size(68, 21);
+            this.radioButton_Admin.Size = new System.Drawing.Size(79, 24);
             this.radioButton_Admin.TabIndex = 4;
             this.radioButton_Admin.TabStop = true;
             this.radioButton_Admin.Text = "Admin";
@@ -140,9 +145,10 @@
             // radioButton_Employee
             // 
             this.radioButton_Employee.AutoSize = true;
-            this.radioButton_Employee.Location = new System.Drawing.Point(145, 48);
+            this.radioButton_Employee.Location = new System.Drawing.Point(163, 60);
+            this.radioButton_Employee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButton_Employee.Name = "radioButton_Employee";
-            this.radioButton_Employee.Size = new System.Drawing.Size(91, 21);
+            this.radioButton_Employee.Size = new System.Drawing.Size(104, 24);
             this.radioButton_Employee.TabIndex = 3;
             this.radioButton_Employee.TabStop = true;
             this.radioButton_Employee.Text = "Employee";
@@ -151,9 +157,10 @@
             // radioButton_Company
             // 
             this.radioButton_Company.AutoSize = true;
-            this.radioButton_Company.Location = new System.Drawing.Point(22, 49);
+            this.radioButton_Company.Location = new System.Drawing.Point(25, 61);
+            this.radioButton_Company.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButton_Company.Name = "radioButton_Company";
-            this.radioButton_Company.Size = new System.Drawing.Size(88, 21);
+            this.radioButton_Company.Size = new System.Drawing.Size(101, 24);
             this.radioButton_Company.TabIndex = 2;
             this.radioButton_Company.TabStop = true;
             this.radioButton_Company.Text = "Company";
@@ -162,9 +169,10 @@
             // radioButton_Citizen
             // 
             this.radioButton_Citizen.AutoSize = true;
-            this.radioButton_Citizen.Location = new System.Drawing.Point(145, 21);
+            this.radioButton_Citizen.Location = new System.Drawing.Point(163, 26);
+            this.radioButton_Citizen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButton_Citizen.Name = "radioButton_Citizen";
-            this.radioButton_Citizen.Size = new System.Drawing.Size(71, 21);
+            this.radioButton_Citizen.Size = new System.Drawing.Size(82, 24);
             this.radioButton_Citizen.TabIndex = 1;
             this.radioButton_Citizen.TabStop = true;
             this.radioButton_Citizen.Text = "Citizen";
@@ -173,9 +181,10 @@
             // radioButton_Bank
             // 
             this.radioButton_Bank.AutoSize = true;
-            this.radioButton_Bank.Location = new System.Drawing.Point(22, 22);
+            this.radioButton_Bank.Location = new System.Drawing.Point(24, 26);
+            this.radioButton_Bank.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButton_Bank.Name = "radioButton_Bank";
-            this.radioButton_Bank.Size = new System.Drawing.Size(61, 21);
+            this.radioButton_Bank.Size = new System.Drawing.Size(71, 24);
             this.radioButton_Bank.TabIndex = 0;
             this.radioButton_Bank.TabStop = true;
             this.radioButton_Bank.Text = "Bank";
@@ -183,10 +192,10 @@
             // 
             // Btn_SignUp
             // 
-            this.Btn_SignUp.Location = new System.Drawing.Point(246, 439);
-            this.Btn_SignUp.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_SignUp.Location = new System.Drawing.Point(277, 549);
+            this.Btn_SignUp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Btn_SignUp.Name = "Btn_SignUp";
-            this.Btn_SignUp.Size = new System.Drawing.Size(100, 28);
+            this.Btn_SignUp.Size = new System.Drawing.Size(112, 35);
             this.Btn_SignUp.TabIndex = 13;
             this.Btn_SignUp.Text = "Sign Up";
             this.Btn_SignUp.UseVisualStyleBackColor = true;
@@ -194,12 +203,12 @@
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(359, 480);
+            this.ClientSize = new System.Drawing.Size(404, 600);
             this.Controls.Add(this.Btn_SignUp);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
@@ -208,6 +217,7 @@
             this.Controls.Add(this.Btn_Login);
             this.Controls.Add(this.TxtBx_pass);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
