@@ -20,10 +20,9 @@ GO
 -- =============================================
 use Monkey 
 go
-CREATE PROCEDURE CheckPassword_Admin
+CREATE PROCEDURE SelectProjectByPEMPID
 	-- Add the parameters for the stored procedure here
-	@Name varchar(50),
-	@Password varchar(50)
+	@NationalID int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -31,6 +30,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT * FROM Administrator WHERE Username = @Name AND Password = @Password 
+	SELECT * FROM Project WHERE PEmployeeID = @NationalID
 END
 GO

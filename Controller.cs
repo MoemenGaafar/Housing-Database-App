@@ -121,6 +121,56 @@ namespace DBapplication
             Parameters.Add("@NoCurrentProj", currproj);
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
+
+        /////////////////////////////////////// M Employee Functionalities  ///////////////////////////////////////////
+
+
+
+        /////////////////////////////////////// P Employee Functionalities ///////////////////////////////////////////
+        public DataTable SelectProjectByPEMPID(int ID, string statusFilter, string cityFilter)
+        {
+            char status;
+            switch (statusFilter)
+            {
+                case "All Units Sold": 
+                    {
+                        status = 'F';
+                        break;
+                    }
+                case "Posted":
+                    {
+                        status = 'P';
+                        break;
+                    }
+                case "Started":
+                    {
+                        status = 'S';
+                        break;
+                    }
+                case "Launched":
+                    {
+                        status = 'L';
+                        break;
+                    }
+                default:
+                    {
+                        status = 'A';
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectProjectByPEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", ID);
+            Parameters.Add("@PStatus", status);
+            Parameters.Add("@City", cityFilter);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+
+
+        /////////////////////////////////////// H Employee Functionalities ///////////////////////////////////////////
+
+
         public void TerminateConnection()
         {
             dbMan.CloseConnection();
