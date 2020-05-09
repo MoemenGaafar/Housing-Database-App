@@ -41,5 +41,23 @@ namespace Housing_Database_Project
             new PEMP_ViewProjects(ID).Show(this);
             this.Hide();
         }
+
+        private void button_ViewApps_Click(object sender, EventArgs e)
+        {
+            new PEMP_ViewApps(ID).Show(this);
+            this.Hide();
+        }
+
+        private void button_ViewTrans_Click(object sender, EventArgs e)
+        {
+            new PEMP_ViewTrans(ID).Show(this);
+            this.Hide();
+        }
+
+        private void button_ChangePass_Click(object sender, EventArgs e)
+        {
+            new ChangePassword("Employee").Show(this);
+            this.Hide();
+        }
     }
 }

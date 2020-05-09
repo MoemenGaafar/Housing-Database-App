@@ -34,6 +34,7 @@
             this.button_ViewProjs = new System.Windows.Forms.Button();
             this.button_ViewApps = new System.Windows.Forms.Button();
             this.button_ViewTrans = new System.Windows.Forms.Button();
+            this.button_ChangePass = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -75,6 +76,7 @@
             this.button_ViewApps.TabIndex = 15;
             this.button_ViewApps.Text = "View Applications";
             this.button_ViewApps.UseVisualStyleBackColor = true;
+            this.button_ViewApps.Click += new System.EventHandler(this.button_ViewApps_Click);
             // 
             // button_ViewTrans
             // 
@@ -84,6 +86,17 @@
             this.button_ViewTrans.TabIndex = 16;
             this.button_ViewTrans.Text = "View Transactions";
             this.button_ViewTrans.UseVisualStyleBackColor = true;
+            this.button_ViewTrans.Click += new System.EventHandler(this.button_ViewTrans_Click);
+            // 
+            // button_ChangePass
+            // 
+            this.button_ChangePass.Location = new System.Drawing.Point(204, 288);
+            this.button_ChangePass.Name = "button_ChangePass";
+            this.button_ChangePass.Size = new System.Drawing.Size(143, 31);
+            this.button_ChangePass.TabIndex = 17;
+            this.button_ChangePass.Text = "Change Password";
+            this.button_ChangePass.UseVisualStyleBackColor = true;
+            this.button_ChangePass.Click += new System.EventHandler(this.button_ChangePass_Click);
             // 
             // ProjectsEmployeeFunctionalities
             // 
@@ -92,6 +105,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(359, 480);
+            this.Controls.Add(this.button_ChangePass);
             this.Controls.Add(this.button_ViewTrans);
             this.Controls.Add(this.button_ViewApps);
             this.Controls.Add(this.button_ViewProjs);
@@ -114,5 +128,6 @@
         private System.Windows.Forms.Button button_ViewProjs;
         private System.Windows.Forms.Button button_ViewApps;
         private System.Windows.Forms.Button button_ViewTrans;
+        private System.Windows.Forms.Button button_ChangePass;
     }
 }

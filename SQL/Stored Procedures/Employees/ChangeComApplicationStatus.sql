@@ -18,17 +18,15 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-use Monkey 
-go
-CREATE PROCEDURE SelectAllCompanies 
+CREATE PROCEDURE ChangeComApplicationStatus
 	-- Add the parameters for the stored procedure here
+	@ProjectID int,
+	@CompanyName varchar(50),
+	@NewStatus char(1)
 AS
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-
-    -- Insert statements for procedure here
-	SELECT CID, Name From Company
+	UPDATE ComApplication 
+	SET AStatus = @NewStatus
+	WHERE ProjectID = @ProjectID AND CompanyID in (SELECT CID From Company Where Name = @CompanyName)
 END
 GO

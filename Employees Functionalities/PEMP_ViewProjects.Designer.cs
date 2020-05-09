@@ -124,6 +124,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PEMP_ViewProjects";
             this.Text = "PEMP_ViewProjects";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PEMP_ViewProjects_FormClosed);
             this.Load += new System.EventHandler(this.PEMP_ViewProjects_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

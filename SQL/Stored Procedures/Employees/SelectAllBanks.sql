@@ -18,17 +18,12 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-use Monkey 
-go
-CREATE PROCEDURE SelectAllCompanies 
-	-- Add the parameters for the stored procedure here
+CREATE PROCEDURE SelectAllBanks
 AS
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT CID, Name From Company
+	SELECT * FROM Bank
 END
 GO

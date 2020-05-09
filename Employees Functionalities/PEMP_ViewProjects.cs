@@ -56,5 +56,11 @@ namespace Housing_Database_Project.Employees_Functionalities
             dataGridView_Projects.DataSource = dt;
             dataGridView_Projects.Refresh();
         }
+
+        private void PEMP_ViewProjects_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Owner.Show();
+        }
     }
 }

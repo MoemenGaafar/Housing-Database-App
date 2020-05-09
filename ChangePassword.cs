@@ -113,5 +113,11 @@ namespace Housing_Database_Project
             else MessageBox.Show("Please enter a new password");
 
         }
+
+        private void ChangePassword_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Owner.Show();
+        }
     }
 }

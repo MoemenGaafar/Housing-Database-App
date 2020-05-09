@@ -62,11 +62,23 @@
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
     </Compile>
     <Compile Include="DBManager.cs" />
+    <Compile Include="Employees Functionalities\PEMP_ViewApps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\PEMP_ViewApps.Designer.cs">
+      <DependentUpon>PEMP_ViewApps.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employees Functionalities\PEMP_ViewProjects.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Employees Functionalities\PEMP_ViewProjects.Designer.cs">
       <DependentUpon>PEMP_ViewProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\PEMP_ViewTrans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\PEMP_ViewTrans.Designer.cs">
+      <DependentUpon>PEMP_ViewTrans.cs</DependentUpon>
     </Compile>
     <Compile Include="Employees Functionalities\ProjectsEmployeeFunctionalities.cs">
       <SubType>Form</SubType>
@@ -160,8 +172,14 @@
     <EmbeddedResource Include="CompanyFunctionalities.resx">
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\PEMP_ViewApps.resx">
+      <DependentUpon>PEMP_ViewApps.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employees Functionalities\PEMP_ViewProjects.resx">
       <DependentUpon>PEMP_ViewProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\PEMP_ViewTrans.resx">
+      <DependentUpon>PEMP_ViewTrans.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employees Functionalities\ProjectsEmployeeFunctionalities.resx">
       <DependentUpon>ProjectsEmployeeFunctionalities.cs</DependentUpon>

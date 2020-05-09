@@ -296,6 +296,71 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
+        public DataTable SelectComAppByPEMPID(int ID, string statusFilter, int projectFilter)
+        {
+            char status;
+            switch (statusFilter)
+            {
+                case "Waiting":
+                    {
+                        status = 'W';
+                        break;
+                    }
+                case "Accepted":
+                    {
+                        status = 'A';
+                        break;
+                    }
+                case "Rejected":
+                    {
+                        status = 'R';
+                        break;
+                    }
+                case "Done":
+                    {
+                        status = 'D';
+                        break;
+                    }
+                default:
+                    {
+                        status = 'L';
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectComAppByPEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", ID);
+            Parameters.Add("@AStatus", status);
+            Parameters.Add("@ProjectID", projectFilter);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int ChangeComApplicationStatus(int projectID, string companyName, char newStatus)
+        {
+            string StoredProcedureName = StoredProcedures.ChangeComApplicationStatus;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@ProjectID", projectID);
+            Parameters.Add("@CompanyName", companyName);
+            Parameters.Add("@NewStatus", newStatus);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectAllBanks()
+        {
+            string StoredProcedureName = StoredProcedures.SelectAllBanks;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectTransByPEMPID(int ID, string bankName, string companyName)
+        {
+            string StoredProcedureName = StoredProcedures.SelectTransByPEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", ID);
+            Parameters.Add("@BankName", bankName);
+            Parameters.Add("@CompanyName", companyName);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
 
 
         /////////////////////////////////////// H Employee Functionalities ///////////////////////////////////////////

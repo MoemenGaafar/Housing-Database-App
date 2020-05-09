@@ -22,14 +22,38 @@ use Monkey
 go
 CREATE PROCEDURE SelectProjectByPEMPID
 	-- Add the parameters for the stored procedure here
-	@NationalID int
+	@NationalID int,
+	@PStatus char(1),
+	@City varchar(50)
 AS
+IF (@PStatus = 'A' AND @City = 'All')
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-
-    -- Insert statements for procedure here
-	SELECT * FROM Project WHERE PEmployeeID = @NationalID
+	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager", Name As "Company",
+	       StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM Project, Employee, Company WHERE NationalID = MEmployeeID AND CID = CompanyID AND PEmployeeID = @NationalID
 END
-GO
+ELSE IF (@PStatus = 'A')
+BEGIN
+	SET NOCOUNT ON;
+	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager", Name As "Company",
+	       StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM Project, Employee, Company WHERE NationalID = MEmployeeID AND CID = CompanyID AND PEmployeeID = @NationalID
+	 AND City = @City
+END
+ELSE IF (@City = 'All')
+BEGIN
+	SET NOCOUNT ON;
+	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager", Name As "Company",
+	       StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM Project, Employee, Company WHERE NationalID = MEmployeeID AND CID = CompanyID AND PEmployeeID = @NationalID 
+	 AND PStatus = @PStatus
+END
+ELSE
+BEGIN
+	SET NOCOUNT ON;
+    SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager", Name As "Company",
+	       StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM Project, Employee, Company WHERE NationalID = MEmployeeID AND CID = CompanyID AND PEmployeeID = @NationalID
+	 AND PStatus = @PStatus AND City = @City
+END

@@ -17,6 +17,7 @@ namespace DBapplication
         //INPUT: Name, Password - OUTPUT: All
         public static string CheckPassword_Admin = "CheckPassword_Admin";
         //INPUT: Username, Password - OUTPUT: All
+
         public static string Insert_Citizen = "Insert_Citizen";
         //Input: All Parameters - OUTPUT: Inserts and returns more than 0 if successful
         public static string Insert_Bank = "Insert_Bank";
@@ -25,6 +26,7 @@ namespace DBapplication
         //Input: All Parameters - OUTPUT: Inserts and returns more than 0 if successful
         public static string Insert_Employee = "Insert_Employee";
         //Input: All Parameters - OUTPUT: Inserts and returns more than 0 if successful
+
         public static string ChangePassword_Citizen = "ChangePassword_Citizen";
         //INPUT: National ID, Password - OUTPUT: none
         public static string ChangePassword_Employee = "ChangePassword_Employee";
@@ -35,6 +37,7 @@ namespace DBapplication
         //INPUT: Name, Password - OUTPUT: none
         public static string ChangePassword_Admin = "ChangePassword_Admin";
         //INPUT: Username, Password - OUTPUT: none
+
         public static string GetTransactionFee = "GetTransactionFee";
         //INPUT: Name - OUTPUT: Transaction Fee
         public static string ChangeTransactionFee = "ChangeTransactionFee";
@@ -55,5 +58,16 @@ namespace DBapplication
         //INPUT: Bank name - Output: all ComTransaction attributes
         public static string SelectCitizenBankTransactions = "SelectCitizenBankTransactions";
         //INPUT: Bank name and Citizen ID- Output: all ComTransaction attributes
+
+        public static string SelectProjectByPEMPID = "SelectProjectByPEMPID";
+        //INPUT: P Employee National ID, Filters - OUTPUT: All Projects assigned to him
+        public static string SelectComAppByPEMPID = "SelectComAppByPEMPID";
+        //INPUT: Projects Emp. NationalId - OUTPUT: All company applications associated with him
+        public static string ChangeComApplicationStatus = "ChangeComApplicationStatus";
+        //INPUT: Project ID, Company Name, New Application Status - OUTPUT: Updates Status
+        public static string SelectAllBanks = "SelectAllBanks";
+        //INPUT: none - OUTPUT: All
+        public static string SelectTransByPEMPID = "SelectTransByPEMPID";
+        //INPUT: Projects Emp. NationalId - OUTPUT: All company applications associated with him
     }
 }
