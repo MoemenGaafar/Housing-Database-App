@@ -81,6 +81,13 @@ NoCurrentProj int,
 primary key (NationalID),
 )
 
+create table Manager
+(
+MID int,
+primary key (MID), 
+foreign key (MID) references Employee,
+)
+
 create table Project
 (
 ID int identity, 
@@ -94,8 +101,8 @@ StartingDate date,
 LaunchingDate date,
 primary key (ID), 
 foreign Key (CompanyID) references Company, 
-foreign key (MEmployeeID) references Employee,
-foreign key (PEmployeeID) references Employee,
+foreign key (MEmployeeID) references Manager on update Cascade,
+foreign key (PEmployeeID) references Employee on update Cascade,
 )
 
 create table HousingEmployee
@@ -103,8 +110,8 @@ create table HousingEmployee
 EID int, 
 PID int, 
 primary key (EID, PID), 
-foreign key (EID) references Employee,
-foreign key (PID) references Project,
+foreign key (EID) references Employee on delete Cascade on update Cascade,
+foreign key (PID) references Project on delete Cascade,
 )
 
 create table Unit
@@ -115,7 +122,7 @@ UStatus bit Default '0', /*0, 1: Not sold, sold */
 NoRooms tinyint, 
 PaymentEndDate date, 
 primary key (ProjectID, ID), 
-foreign key (ProjectID) references Project,
+foreign key (ProjectID) references Project on delete cascade,
 )
 
 create table ComTransaction 
@@ -125,11 +132,10 @@ BankName varchar(50),
 EmployeeID int not null, 
 CompanyID int not null, 
 Amount int not null, 
-TStatus char(1) not null Default 'C', /* I, A, C: Intiated, Awaiting, Complete */
 primary key (TID, BankName),
-foreign key (BankName) references Bank on update cascade,
-foreign key (EmployeeID) references Employee, 
-foreign key (CompanyID) references Company, 
+foreign key (BankName) references Bank on delete Cascade on update Cascade,
+foreign key (EmployeeID) references Employee on delete Cascade on update Cascade, 
+foreign key (CompanyID) references Company on delete cascade, 
 )
 
 create Table CitTransaction
@@ -141,12 +147,11 @@ CitizenID int not null,
 ProjectID int not null,
 UnitID int not null, 
 Amount int not null, 
-TStatus bit not null Default 0, /* 0, 1: Awaiting, Complete */
 primary key (TID, BankName),
-foreign key (BankName) references Bank on update cascade,
-foreign key (EmployeeID) references Employee, 
-foreign key (CitizenID) references Citizen on update cascade, 
-foreign key (ProjectID, UnitID) references Unit (ProjectID, ID), 
+foreign key (BankName) references Bank on delete Cascade on update Cascade,
+foreign key (EmployeeID) references Employee on delete No Action on update No Action, 
+foreign key (CitizenID) references Citizen on delete Cascade on update Cascade, 
+foreign key (ProjectID, UnitID) references Unit (ProjectID, ID) on delete Cascade, 
 )
 
 create table ComApplication
@@ -156,8 +161,8 @@ CompanyID  int not null,
 BiddingPrice int not null, 	
 AStatus char(1) not null Default 'W', /* W, A, D, R: Waiting, Accepted, Done, Rejected*/
 primary key (ProjectID, CompanyID), 
-foreign key (ProjectID) references Project, 
-foreign key (CompanyID) references Company,
+foreign key (ProjectID) references Project on delete Cascade, 
+foreign key (CompanyID) references Company on delete Cascade,
 )
 
 create table CitApplication
@@ -167,9 +172,9 @@ UnitID int not null,
 CitizenID  int not null,	
 AStatus char(1) not null Default 'W', /* W, A, D, R: Waiting, Accepted, Done, Rejected*/
 primary key (ProjectID, UnitID, CitizenID), 
-foreign key (ProjectID) references Project, 
-foreign key (CitizenID) references Citizen on update cascade,
-foreign key (ProjectID, UnitID) references Unit (ProjectID, ID), 
+foreign key (ProjectID) references Project on delete Cascade, 
+foreign key (CitizenID) references Citizen on delete Cascade on update Cascade,
+foreign key (ProjectID, UnitID) references Unit (ProjectID, ID) on delete No Action, 
 )
 
 ---------------Inserting values into tables----------------
@@ -322,6 +327,10 @@ values
 (01271361, '19', 'Meredith', 'Palmer', 'F', 'H', '2017-11-08', 0, 1),
 (54605256, '20', 'Darryl', 'Philbin', 'M', 'H', '2017-11-08', 0, 1)
 
+ insert into Manager
+ values
+ (35071391)
+ 
  insert into Project
  values
  ('Cairo', 35071391, 16975583, 1000, 'F', 8, '2015-01-01', '2018-01-01'),
@@ -417,50 +426,50 @@ values
 
 insert into ComTransaction
 values 
-(052389829039182, 'CIB', 16975583, 16, 2000000, 'C'),  
-(851415212193554, 'CIB', 16975583, 16, 300000, 'C'),
-(275915458810480, 'CIB', 46676013, 4, 1000000, 'C'),
-(436456856530735, 'Banque du Caire', 74122567, 20, 200000, 'C'), 
-(302415949251605, 'Abu Dhabi Bank', 84488390, 1, 500000, 'C'),
-(639962592814317, 'Banque du Caire', 74122567, 20, 1000000, 'c'),
-(996202765584482, 'QNB Alahli', 74122567, 17, 2000000, 'C'),
-(766754823610613, 'Agricultral Bank of Egypt', 16975583, 18, 900000, 'c'),
-(790092854949595, 'Bank of Alexandria', 46676013, 7, 700000, 'c'), 
-(809766259474045, 'Bank of Alexandria', 46676013, 7, 250000, 'C'),
-(178650639412980, 'Agricultral Bank of Egypt', 84488390, 18, 4000000, 'C'),
-(843309251003420, 'Banque du Caire', 74122567, 20, 800000, 'C'),
-(466706803746824, 'Agricultral Bank of Egypt', 84488390, 18, 2000000, 'C'),
-(245026155898264, 'QNB Alahli', 74122567, 17, 300000, 'I'), 
-(813706966630753, 'Bank of Alexandria', 46676013, 7, 1000000, 'I'),
-(256816031166130, 'Abu Dhabi Bank', 84488390, 1, 200000, 'A'),
-(879544667355263, 'QNB Alahli', 74122567, 17, 200000, 'I'), 
-(084377371619095, 'QNB Alahli', 74122567, 17, 3000000, 'C'), 
-(988292921060231, 'CIB', 46676013, 4, 900000, 'A'), 
-(463349347592619, 'Abu Dhabi Bank', 84488390, 1, 800000, 'I')
+(052389829039182, 'CIB', 16975583, 16, 2000000),  
+(851415212193554, 'CIB', 16975583, 16, 300000),
+(275915458810480, 'CIB', 46676013, 4, 1000000),
+(436456856530735, 'Banque du Caire', 74122567, 20, 200000), 
+(302415949251605, 'Abu Dhabi Bank', 84488390, 1, 500000),
+(639962592814317, 'Banque du Caire', 74122567, 20, 1000000),
+(996202765584482, 'QNB Alahli', 74122567, 17, 2000000),
+(766754823610613, 'Agricultral Bank of Egypt', 16975583, 18, 900000),
+(790092854949595, 'Bank of Alexandria', 46676013, 7, 700000), 
+(809766259474045, 'Bank of Alexandria', 46676013, 7, 250000),
+(178650639412980, 'Agricultral Bank of Egypt', 84488390, 18, 4000000),
+(843309251003420, 'Banque du Caire', 74122567, 20, 800000),
+(466706803746824, 'Agricultral Bank of Egypt', 84488390, 18, 2000000),
+(245026155898264, 'QNB Alahli', 74122567, 17, 300000), 
+(813706966630753, 'Bank of Alexandria', 46676013, 7, 1000000),
+(256816031166130, 'Abu Dhabi Bank', 84488390, 1, 200000),
+(879544667355263, 'QNB Alahli', 74122567, 17, 200000), 
+(084377371619095, 'QNB Alahli', 74122567, 17, 3000000), 
+(988292921060231, 'CIB', 46676013, 4, 900000), 
+(463349347592619, 'Abu Dhabi Bank', 84488390, 1, 800000)
 
 insert into CitTransaction
 values 
-(895977687526709, 'Central Bank', 91143555, 11111111, 1, 1, 3000, 1),
-(532549026536484, 'Central Bank', 59898818, 12121212, 1, 2, 4000, 1),
-(979250921069462, 'Central Bank', 06462455, 18181818, 2, 1, 2700, 1),
-(122366439191647, 'ABC Bank', 45876323, 88888888, 2, 3, 2700, 1),
-(876655728053877, 'ABC Bank', 60377055, 13131313, 4, 2, 2700, 1),
-(414030616134239, 'ABC Bank', 06462455, 17171717, 2, 2, 2700, 1), 
-(066261554995701, 'ABC Bank', 91143555, 19191919, 1, 4, 5000, 0), 
-(368971287392649, 'Banque du Caire', 45876323, 22222222, 2, 4, 3600, 1), 
-(629863341573619, 'AlBaraka Bank', 91143555, 33333333, 1, 3, 2000, 1),
-(129863341589619, 'AlBaraka Bank', 91143555, 33333333, 1, 3, 2000, 1),
-(706202186475579, 'Faisal Bank', 02163151, 44444444, 5, 5, 1000, 1),
-(331916833293374, 'AlBaraka Bank', 02163151, 44444444, 5, 5, 500, 1),
-(036576816910296, 'Faisal Bank', 02163151, 44444444, 5, 5, 500, 0),
-(857793233874497, 'Banque du Caire', 02163151, 44444444, 5, 5, 500, 0), 
-(405896866424625, 'QNB Alahli', 18136173, 14141414, 5, 6, 1000, 1),
-(933680833808808, 'AlBaraka Bank', 18136173, 14141414, 5, 6, 1000, 1),
-(171871428620590, 'Faisal Bank', 89037654, 99999999, 6, 1, 1000, 1), 
-(747605198016119, 'QNB Alahli', 89037654, 99999999, 6, 1, 1000, 0),
-(268994311099442, 'Banque du Caire', 00992315, 16161616, 6, 6, 4000, 0),
-(389208118011286, 'Faisal Bank', 01271361, 10101010, 6, 5, 2000, 1),
-(019151925398014, 'QNB Alahli', 54605256, 01010101, 3, 1, 2700, 0)
+(895977687526709, 'Central Bank', 91143555, 11111111, 1, 1, 3000),
+(532549026536484, 'Central Bank', 59898818, 12121212, 1, 2, 4000),
+(979250921069462, 'Central Bank', 06462455, 18181818, 2, 1, 2700),
+(122366439191647, 'ABC Bank', 45876323, 88888888, 2, 3, 2700),
+(876655728053877, 'ABC Bank', 60377055, 13131313, 4, 2, 2700),
+(414030616134239, 'ABC Bank', 06462455, 17171717, 2, 2, 2700), 
+(066261554995701, 'ABC Bank', 91143555, 19191919, 1, 4, 5000), 
+(368971287392649, 'Banque du Caire', 45876323, 22222222, 2, 4, 3600), 
+(629863341573619, 'AlBaraka Bank', 91143555, 33333333, 1, 3, 2000),
+(129863341589619, 'AlBaraka Bank', 91143555, 33333333, 1, 3, 2000),
+(706202186475579, 'Faisal Bank', 02163151, 44444444, 5, 5, 1000),
+(331916833293374, 'AlBaraka Bank', 02163151, 44444444, 5, 5, 500),
+(036576816910296, 'Faisal Bank', 02163151, 44444444, 5, 5, 500),
+(857793233874497, 'Banque du Caire', 02163151, 44444444, 5, 5, 500), 
+(405896866424625, 'QNB Alahli', 18136173, 14141414, 5, 6, 1000),
+(933680833808808, 'AlBaraka Bank', 18136173, 14141414, 5, 6, 1000),
+(171871428620590, 'Faisal Bank', 89037654, 99999999, 6, 1, 1000), 
+(747605198016119, 'QNB Alahli', 89037654, 99999999, 6, 1, 1000),
+(268994311099442, 'Banque du Caire', 00992315, 16161616, 6, 6, 4000),
+(389208118011286, 'Faisal Bank', 01271361, 10101010, 6, 5, 2000),
+(019151925398014, 'QNB Alahli', 54605256, 01010101, 3, 1, 2700)
 
 insert into ComApplication
 values 
