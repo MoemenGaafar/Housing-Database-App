@@ -1,6 +1,6 @@
 ﻿namespace Housing_Database_Project.Employees_Functionalities
 {
-    partial class PEMP_ViewTrans
+    partial class EMP_ViewTrans
     {
         /// <summary>
         /// Required designer variable.
@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_Title = new System.Windows.Forms.Label();
             this.dataGridView_Trans = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox_Company = new System.Windows.Forms.ComboBox();
             this.comboBox_Bank = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label_Client = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button_NoFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Trans)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // label_Title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(370, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(259, 29);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Company Transactions";
+            this.label_Title.AutoSize = true;
+            this.label_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Title.Location = new System.Drawing.Point(370, 9);
+            this.label_Title.Name = "label_Title";
+            this.label_Title.Size = new System.Drawing.Size(259, 29);
+            this.label_Title.TabIndex = 6;
+            this.label_Title.Text = "Company Transactions";
             // 
             // dataGridView_Trans
             // 
@@ -64,7 +64,7 @@
             // 
             this.groupBox1.Controls.Add(this.comboBox_Company);
             this.groupBox1.Controls.Add(this.comboBox_Bank);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label_Client);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(258, 41);
             this.groupBox1.Name = "groupBox1";
@@ -72,6 +72,7 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filters";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // comboBox_Company
             // 
@@ -85,26 +86,20 @@
             // comboBox_Bank
             // 
             this.comboBox_Bank.FormattingEnabled = true;
-            this.comboBox_Bank.Items.AddRange(new object[] {
-            "All",
-            "Waiting",
-            "Accepted",
-            "Rejected",
-            "Done"});
             this.comboBox_Bank.Location = new System.Drawing.Point(67, 35);
             this.comboBox_Bank.Name = "comboBox_Bank";
             this.comboBox_Bank.Size = new System.Drawing.Size(136, 24);
             this.comboBox_Bank.TabIndex = 6;
             this.comboBox_Bank.SelectedIndexChanged += new System.EventHandler(this.comboBox_Bank_SelectedIndexChanged);
             // 
-            // label4
+            // label_Client
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(232, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Company";
+            this.label_Client.AutoSize = true;
+            this.label_Client.Location = new System.Drawing.Point(232, 38);
+            this.label_Client.Name = "label_Client";
+            this.label_Client.Size = new System.Drawing.Size(67, 17);
+            this.label_Client.TabIndex = 5;
+            this.label_Client.Text = "Company";
             // 
             // label3
             // 
@@ -125,7 +120,7 @@
             this.button_NoFilter.UseVisualStyleBackColor = true;
             this.button_NoFilter.Click += new System.EventHandler(this.button_NoFilter_Click);
             // 
-            // PEMP_ViewTrans
+            // EMP_ViewTrans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,9 +128,10 @@
             this.Controls.Add(this.button_NoFilter);
             this.Controls.Add(this.dataGridView_Trans);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label1);
-            this.Name = "PEMP_ViewTrans";
+            this.Controls.Add(this.label_Title);
+            this.Name = "EMP_ViewTrans";
             this.Text = "S";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EMP_ViewTrans_FormClosed);
             this.Load += new System.EventHandler(this.PEMP_ViewTrans_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Trans)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -147,12 +143,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_Title;
         private System.Windows.Forms.DataGridView dataGridView_Trans;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comboBox_Company;
         private System.Windows.Forms.ComboBox comboBox_Bank;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_Client;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button_NoFilter;
     }

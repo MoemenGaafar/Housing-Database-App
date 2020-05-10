@@ -68,6 +68,18 @@ namespace DBapplication
         public static string SelectAllBanks = "SelectAllBanks";
         //INPUT: none - OUTPUT: All
         public static string SelectTransByPEMPID = "SelectTransByPEMPID";
-        //INPUT: Projects Emp. NationalId - OUTPUT: All company applications associated with him
+        //INPUT: Projects Emp. NationalId, Filters - OUTPUT: All company transactions associated with him
+
+        public static string SelectProjectByHEMPID = "SelectProjectByHEMPID";
+        //INPUT: H Employee National ID, Filters - OUTPUT: All Projects assigned to him
+        public static string SelectUnitByHEMPID = "SelectUnitByHEMPID";
+        //INPUT: H Employee National ID, Filters - OUTPUT: All Units assigned to him
+        public static string SelectCitAppByHEMPID = "SelectCitAppByHEMPID";
+        //INPUT: H Emp. NationalId - OUTPUT: All citizen applications associated with him
+        public static string ChangeCitApplicationStatus = "ChangeCitApplicationStatus";
+        //INPUT: Project ID, Unit ID, Citizen ID New Application Status - OUTPUT: Updates Status
+        public static string SelectTransByHEMPID = "SelectTransByHEMPID";
+        //INPUT: H Emp. NationalId, Filters - OUTPUT: All citizen transactions associated with him
+        
     }
 }

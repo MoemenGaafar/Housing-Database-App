@@ -18,6 +18,8 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
+use Monkey
+go
 CREATE PROCEDURE Add_CitTransaction 
 	-- Add the parameters for the stored procedure here
 @TID bigint, 

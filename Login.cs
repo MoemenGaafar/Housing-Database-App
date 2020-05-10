@@ -1,4 +1,5 @@
 ﻿using DBapplication;
+using Housing_Database_Project.Employees_Functionalities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,6 +57,7 @@ namespace Housing_Database_Project
                         switch (Convert.ToChar(found.Rows[0]["EType"])){
                             case 'M':
                                 {
+
                                     break;
                                 }
                             case 'P':
@@ -65,6 +67,7 @@ namespace Housing_Database_Project
                                 }
                             case 'H':
                                 {
+                                    new HousingEmployeeFunctionalities(Convert.ToInt32(found.Rows[0]["NationalId"])).Show(this);
                                     break;
                                 }
                         }

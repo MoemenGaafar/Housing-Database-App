@@ -296,7 +296,7 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
-        public DataTable SelectComAppByPEMPID(int ID, string statusFilter, int projectFilter)
+        public DataTable SelectAppByEMPID(int ID, string statusFilter, int projectFilter, string type)
         {
             char status;
             switch (statusFilter)
@@ -327,7 +327,13 @@ namespace DBapplication
                         break;
                     }
             }
-            string StoredProcedureName = StoredProcedures.SelectComAppByPEMPID;
+            string StoredProcedureName;
+
+            if (type == "Projects")
+                StoredProcedureName = StoredProcedures.SelectComAppByPEMPID;
+            else 
+                StoredProcedureName = StoredProcedures.SelectCitAppByHEMPID;
+
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
             Parameters.Add("@NationalID", ID);
             Parameters.Add("@AStatus", status);
@@ -352,19 +358,106 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
-        public DataTable SelectTransByPEMPID(int ID, string bankName, string companyName)
+        public DataTable SelectTransByEMPID(int ID, string bankName, string clientName, string type)
         {
-            string StoredProcedureName = StoredProcedures.SelectTransByPEMPID;
+            string StoredProcedureName;
+            if (type == "Projects")
+                StoredProcedureName = StoredProcedures.SelectTransByPEMPID;
+            else 
+                StoredProcedureName = StoredProcedures.SelectTransByHEMPID;
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
             Parameters.Add("@NationalID", ID);
             Parameters.Add("@BankName", bankName);
-            Parameters.Add("@CompanyName", companyName);
+            if (type == "Projects")
+                Parameters.Add("@CompanyName", clientName);
+            else
+                Parameters.Add("@CitizenName", clientName);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
 
         /////////////////////////////////////// H Employee Functionalities ///////////////////////////////////////////
+        public DataTable SelectProjectByHEMPID(int ID, string statusFilter, string cityFilter)
+        {
+            char status;
+            switch (statusFilter)
+            {
+                case "All Units Sold":
+                    {
+                        status = 'F';
+                        break;
+                    }
+                case "Posted":
+                    {
+                        status = 'P';
+                        break;
+                    }
+                case "Started":
+                    {
+                        status = 'S';
+                        break;
+                    }
+                case "Launched":
+                    {
+                        status = 'L';
+                        break;
+                    }
+                default:
+                    {
+                        status = 'A';
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectProjectByHEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", ID);
+            Parameters.Add("@PStatus", status);
+            Parameters.Add("@City", cityFilter);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
 
+        public DataTable SelectUnitByHEMPID(int ID, string statusFilter, int projectFilter)
+        {
+            bool? status;
+            switch (statusFilter)
+            {
+                case "Sold":
+                    {
+                        status = true;
+                        break;
+                    }
+                case "Not Sold":
+                    {
+                        status = false;
+                        break;
+                    }
+                default:
+                    {
+                        status = null;
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectUnitByHEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", ID);
+            if (!(status is null))
+                Parameters.Add("@UStatus", status);
+            else
+                Parameters.Add("@UStatus", DBNull.Value);
+            Parameters.Add("@ProjectID", projectFilter);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int ChangeCitApplicationStatus(int projectID, int unitID, int citizenID, char newStatus)
+        {
+            string StoredProcedureName = StoredProcedures.ChangeCitApplicationStatus;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@ProjectID", projectID);
+            Parameters.Add("@UnitID", unitID);
+            Parameters.Add("@CitizenID", citizenID);
+            Parameters.Add("@NewStatus", newStatus);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
 
         public void TerminateConnection()
         {

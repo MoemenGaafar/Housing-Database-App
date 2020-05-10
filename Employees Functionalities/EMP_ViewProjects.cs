@@ -11,21 +11,26 @@ using System.Windows.Forms;
 
 namespace Housing_Database_Project.Employees_Functionalities
 {
-    public partial class PEMP_ViewProjects : Form
+    public partial class EMP_ViewProjects : Form
     {
         private Controller controllerObj;
         private int ID;
+        private string Type;
         private DataTable dt;
-        public PEMP_ViewProjects(int id)
+        public EMP_ViewProjects(int id, string type)
         {
             ID = id;
+            Type = type;
             controllerObj = new Controller();
             InitializeComponent();
         }
 
         private void PEMP_ViewProjects_Load(object sender, EventArgs e)
         {
-            dt = controllerObj.SelectProjectByPEMPID(ID,"All","All");
+            if (Type == "Projects")
+               dt = controllerObj.SelectProjectByPEMPID(ID,"All","All");
+            else if (Type == "Housing")
+               dt = controllerObj.SelectProjectByHEMPID(ID, "All", "All");
 
             dataGridView_Projects.DataSource = dt;
             dataGridView_Projects.Refresh();
@@ -45,14 +50,20 @@ namespace Housing_Database_Project.Employees_Functionalities
 
         private void comboBox_Status_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+            if (Type == "Projects")
+                dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+            else if (Type == "Housing")
+                dt = controllerObj.SelectProjectByHEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
             dataGridView_Projects.DataSource = dt;
             dataGridView_Projects.Refresh();
         }
 
         private void comboBox_City_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+            if (Type == "Projects")
+                dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+            else if (Type == "Housing")
+                dt = controllerObj.SelectProjectByHEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
             dataGridView_Projects.DataSource = dt;
             dataGridView_Projects.Refresh();
         }

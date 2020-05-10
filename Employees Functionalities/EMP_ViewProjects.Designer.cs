@@ -1,6 +1,6 @@
 ﻿namespace Housing_Database_Project.Employees_Functionalities
 {
-    partial class PEMP_ViewProjects
+    partial class EMP_ViewProjects
     {
         /// <summary>
         /// Required designer variable.

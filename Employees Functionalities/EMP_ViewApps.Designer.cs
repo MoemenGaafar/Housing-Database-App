@@ -1,6 +1,6 @@
 ﻿namespace Housing_Database_Project.Employees_Functionalities
 {
-    partial class PEMP_ViewApps
+    partial class EMP_ViewApps
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.comboBox_Status = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_Title = new System.Windows.Forms.Label();
             this.button_Accept = new System.Windows.Forms.Button();
             this.button_Reject = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -107,15 +107,15 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Status";
             // 
-            // label1
+            // label_Title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(392, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 29);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Company Applications";
+            this.label_Title.AutoSize = true;
+            this.label_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Title.Location = new System.Drawing.Point(392, 9);
+            this.label_Title.Name = "label_Title";
+            this.label_Title.Size = new System.Drawing.Size(252, 29);
+            this.label_Title.TabIndex = 5;
+            this.label_Title.Text = "Company Applications";
             // 
             // button_Accept
             // 
@@ -146,7 +146,7 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "W: Waiting - A: Accepted - R: Rejected - D: Done";
             // 
-            // PEMP_ViewApps
+            // EMP_ViewApps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -156,8 +156,8 @@
             this.Controls.Add(this.button_Accept);
             this.Controls.Add(this.dataGridView_Apps);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label1);
-            this.Name = "PEMP_ViewApps";
+            this.Controls.Add(this.label_Title);
+            this.Name = "EMP_ViewApps";
             this.Text = "PEMP_ViewApps";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PEMP_ViewApps_FormClosed);
             this.Load += new System.EventHandler(this.PEMP_ViewApps_Load);
@@ -177,7 +177,7 @@
         private System.Windows.Forms.ComboBox comboBox_Status;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_Title;
         private System.Windows.Forms.Button button_Accept;
         private System.Windows.Forms.Button button_Reject;
         private System.Windows.Forms.Label label2;

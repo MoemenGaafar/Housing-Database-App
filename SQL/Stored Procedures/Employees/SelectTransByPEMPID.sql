@@ -27,25 +27,25 @@ AS
 IF (@BankName = 'All' AND @CompanyName = 'All')
 BEGIN
 	SET NOCOUNT ON;
-	SELECT TID As "Transaction ID", BankName, Name, Amount From ComTransaction, Company
+	SELECT TID As "Transaction ID", BankName As "Bank", Name As "Company", Amount From ComTransaction, Company
 	Where CompanyID = CID AND EmployeeID = @NationalID
 END
 ELSE IF (@BankName = 'All')
 BEGIN
 	SET NOCOUNT ON;
-	SELECT TID As "Transaction ID", BankName, Name, Amount From ComTransaction, Company
+	SELECT TID As "Transaction ID", BankName As "Bank", Name As "Company", Amount From ComTransaction, Company
 	Where CompanyID = CID AND Name = @CompanyName  AND EmployeeID = @NationalID
 END
 ELSE IF (@CompanyName = 'All')
 BEGIN
 	SET NOCOUNT ON;
-	SELECT TID As "Transaction ID", BankName, Name, Amount From ComTransaction, Company
+	SELECT TID As "Transaction ID", BankName As "Bank", Name As "Company", Amount From ComTransaction, Company
 	Where CompanyID = CID AND BankName = @BankName AND EmployeeID = @NationalID
 END
 ELSE
 BEGIN
 	SET NOCOUNT ON;
-	SELECT TID As "Transaction ID", BankName, Name, Amount From ComTransaction, Company
+	SELECT TID As "Transaction ID", BankName As "Bank", Name As "Company", Amount From ComTransaction, Company
 	Where CompanyID = CID AND BankName = @BankName AND Name = @CompanyName AND EmployeeID = @NationalID
 END
 GO

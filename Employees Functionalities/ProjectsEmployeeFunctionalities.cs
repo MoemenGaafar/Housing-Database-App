@@ -38,19 +38,19 @@ namespace Housing_Database_Project
 
         private void button_ViewProjs_Click(object sender, EventArgs e)
         {
-            new PEMP_ViewProjects(ID).Show(this);
+            new EMP_ViewProjects(ID,"Projects").Show(this);
             this.Hide();
         }
 
         private void button_ViewApps_Click(object sender, EventArgs e)
         {
-            new PEMP_ViewApps(ID).Show(this);
+            new EMP_ViewApps(ID, "Projects").Show(this);
             this.Hide();
         }
 
         private void button_ViewTrans_Click(object sender, EventArgs e)
         {
-            new PEMP_ViewTrans(ID).Show(this);
+            new EMP_ViewTrans(ID, "Projects").Show(this);
             this.Hide();
         }
 

@@ -18,6 +18,8 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
+use Monkey
+go
 CREATE PROCEDURE ChangePassword_Employee
 	-- Add the parameters for the stored procedure here
 	@NationalID int,

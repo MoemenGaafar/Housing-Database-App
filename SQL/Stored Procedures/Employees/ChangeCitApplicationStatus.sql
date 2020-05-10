@@ -18,19 +18,20 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-use Monkey
-go
-CREATE PROCEDURE ChangePassword_Bank
+CREATE PROCEDURE ChangeCitApplicationStatus
 	-- Add the parameters for the stored procedure here
-	@Name varchar(50),
-	@Password varchar(50)
+	@ProjectID int,
+	@UnitID int,
+	@CitizenID int,
+	@NewStatus char(1)
 AS
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-
-    -- Insert statements for procedure here
-	Update Bank Set Password = @Password Where Name = @Name 
+	UPDATE CitApplication 
+	SET AStatus = @NewStatus
+	WHERE ProjectID = @ProjectID AND UnitID = @UnitID AND CitizenID = @CitizenID 
+ IF (@NewStatus = 'A')
+	UPDATE CitApplication 
+	SET AStatus = 'R'
+	WHERE ProjectID = @ProjectID AND UnitID = @UnitID AND CitizenID != @CitizenID 
 END
 GO
