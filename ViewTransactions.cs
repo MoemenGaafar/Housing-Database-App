@@ -66,5 +66,29 @@ namespace Housing_Database_Project
                 Company.Enabled = false;
             }
         }
+
+        private void ViewTransactions_Load(object sender, EventArgs e)
+        {
+            if (name == "All")
+            {
+                label_Bank.Visible = true;
+                comboBox_Bank.Visible = true;
+                DataTable dt = controllerObj.SelectAllBanks();
+                comboBox_Bank.Items.Add("All");
+                for (int intCount = 0; intCount < dt.Rows.Count; intCount++)
+                {
+                    var val = dt.Rows[intCount]["Bank Name"].ToString();
+                    if (!comboBox_Bank.Items.Contains(val))
+                    {
+                        comboBox_Bank.Items.Add(val);
+                    }
+                }
+            }
+        }
+
+        private void comboBox_Bank_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            name = comboBox_Bank.SelectedItem.ToString();
+        }
     }
 }

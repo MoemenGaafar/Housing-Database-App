@@ -80,6 +80,33 @@ namespace DBapplication
         //INPUT: Project ID, Unit ID, Citizen ID New Application Status - OUTPUT: Updates Status
         public static string SelectTransByHEMPID = "SelectTransByHEMPID";
         //INPUT: H Emp. NationalId, Filters - OUTPUT: All citizen transactions associated with him
-        
+
+        public static string GetAllProjectEmployees = "GetAllProjectEmployees";
+        //INPUT:none - Output: Project Employees Info
+        public static string Insert_Project = "Insert_Project";
+        //INPUT: City, RoomPrice, Project Emp ID - Output: none
+        public static string GetAllCompanies = "GetAllCompanies";
+        //INPUT:none - Output: Everything
+        public static string SelectProjectByCompany = "SelectProjectByCompany";
+        //INPUT: CID - Output: ProjectIDs related to it
+        public static string GetAllEmployees = "GetAllEmployees";
+        //INPUT:none - Output: Everything
+        public static string SelectProjectByEmployee = "SelectProjectByEmployee";
+        //INPUT: Employee NationalID and type - Output: ProjectIDs related to it
+    //    public static string SelectComTransByMEMPID = "SelectComTransByMEMPID";
+        //INPUT: H Employee National ID, Filters - OUTPUT: All Projects assigned to him
+     //   public static string SelectCitTransByMEMPID = "SelectCitTransByMEMPID";
+        //INPUT: H Employee National ID, Filters - OUTPUT: All Projects assigned to him
+        public static string SelectProjectByMEMPID = "SelectProjectByMEMPID";
+        //INPUT: M Employee National ID, Filters - OUTPUT: All Projects assigned to him
+        public static string SelectAllComApps = "SelectAllComApps";
+        //INPUT: Project ID, Status - Output: All associated ComApps
+        public static string SelectAllCitApps = "SelectAllCitApps";
+        //INPUT: Project ID, Status, M Emp ID - Output: All associated ComApps
+        public static string SelectComAppByMEMPID = "SelectComAppByMEMPID";
+        //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApps
+        public static string SelectCitAppByMEMPID = "SelectCitAppByMEMPID";
+        //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApps
+
     }
 }

@@ -18,28 +18,14 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-use Monkey
-go
-CREATE PROCEDURE SelectAllCitizenBankTransactions 
-	-- Add the parameters for the stored procedure here
-	@Name varchar(50)
+CREATE PROCEDURE GetAllEmployees
 AS
-IF(@Name = 'All')
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-
-    -- Insert statements for procedure here
-	SELECT * From CitTransaction 
-END
-ELSE
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-
-    -- Insert statements for procedure here
-	SELECT * From CitTransaction Where BankName = @Name 
+	Select NationalID As "National ID", FirstName+' '+LastName AS "Name", CASE WHEN Sex = 'M' THEN 'Male' ELSE 'Female' END As Sex, 
+	CASE WHEN EType = 'M' THEN 'Manager' WHEN EType = 'P' THEN 'Projects' ELSE 'Housing' END As "Position",
+	StartDate As "Start Date", NoCompleteProj As "Number of Completed Projects", NoCurrentProj As "Number of Current Projects"
+	From Employee
+	ORDER BY EType
 END
 GO

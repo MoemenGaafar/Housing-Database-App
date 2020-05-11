@@ -57,7 +57,7 @@ namespace Housing_Database_Project
                         switch (Convert.ToChar(found.Rows[0]["EType"])){
                             case 'M':
                                 {
-
+                                    new ManagerEmployeeFunctionalities(Convert.ToInt32(found.Rows[0]["NationalId"])).Show(this);
                                     break;
                                 }
                             case 'P':

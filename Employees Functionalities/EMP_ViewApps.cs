@@ -39,7 +39,11 @@ namespace Housing_Database_Project.Employees_Functionalities
                     comboBox_ProjectID.Items.Add(val);
                 }
             }
-            if (Type == "Housing") label_Title.Text = "Citizen Applications";
+            if (Type == "Housing")
+            {
+                label_Title.Text = "Citizen Applications";
+                button_ViewCit.Visible = true;
+            }
         }
 
         private void comboBox_Status_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,6 +132,18 @@ namespace Housing_Database_Project.Employees_Functionalities
         {
             if (e.CloseReason == CloseReason.UserClosing)
                 Owner.Show();
+        }
+
+        private void button_ViewCit_Click(object sender, EventArgs e)
+        {
+            if(dataGridView_Apps.SelectedRows.Count == 1)
+            {
+                new CitizenInfo(Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Citizen ID"].Value)).Show(this);
+            }
+            else
+            {
+                MessageBox.Show("Please select ONE ENTIRE ROW!");
+            }
         }
     }
 }

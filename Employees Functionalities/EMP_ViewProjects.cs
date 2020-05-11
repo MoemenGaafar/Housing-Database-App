@@ -31,6 +31,9 @@ namespace Housing_Database_Project.Employees_Functionalities
                dt = controllerObj.SelectProjectByPEMPID(ID,"All","All");
             else if (Type == "Housing")
                dt = controllerObj.SelectProjectByHEMPID(ID, "All", "All");
+            else
+                dt = controllerObj.SelectProjectByMEMPID(ID, "All", "All");
+
 
             dataGridView_Projects.DataSource = dt;
             dataGridView_Projects.Refresh();
@@ -44,8 +47,8 @@ namespace Housing_Database_Project.Employees_Functionalities
                     comboBox_City.Items.Add(val);
                 }
             }
-            comboBox_Status.SelectedIndex = 0;
-            comboBox_City.SelectedIndex = 0;
+            comboBox_Status.Text = "";
+            comboBox_City.Text = "";
         }
 
         private void comboBox_Status_SelectedIndexChanged(object sender, EventArgs e)
@@ -54,6 +57,9 @@ namespace Housing_Database_Project.Employees_Functionalities
                 dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
             else if (Type == "Housing")
                 dt = controllerObj.SelectProjectByHEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+            else
+                dt = controllerObj.SelectProjectByMEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+
             dataGridView_Projects.DataSource = dt;
             dataGridView_Projects.Refresh();
         }
@@ -64,6 +70,9 @@ namespace Housing_Database_Project.Employees_Functionalities
                 dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
             else if (Type == "Housing")
                 dt = controllerObj.SelectProjectByHEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+            else
+                dt = controllerObj.SelectProjectByMEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+
             dataGridView_Projects.DataSource = dt;
             dataGridView_Projects.Refresh();
         }

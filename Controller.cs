@@ -253,9 +253,180 @@ namespace DBapplication
         }
 
         /////////////////////////////////////// M Employee Functionalities  ///////////////////////////////////////////
+        public DataTable GetAllProjectEmployees()
+        {
+            string StoredProcedureName = StoredProcedures.GetAllProjectEmployees;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
 
+        public DataTable GetAllCompanies()
+        {
+            string StoredProcedureName = StoredProcedures.GetAllCompanies;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
 
+        public DataTable GetAllEmployees()
+        {
+            string StoredProcedureName = StoredProcedures.GetAllEmployees;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
 
+        public DataTable SelectProjectByCompany(int cid)
+        {
+            string StoredProcedureName = StoredProcedures.SelectProjectByCompany;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", cid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+
+        }
+
+        public DataTable SelectProjectByEmployee(int eid, string type)
+        {
+            char Etype;
+            switch (type)
+            {
+                case "Housing": Etype = 'H'; break;
+                case "Projects": Etype = 'P'; break;
+                default: Etype = 'M'; break;
+            }
+            string StoredProcedureName = StoredProcedures.SelectProjectByEmployee;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@EID", eid);
+            Parameters.Add("@EType", Etype);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+
+        }
+
+        public int Insert_Project(string city, int price, int mgrEmpID, int projEmpID)
+        {
+            string StoredProcedureName = StoredProcedures.Insert_Project;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@City", city);
+            Parameters.Add("@MEmployeeID", mgrEmpID);
+            Parameters.Add("@PricePRoom", price);
+            Parameters.Add("@PEmployeeID", projEmpID);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectProjectByMEMPID(int ID, string statusFilter, string cityFilter)
+        {
+            char status;
+            switch (statusFilter)
+            {
+                case "All Units Sold":
+                    {
+                        status = 'F';
+                        break;
+                    }
+                case "Posted":
+                    {
+                        status = 'P';
+                        break;
+                    }
+                case "Started":
+                    {
+                        status = 'S';
+                        break;
+                    }
+                case "Launched":
+                    {
+                        status = 'L';
+                        break;
+                    }
+                default:
+                    {
+                        status = 'A';
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectProjectByMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", ID);
+            Parameters.Add("@PStatus", status);
+            Parameters.Add("@City", cityFilter);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectAppByMEMPID(int ID, string statusFilter, int projectFilter, string client)
+        {
+            char status;
+            switch (statusFilter)
+            {
+                case "Waiting":
+                    {
+                        status = 'W';
+                        break;
+                    }
+                case "Accepted":
+                    {
+                        status = 'A';
+                        break;
+                    }
+                case "Rejected":
+                    {
+                        status = 'R';
+                        break;
+                    }
+                case "Done":
+                    {
+                        status = 'D';
+                        break;
+                    }
+                default:
+                    {
+                        status = 'L';
+                        break;
+                    }
+            }
+            string StoredProcedureName;
+            if (client == "Company")
+            {
+                if (ID == -1) //Admin
+                    StoredProcedureName = StoredProcedures.SelectAllComApps;
+                else
+                    StoredProcedureName = StoredProcedures.SelectComAppByMEMPID;
+            }
+            else
+            {
+                if (ID == -1) //Admin
+                    StoredProcedureName = StoredProcedures.SelectAllCitApps;
+                else
+                    StoredProcedureName = StoredProcedures.SelectCitAppByMEMPID;
+            }
+
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            if (ID != -1)
+                Parameters.Add("@NationalID", ID);
+            Parameters.Add("@AStatus", status);
+            Parameters.Add("@ProjectID", projectFilter);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        //public DataTable SelectTransByMEMPID(int ID, string bankName, string clientName, string client)
+        //{
+        //    string StoredProcedureName;
+        //    if (client == "Company")
+        //    {
+        //        if (ID == -1) //Admin
+        //            StoredProcedureName = StoredProcedures.SelectAllCompanyBankTransactions;
+        //        else
+        //            StoredProcedureName = StoredProcedures.SelectComTransByMEMPID;
+        //    }
+        //    else
+        //    {
+        //        if (ID == -1)
+        //            StoredProcedureName = StoredProcedures.SelectAllCitizenBankTransactions;
+        //        else
+        //            StoredProcedureName = StoredProcedures.SelectCitTransByMEMPID;
+        //    }
+
+        //    Dictionary<string, object> Parameters = new Dictionary<string, object>();
+        //    if (ID != -1)
+        //        Parameters.Add("@NationalID", ID);
+        //    Parameters.Add("@BankName", bankName);
+        //    Parameters.Add("@ClientName", clientName);
+        //    return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        //}
         /////////////////////////////////////// P Employee Functionalities ///////////////////////////////////////////
         public DataTable SelectProjectByPEMPID(int ID, string statusFilter, string cityFilter)
         {

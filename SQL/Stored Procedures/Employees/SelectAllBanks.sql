@@ -22,8 +22,7 @@ CREATE PROCEDURE SelectAllBanks
 AS
 BEGIN
 	SET NOCOUNT ON;
-
     -- Insert statements for procedure here
-	SELECT * FROM Bank
+	SELECT Name As "Bank Name", TranFees As "Transfer Fees" FROM Bank
 END
 GO
