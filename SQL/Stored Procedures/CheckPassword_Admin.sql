@@ -18,6 +18,8 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
+use Monkey 
+go
 CREATE PROCEDURE CheckPassword_Admin
 	-- Add the parameters for the stored procedure here
 	@Name varchar(50),

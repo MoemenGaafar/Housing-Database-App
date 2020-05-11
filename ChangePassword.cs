@@ -29,6 +29,11 @@ namespace Housing_Database_Project
 
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void Check_Click(object sender, EventArgs e)
         {
             DataTable found = null;
@@ -109,5 +114,10 @@ namespace Housing_Database_Project
 
         }
 
+        private void ChangePassword_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Owner.Show();
+        }
     }
 }

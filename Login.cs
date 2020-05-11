@@ -1,4 +1,5 @@
 ﻿using DBapplication;
+using Housing_Database_Project.Employees_Functionalities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,8 +54,23 @@ namespace Housing_Database_Project
                     found = controllerObj.CheckPassword_Employee(Convert.ToInt32(TxtBx_username.Text), TxtBx_pass.Text);
                     if (found != null)
                     {
-                        EmployeeFunctionalities EF = new EmployeeFunctionalities();
-                        EF.Show(this);
+                        switch (Convert.ToChar(found.Rows[0]["EType"])){
+                            case 'M':
+                                {
+                                    new ManagerEmployeeFunctionalities(Convert.ToInt32(found.Rows[0]["NationalId"])).Show(this);
+                                    break;
+                                }
+                            case 'P':
+                                {
+                                    new ProjectsEmployeeFunctionalities(Convert.ToInt32(found.Rows[0]["NationalId"])).Show(this);
+                                    break;
+                                }
+                            case 'H':
+                                {
+                                    new HousingEmployeeFunctionalities(Convert.ToInt32(found.Rows[0]["NationalId"])).Show(this);
+                                    break;
+                                }
+                        }
                         this.Hide();
                     }
                 }

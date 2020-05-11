@@ -80,11 +80,77 @@
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
     </Compile>
     <Compile Include="DBManager.cs" />
-    <Compile Include="EmployeeFunctionalities.cs">
+    <Compile Include="Employees Functionalities\CitizenInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeFunctionalities.Designer.cs">
-      <DependentUpon>EmployeeFunctionalities.cs</DependentUpon>
+    <Compile Include="Employees Functionalities\CitizenInfo.Designer.cs">
+      <DependentUpon>CitizenInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\EMP_ViewUnits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\EMP_ViewUnits.Designer.cs">
+      <DependentUpon>EMP_ViewUnits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\HousingEmployeeFunctionalities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\HousingEmployeeFunctionalities.Designer.cs">
+      <DependentUpon>HousingEmployeeFunctionalities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\EMP_ViewApps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\EMP_ViewApps.Designer.cs">
+      <DependentUpon>EMP_ViewApps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\EMP_ViewProjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\EMP_ViewProjects.Designer.cs">
+      <DependentUpon>EMP_ViewProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\EMP_ViewTrans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\EMP_ViewTrans.Designer.cs">
+      <DependentUpon>EMP_ViewTrans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\ManagerEmployeeFunctionalities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\ManagerEmployeeFunctionalities.Designer.cs">
+      <DependentUpon>ManagerEmployeeFunctionalities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\NewProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\NewProject.Designer.cs">
+      <DependentUpon>NewProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\ProjectInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\ProjectInfo.Designer.cs">
+      <DependentUpon>ProjectInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\ProjectsEmployeeFunctionalities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\ProjectsEmployeeFunctionalities.Designer.cs">
+      <DependentUpon>ProjectsEmployeeFunctionalities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\ViewCompanies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\ViewCompanies.Designer.cs">
+      <DependentUpon>ViewCompanies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees Functionalities\ViewEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees Functionalities\ViewEmployees.Designer.cs">
+      <DependentUpon>ViewEmployees.cs</DependentUpon>
     </Compile>
     <Compile Include="NewTransaction.cs">
       <SubType>Form</SubType>
@@ -151,6 +217,12 @@
     <Compile Include="Units.Designer.cs">
       <DependentUpon>Units.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewApplications.Designer.cs">
+      <DependentUpon>ViewApplications.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewTransactions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,8 +259,41 @@
     <EmbeddedResource Include="CompanyFunctionalities.resx">
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeFunctionalities.resx">
-      <DependentUpon>EmployeeFunctionalities.cs</DependentUpon>
+    <EmbeddedResource Include="Employees Functionalities\CitizenInfo.resx">
+      <DependentUpon>CitizenInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\EMP_ViewUnits.resx">
+      <DependentUpon>EMP_ViewUnits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\HousingEmployeeFunctionalities.resx">
+      <DependentUpon>HousingEmployeeFunctionalities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\EMP_ViewApps.resx">
+      <DependentUpon>EMP_ViewApps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\EMP_ViewProjects.resx">
+      <DependentUpon>EMP_ViewProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\EMP_ViewTrans.resx">
+      <DependentUpon>EMP_ViewTrans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\ManagerEmployeeFunctionalities.resx">
+      <DependentUpon>ManagerEmployeeFunctionalities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\NewProject.resx">
+      <DependentUpon>NewProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\ProjectInfo.resx">
+      <DependentUpon>ProjectInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\ProjectsEmployeeFunctionalities.resx">
+      <DependentUpon>ProjectsEmployeeFunctionalities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\ViewCompanies.resx">
+      <DependentUpon>ViewCompanies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees Functionalities\ViewEmployees.resx">
+      <DependentUpon>ViewEmployees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -217,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewApplications.resx">
+      <DependentUpon>ViewApplications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Units.resx">
       <DependentUpon>Units.cs</DependentUpon>
