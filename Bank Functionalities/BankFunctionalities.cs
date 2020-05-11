@@ -44,6 +44,7 @@ namespace Housing_Database_Project
         private void Btn_ChangePass_Click(object sender, EventArgs e)
         {
            new ChangePassword("Bank").Show(this);
+           this.Hide(); 
             
         }
 

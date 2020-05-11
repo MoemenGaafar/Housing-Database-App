@@ -108,5 +108,53 @@ namespace DBapplication
         public static string SelectCitAppByMEMPID = "SelectCitAppByMEMPID";
         //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApps
 
+        public static string SelectAllUnits = "SelectAllUnits";
+        //INPUT: none - OUTPUT: All available Unit attributes 
+        public static string SelectUnitsByProject = "SelectUnitsByProject";
+        //INPUT: project # - OUTPUT: All available Unit attributes
+        public static string SelectUnitsByPrice = "SelectUnitsByPrice";
+        //INPUT: max price - OUTPUT: All available Unit attributes
+        public static string SelectUnitsByProjectAndPrice = "SelectUnitsByProjectAndPrice";
+        //INPUT: project # and max price - OUTPUT: All available Unit attributes
+
+        public static string CountCitApplicationsbyCitizen = "CountCitApplicationsbyCitizen";
+        //INPUT: CitizenID - OUTPUT: all CitApplication attributes and price
+        public static string GetUnsoldUnitsOfProject = "GetUnsoldUnitsOfProject";
+        //INPUT: ProjectID - OUTPUT: unitID of unsold units 
+        public static string CreateCitApplication = "CreateCitApplication";
+        //INPUT: all CitApplication attributes - OUTPUT: none
+        public static string GetCitApplicationsByCitizen = "GetCitApplicationsByCitizen";
+        //INPUT: CitizenID - OUTPUT: all CitApplication attributes and price
+        public static string GetWaitingCitApplicationsByCitizen = "GetWaitingCitApplicationsByCitizen";
+        //INPUT: CitizenID - OUTPUT: all waiting CitApplication attributes and price 
+        public static string GetAcceptedCitApplicationsByCitizen = "GetAcceptedCitApplicationsByCitizen";
+        //INPUT: CitizenID - OUTPUT: all accepted CitApplication attributes and price
+        public static string GetDoneCitApplicationsByCitizen = "GetDoneCitApplicationsByCitizen";
+        //INPUT: CitizenID - OUTPUT: all done CitApplication attributes and price
+
+        public static string DeleteCitApplication = "DeleteCitApplication";
+        //INPUT: CitizenID, project ID, unit ID - OUTPUT: none
+        public static string ClaimCitApplication = "ClaimCitApplication";
+        //INPUT: CitizenID, project ID, unit ID - OUTPUT: none (converts application status to 'D')
+        public static string GiveUpCitApplication = "GiveUpCitApplication";
+        //INPUT: CitizenID, project ID, unit ID - OUTPUT: none (converts application status to 'R')
+        public static string GetUnitsOfCitApplicationsByProjectAndCitizen = "GetUnitsOfCitApplicationsByProjectAndCitizen";
+        //INPUT: CitizenID, ProjectID - OUTPUT: UnitID
+        public static string SelectTransactionsByCitizen = "SelectTransactionsByCitizen";
+        //INPUT: CitizenID, project ID, unit ID, Bank name - OUTPUT: all transaction attributes
+
+        public static string SelectDependentsByCitizen = "SelectDependentsByCitizen";
+        //INPUT: CitizenID - OUTPUT: all dependent attributes 
+        public static string AddDependent = "AddDependent";
+        //INPUT: all dependent attributes - OUTPUT: none
+        public static string AlterDependentSalary = "AlterDependentSalary";
+        //INPUT: citizen ID, Dependent Name, Salary - OUTPUT: none
+        public static string RemoveDependent = "RemoveDependent";
+        //INPUT: citizen ID, Dependent Name - OUTPUT: none
+        public static string AlterDependentName = "AlterDependentName";
+        //INPUT: citizen ID, Dependent Name, newName - OUTPUT: none
+        public static string AlterDependentBirthdate = "AlterDependentBirthdate";
+        //INPUT: citizen ID, Dependent Name, Birthdate - OUTPUT: none
+
     }
 }

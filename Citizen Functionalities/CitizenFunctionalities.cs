@@ -58,6 +58,7 @@ namespace Housing_Database_Project
         private void Password_Click(object sender, EventArgs e)
         {
             new ChangePassword("Citizen").Show(this);
+            this.Hide();
         }
 
         private void Dependents_Click(object sender, EventArgs e)
