@@ -106,7 +106,8 @@ namespace DBapplication
         public static string SelectComAppByMEMPID = "SelectComAppByMEMPID";
         //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApps
         public static string SelectCitAppByMEMPID = "SelectCitAppByMEMPID";
-        //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApps
+        //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApp
+
 
         public static string SelectAllUnits = "SelectAllUnits";
         //INPUT: none - OUTPUT: All available Unit attributes 
@@ -156,5 +157,7 @@ namespace DBapplication
         public static string AlterDependentBirthdate = "AlterDependentBirthdate";
         //INPUT: citizen ID, Dependent Name, Birthdate - OUTPUT: none
 
+        public static string SelectCitizenByID = "SelectCitizenByID";
+        //INPUT: Citizen ID - Output: Everything
     }
 }
