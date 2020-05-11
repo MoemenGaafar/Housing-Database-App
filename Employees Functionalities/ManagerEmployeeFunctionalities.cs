@@ -40,19 +40,19 @@ namespace Housing_Database_Project.Employees_Functionalities
 
         private void button_ViewComps_Click(object sender, EventArgs e)
         {
-            new ViewCompanies().Show(this);
+            new ViewCompanies(ID).Show(this);
             this.Hide();
         }
 
         private void button_ViewEmps_Click(object sender, EventArgs e)
         {
-            new ViewEmployees().Show(this);
+            new ViewEmployees(ID).Show(this);
             this.Hide();
         }
 
         private void button_ViewTrans_Click(object sender, EventArgs e)
         {
-            new ViewTransactions("All").Show(this);
+            new ViewTransactions("All", ID).Show(this);
             this.Hide();
         }
 

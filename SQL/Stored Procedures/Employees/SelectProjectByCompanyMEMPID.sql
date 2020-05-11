@@ -18,13 +18,14 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SelectProjectByCompany
+CREATE PROCEDURE SelectProjectByCompanyMEMPID
+   @PID int,
    @CID int
 	
 AS
 BEGIN
 	SET NOCOUNT ON;
-	Select ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	From Project where CompanyID = @CID
+	Select ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status" 
+	From Project where CompanyID = @CID AND MEmployeeID = @PID
 END
 GO

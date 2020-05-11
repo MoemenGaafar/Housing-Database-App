@@ -159,5 +159,17 @@ namespace DBapplication
 
         public static string SelectCitizenByID = "SelectCitizenByID";
         //INPUT: Citizen ID - Output: Everything
+        public static string SelectCompaniesByMEMPID = "SelectCompaniesByMEMPID";
+        //INPUT: M Emp ID - Output: Companies affiliated with his projects
+        public static string SelectProjectByCompanyMEMPID = "SelectProjectByCompanyMEMPID";
+        //INPUT: M Emp ID, Company ID - Output: Projects affiliated to them
+        public static string SelectEmployeesByMEMPID = "SelectEmployeesByMEMPID";
+        //INPUT: M Emp ID - Output: Employees affiliated with his projects
+        public static string SelectProjectByEmployeeMEMPID = "SelectProjectByEmployeeMEMPID";
+        //INPUT: M Emp ID, P or H Employee ID - Output: Projects affiliated to them
+        public static string SelectCompanyTransactionsByMEMPID = "SelectCompanyTransactionsByMEMPID";
+        //INPUT: M Emp ID, Bank name, Company ID - OUTPUT: all transaction attributes
+        public static string SelectCitizenTransactionsByMEMPID = "SelectCitizenTransactionsByMEMPID";
+        //INPUT: M Emp ID, Bank name, Citizen ID - OUTPUT: all transaction attributes
     }
 }

@@ -474,7 +474,6 @@ namespace DBapplication
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
             Parameters.Add("@CID", cid);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
-
         }
 
         public DataTable SelectProjectByEmployee(int eid, string type)
@@ -631,7 +630,69 @@ namespace DBapplication
             Parameters.Add("@NationalID", id);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
-     
+
+        public DataTable SelectCompaniesByMEMPID(int id)
+        {
+            string StoredProcedureName = StoredProcedures.SelectCompaniesByMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", id);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectProjectByCompanyMEMPID(int pid, int cid)
+        {
+            string StoredProcedureName = StoredProcedures.SelectProjectByCompanyMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            Parameters.Add("@CID", cid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectEmployeesByMEMPID(int id)
+        {
+            string StoredProcedureName = StoredProcedures.SelectEmployeesByMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", id);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectProjectByEmployeeMEMPID(int MID, int EID, string type)
+        {
+            char Etype;
+            switch (type)
+            {
+                case "Housing": Etype = 'H'; break;
+                case "Projects": Etype = 'P'; break;
+                default: Etype = 'M'; break;
+            }
+            string StoredProcedureName = StoredProcedures.SelectProjectByEmployeeMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@MID", MID);
+            Parameters.Add("@EID", EID);
+            Parameters.Add("@EType", Etype);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectCompanyTransactionsByMEMPID(int MID, string bankName, int companyID)
+        {
+            string StoredProcedureName = StoredProcedures.SelectCompanyTransactionsByMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@MID", MID);
+            Parameters.Add("@BankName", bankName);
+            Parameters.Add("@CompanyID", companyID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectCitizenTransactionsByMEMPID(int MID, string bankName, int citizenID)
+        {
+            string StoredProcedureName = StoredProcedures.SelectCitizenTransactionsByMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@MID", MID);
+            Parameters.Add("@BankName", bankName);
+            Parameters.Add("@CitizenID", citizenID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
         /////////////////////////////////////// P Employee Functionalities ///////////////////////////////////////////
         public DataTable SelectProjectByPEMPID(int ID, string statusFilter, string cityFilter)
         {

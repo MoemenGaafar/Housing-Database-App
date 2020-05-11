@@ -13,17 +13,25 @@ namespace Housing_Database_Project.Employees_Functionalities
 {
     public partial class ViewEmployees : Form
     {
+        private int ID;
         private Controller controllerObj;
         private DataTable dt;
-        public ViewEmployees()
+        public ViewEmployees(int id)
         {
+            ID = id;
             controllerObj = new Controller();
             InitializeComponent();
         }
 
         private void ViewEmployees_Load(object sender, EventArgs e)
         {
-            dt = controllerObj.GetAllEmployees();
+            if (ID == -1) //Admin
+                dt = controllerObj.GetAllEmployees();
+            else
+            {
+                label_Title.Text = "Your Employees";
+                dt = controllerObj.SelectEmployeesByMEMPID(ID);
+            }
             dataGridView_Employees.DataSource = dt;
             dataGridView_Employees.Refresh();
         }
@@ -32,13 +40,26 @@ namespace Housing_Database_Project.Employees_Functionalities
         {
             if (dataGridView_Employees.SelectedRows.Count == 1)
             {
-                dt = controllerObj.SelectProjectByEmployee(Convert.ToInt32(dataGridView_Employees.SelectedRows[0].Cells["National ID"].Value),
+                if (ID == -1) //Admin
+                    dt = controllerObj.SelectProjectByEmployee(Convert.ToInt32(dataGridView_Employees.SelectedRows[0].Cells["National ID"].Value),
                     dataGridView_Employees.SelectedRows[0].Cells["Position"].Value.ToString());
-                if (!(dt is null))
+                else
+                    dt = controllerObj.SelectProjectByEmployeeMEMPID(ID, Convert.ToInt32(dataGridView_Employees.SelectedRows[0].Cells["National ID"].Value),
+                        dataGridView_Employees.SelectedRows[0].Cells["Position"].Value.ToString());
+                if (dt is null)
+                {
+                    label3.Visible = false;
+                    listBox_Projects.DataSource = null;
+                    listBox_Projects.Items.Clear();
+                    listBox_Projects.Items.Add("No Assigned Projects");
+                }
+                else
+                {
                     label3.Visible = true;
-                listBox_Projects.DataSource = dt;
-                listBox_Projects.ValueMember = "ID";
-                listBox_Projects.Refresh();
+                    listBox_Projects.DataSource = dt;
+                    listBox_Projects.ValueMember = "ID";
+                    listBox_Projects.Refresh();
+                }
             }
             else
             {

@@ -13,10 +13,12 @@ namespace Housing_Database_Project
 {
     public partial class ViewTransactions : Form
     {
+        private int ID;
         private Controller controllerObj = new Controller();
         private string name;
-        public ViewTransactions(string n)
+        public ViewTransactions(string n, int id)
         {
+            ID = id;
             name = n;
             InitializeComponent();
             DataTable dt = controllerObj.SelectAllCompanies();
@@ -32,21 +34,40 @@ namespace Housing_Database_Project
 
         private void View_Click(object sender, EventArgs e)
         {
-            DataTable T = null; 
-            if (From.SelectedIndex == 0)
+            DataTable T = null;
+            if (ID == -1) //Admin or Bank
             {
-                if (Company.SelectedIndex == -1)
-                    T= controllerObj.SelectAllCompanyBankTransactions(name);
-                else
-                    T = controllerObj.SelectCompanyBankTransactions(name, Convert.ToInt32(Company.SelectedValue));
+                if (From.SelectedIndex == 0)
+                {
+                    if (Company.SelectedIndex == -1)
+                        T = controllerObj.SelectAllCompanyBankTransactions(name);
+                    else
+                        T = controllerObj.SelectCompanyBankTransactions(name, Convert.ToInt32(Company.SelectedValue));
+                }
+                else if (From.SelectedIndex == 1)
+                {
+                    if (String.IsNullOrWhiteSpace(Citizen.Text))
+                        T = controllerObj.SelectAllCitizenBankTransactions(name);
+                    else
+                        T = controllerObj.SelectCitizenBankTransactions(name, Convert.ToInt32(Citizen.Text));
+                }
             }
-            else if (From.SelectedIndex == 1)
+            else //Manager
             {
-                if (String.IsNullOrWhiteSpace(Citizen.Text))
-                    T = controllerObj.SelectAllCitizenBankTransactions(name);
-                else
-                    T = controllerObj.SelectCitizenBankTransactions(name, Convert.ToInt32(Citizen.Text));
-
+                if (From.SelectedIndex == 0)
+                {
+                    if (Company.SelectedIndex == -1)
+                        T = controllerObj.SelectCompanyTransactionsByMEMPID(ID, name, -1);
+                    else
+                        T = controllerObj.SelectCompanyTransactionsByMEMPID(ID, name, Convert.ToInt32(Company.SelectedValue));
+                }
+                else if (From.SelectedIndex == 1)
+                {
+                    if (String.IsNullOrWhiteSpace(Citizen.Text))
+                        T = controllerObj.SelectCitizenTransactionsByMEMPID(ID, name, -1);
+                    else
+                        T = controllerObj.SelectCitizenTransactionsByMEMPID(ID, name, Convert.ToInt32(Citizen.Text));
+                }
             }
 
             dataGridView1.DataSource = T;
@@ -84,6 +105,8 @@ namespace Housing_Database_Project
                     }
                 }
             }
+
+            if (ID != -1) label3.Visible = true;
         }
 
         private void comboBox_Bank_SelectedIndexChanged(object sender, EventArgs e)

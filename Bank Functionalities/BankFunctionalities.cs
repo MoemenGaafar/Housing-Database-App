@@ -88,7 +88,7 @@ namespace Housing_Database_Project
 
         private void CompletedTransactions_Click(object sender, EventArgs e)
         {
-            new ViewTransactions(name).Show(this);
+            new ViewTransactions(name, -1).Show(this);
             this.Hide(); 
         }
 

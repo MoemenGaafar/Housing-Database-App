@@ -25,5 +25,6 @@ BEGIN
 	SET NOCOUNT ON;
 	Select CID As "Company ID", Name AS "Company", NoCompleteProj As "Number of Completed Projects", Rating, AvgProjectCost As "Average Project Cost"
 	From Company
+	ORDER BY CID
 END
 GO
