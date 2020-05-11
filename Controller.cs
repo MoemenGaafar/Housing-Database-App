@@ -331,6 +331,65 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
+        public DataTable SelectDependentsByCitizen(int Citizen)
+        {
+            string StoredProcedureName = StoredProcedures.SelectDependentsByCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int AddDependent(string Name, int Citizen, DateTime Birth, int Salary, char Relationship)
+        {
+            string StoredProcedureName = StoredProcedures.AddDependent;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", Name);
+            Parameters.Add("@Citizen", Citizen);
+            Parameters.Add("@Birth", Birth);
+            Parameters.Add("@Salary", Salary);
+            Parameters.Add("@Relationship", Relationship);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int AlterDependentSalary(string Name, int Citizen, int Salary)
+        {
+            string StoredProcedureName = StoredProcedures.AlterDependentSalary;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", Name);
+            Parameters.Add("@Citizen", Citizen);
+            Parameters.Add("@Salary", Salary);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int RemoveDependent(string Name, int Citizen)
+        {
+            string StoredProcedureName = StoredProcedures.RemoveDependent;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", Name);
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int AlterDependentName(string Name, int Citizen, string newName)
+        {
+            string StoredProcedureName = StoredProcedures.AlterDependentName;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", Name);
+            Parameters.Add("@Citizen", Citizen);
+            Parameters.Add("@newName", newName);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int AlterDependentBirthdate(string Name, int Citizen, DateTime Birth)
+        {
+            string StoredProcedureName = StoredProcedures.AlterDependentBirthdate;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", Name);
+            Parameters.Add("@Citizen", Citizen);
+            Parameters.Add("@Birth", Birth);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
         /////////////////////////////////////// Sign Up Queries /////////////////////////////////////////////
         public int SignUpBank(string name, string password, int transfees)
         {

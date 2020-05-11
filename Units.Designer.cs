@@ -214,6 +214,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Units";
             this.Text = "Units";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Units_FormClosed);
             this.Load += new System.EventHandler(this.Units_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

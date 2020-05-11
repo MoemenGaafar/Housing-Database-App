@@ -143,5 +143,11 @@ namespace Housing_Database_Project
         {
             new CitizenApplications(ID).Show(this);
         }
+
+        private void Units_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Owner.Show();
+        }
     }
 }

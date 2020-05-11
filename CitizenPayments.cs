@@ -74,7 +74,12 @@ namespace Housing_Database_Project
            
         }
 
-       
+        private void CitizenPayments_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Owner.Show();
+        }
+
         private void View_Click(object sender, EventArgs e)
         {
             if (BankView.SelectedIndex != -1)

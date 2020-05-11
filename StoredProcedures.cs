@@ -90,5 +90,17 @@ namespace DBapplication
         //INPUT: CitizenID, ProjectID - OUTPUT: UnitID
         public static string SelectTransactionsByCitizen = "SelectTransactionsByCitizen";
         //INPUT: CitizenID, project ID, unit ID, Bank name - OUTPUT: all transaction attributes
+        public static string SelectDependentsByCitizen = "SelectDependentsByCitizen";
+        //INPUT: CitizenID - OUTPUT: all dependent attributes 
+        public static string AddDependent = "AddDependent";
+        //INPUT: all dependent attributes - OUTPUT: none
+        public static string AlterDependentSalary = "AlterDependentSalary";
+        //INPUT: citizen ID, Dependent Name, Salary - OUTPUT: none
+        public static string RemoveDependent = "RemoveDependent";
+        //INPUT: citizen ID, Dependent Name - OUTPUT: none
+        public static string AlterDependentName = "AlterDependentName";
+        //INPUT: citizen ID, Dependent Name, newName - OUTPUT: none
+        public static string AlterDependentBirthdate = "AlterDependentBirthdate";
+        //INPUT: citizen ID, Dependent Name, Birthdate - OUTPUT: none
     }
 }

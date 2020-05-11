@@ -117,7 +117,14 @@ namespace Housing_Database_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new CitizenPayments(ID).Show();
+            new CitizenPayments(ID).Show(this);
+            this.Hide(); 
+        }
+
+        private void CitizenApplications_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Owner.Show();
         }
     }
 }

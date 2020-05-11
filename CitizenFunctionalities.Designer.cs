@@ -35,6 +35,7 @@
             this.Transactions = new System.Windows.Forms.Button();
             this.Applications = new System.Windows.Forms.Button();
             this.Units = new System.Windows.Forms.Button();
+            this.Dependents = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +61,7 @@
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(15, 491);
+            this.Password.Location = new System.Drawing.Point(15, 507);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(183, 34);
             this.Password.TabIndex = 14;
@@ -70,7 +71,7 @@
             // 
             // Transactions
             // 
-            this.Transactions.Location = new System.Drawing.Point(15, 431);
+            this.Transactions.Location = new System.Drawing.Point(12, 408);
             this.Transactions.Name = "Transactions";
             this.Transactions.Size = new System.Drawing.Size(231, 34);
             this.Transactions.TabIndex = 15;
@@ -80,7 +81,7 @@
             // 
             // Applications
             // 
-            this.Applications.Location = new System.Drawing.Point(15, 372);
+            this.Applications.Location = new System.Drawing.Point(12, 359);
             this.Applications.Name = "Applications";
             this.Applications.Size = new System.Drawing.Size(231, 34);
             this.Applications.TabIndex = 16;
@@ -90,13 +91,23 @@
             // 
             // Units
             // 
-            this.Units.Location = new System.Drawing.Point(15, 310);
+            this.Units.Location = new System.Drawing.Point(12, 310);
             this.Units.Name = "Units";
             this.Units.Size = new System.Drawing.Size(253, 34);
             this.Units.TabIndex = 17;
             this.Units.Text = "View / Apply to Availabe Units";
             this.Units.UseVisualStyleBackColor = true;
             this.Units.Click += new System.EventHandler(this.Units_Click);
+            // 
+            // Dependents
+            // 
+            this.Dependents.Location = new System.Drawing.Point(12, 467);
+            this.Dependents.Name = "Dependents";
+            this.Dependents.Size = new System.Drawing.Size(231, 34);
+            this.Dependents.TabIndex = 18;
+            this.Dependents.Text = "Manage Dependents";
+            this.Dependents.UseVisualStyleBackColor = true;
+            this.Dependents.Click += new System.EventHandler(this.Dependents_Click);
             // 
             // CitizenFunctionalities
             // 
@@ -105,6 +116,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(404, 600);
+            this.Controls.Add(this.Dependents);
             this.Controls.Add(this.Units);
             this.Controls.Add(this.Applications);
             this.Controls.Add(this.Transactions);
@@ -129,5 +141,6 @@
         private System.Windows.Forms.Button Transactions;
         private System.Windows.Forms.Button Applications;
         private System.Windows.Forms.Button Units;
+        private System.Windows.Forms.Button Dependents;
     }
 }

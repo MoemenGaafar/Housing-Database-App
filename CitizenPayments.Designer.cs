@@ -160,6 +160,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView2);
             this.Name = "CitizenPayments";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CitizenPayments_FormClosed);
             this.Load += new System.EventHandler(this.CitizenPayments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

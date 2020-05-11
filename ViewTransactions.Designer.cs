@@ -128,6 +128,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ViewTransactions";
             this.Text = "ViewTransactions";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewTransactions_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -239,6 +239,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "CitizenApplications";
             this.Text = "CitizenApplications";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CitizenApplications_FormClosed);
             this.Load += new System.EventHandler(this.CitizenApplications_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

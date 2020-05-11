@@ -39,22 +39,33 @@ namespace Housing_Database_Project
 
         private void Units_Click(object sender, EventArgs e)
         {
-            new Units('C', ID).Show(this); 
+            new Units('C', ID).Show(this);
+            this.Hide(); 
         }
 
         private void Applications_Click(object sender, EventArgs e)
         {
-            new CitizenApplications(ID).Show(this); 
+            new CitizenApplications(ID).Show(this);
+            this.Hide(); 
         }
 
         private void Transactions_Click(object sender, EventArgs e)
         {
-            new CitizenPayments(ID).Show(); 
+            new CitizenPayments(ID).Show(this);
+            this.Hide(); 
         }
 
         private void Password_Click(object sender, EventArgs e)
         {
-            new ChangePassword("Citizen").Show();
+            new ChangePassword("Citizen").Show(this);
         }
+
+        private void Dependents_Click(object sender, EventArgs e)
+        {
+            new CitizenDependents("Citizen", ID).Show(this);
+            this.Hide(); 
+        }
+
+      
     }
 }

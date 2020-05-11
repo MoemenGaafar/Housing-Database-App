@@ -67,5 +67,10 @@ namespace Housing_Database_Project
             }
         }
 
-     }
+        private void ViewTransactions_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Owner.Show();
+        }
+    }
 }

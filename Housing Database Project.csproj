@@ -61,6 +61,12 @@
     <Compile Include="CitizenApplications.Designer.cs">
       <DependentUpon>CitizenApplications.cs</DependentUpon>
     </Compile>
+    <Compile Include="CitizenDependents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CitizenDependents.Designer.cs">
+      <DependentUpon>CitizenDependents.cs</DependentUpon>
+    </Compile>
     <Compile Include="CitizenPayments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CitizenApplications.resx">
       <DependentUpon>CitizenApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CitizenDependents.resx">
+      <DependentUpon>CitizenDependents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CitizenPayments.resx">
       <DependentUpon>CitizenPayments.cs</DependentUpon>
