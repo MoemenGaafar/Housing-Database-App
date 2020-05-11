@@ -66,5 +66,6 @@ namespace Housing_Database_Project
                 Company.Enabled = false;
             }
         }
-    }
+
+     }
 }

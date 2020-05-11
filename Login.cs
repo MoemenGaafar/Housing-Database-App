@@ -43,7 +43,7 @@ namespace Housing_Database_Project
                     found = controllerObj.CheckPassword_Citizen(Convert.ToInt32(TxtBx_username.Text), TxtBx_pass.Text);
                     if (found != null)
                     {
-                        CitizenFunctionalities CF = new CitizenFunctionalities();
+                        CitizenFunctionalities CF = new CitizenFunctionalities(Convert.ToInt32(TxtBx_username.Text));
                         CF.Show(this);
                         this.Hide();
                     }
@@ -110,14 +110,6 @@ namespace Housing_Database_Project
             new SignUp().Show();
         }
 
-        private void TxtBx_username_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBapplication;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,11 @@ namespace Housing_Database_Project
 {
     public partial class CitizenFunctionalities : Form
     {
-        public CitizenFunctionalities()
+        private Controller controllerObj = new Controller();
+        private int ID; 
+        public CitizenFunctionalities(int i)
         {
+            ID = i; 
             InitializeComponent();
         }
 
@@ -31,6 +35,26 @@ namespace Housing_Database_Project
         {
             if (e.CloseReason == CloseReason.UserClosing)
                 Owner.Show();
+        }
+
+        private void Units_Click(object sender, EventArgs e)
+        {
+            new Units('C', ID).Show(this); 
+        }
+
+        private void Applications_Click(object sender, EventArgs e)
+        {
+            new CitizenApplications(ID).Show(this); 
+        }
+
+        private void Transactions_Click(object sender, EventArgs e)
+        {
+            new CitizenPayments(ID).Show(); 
+        }
+
+        private void Password_Click(object sender, EventArgs e)
+        {
+            new ChangePassword("Citizen").Show();
         }
     }
 }

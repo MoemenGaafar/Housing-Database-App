@@ -55,6 +55,18 @@
     <Compile Include="ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="CitizenApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CitizenApplications.Designer.cs">
+      <DependentUpon>CitizenApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CitizenPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CitizenPayments.Designer.cs">
+      <DependentUpon>CitizenPayments.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompanyFunctionalities.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +139,12 @@
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="StoredProcedures.cs" />
+    <Compile Include="Units.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Units.Designer.cs">
+      <DependentUpon>Units.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewTransactions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +168,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CitizenApplications.resx">
+      <DependentUpon>CitizenApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CitizenPayments.resx">
+      <DependentUpon>CitizenPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompanyFunctionalities.resx">
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
@@ -184,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Units.resx">
+      <DependentUpon>Units.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewTransactions.resx">
       <DependentUpon>ViewTransactions.cs</DependentUpon>

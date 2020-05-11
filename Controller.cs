@@ -193,6 +193,144 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
+        public DataTable SelectAllUnits()
+        {
+            string StoredProcedureName = StoredProcedures.SelectAllUnits;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public DataTable SelectUnitsByProject(int PID)
+        {
+            string StoredProcedureName = StoredProcedures.SelectUnitsByProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", PID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectUnitsByPrice(int Price)
+        {
+            string StoredProcedureName = StoredProcedures.SelectUnitsByPrice;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Price", Price);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectUnitsByProjectAndPrice(int Price, int PID)
+        {
+            string StoredProcedureName = StoredProcedures.SelectUnitsByProjectAndPrice;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Price", Price);
+            Parameters.Add("@PID", PID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable CountCitApplicationsbyCitizen(int Citizen)
+        {
+            string StoredProcedureName = StoredProcedures.CountCitApplicationsbyCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetUnsoldUnitsOfProject(int Project)
+        {
+            string StoredProcedureName = StoredProcedures.GetUnsoldUnitsOfProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Project", Project);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int CreateCitApplication(int Project, int Unit, int Citizen)
+        {
+            string StoredProcedureName = StoredProcedures.CreateCitApplication;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Project", Project);
+            Parameters.Add("@Unit", Unit);
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetCitApplicationsByCitizen(int Citizen)
+        {
+            string StoredProcedureName = StoredProcedures.GetCitApplicationsByCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetWaitingCitApplicationsByCitizen(int Citizen)
+        {
+            string StoredProcedureName = StoredProcedures.GetWaitingCitApplicationsByCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetAcceptedCitApplicationsByCitizen(int Citizen)
+        {
+            string StoredProcedureName = StoredProcedures.GetAcceptedCitApplicationsByCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetDoneCitApplicationsByCitizen(int Citizen)
+        {
+            string StoredProcedureName = StoredProcedures.GetDoneCitApplicationsByCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int DeleteCitApplication(int Citizen, int Project, int Unit)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteCitApplication;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Project", Project);
+            Parameters.Add("@Unit", Unit);
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int ClaimCitApplication(int Citizen, int Project, int Unit)
+        {
+            string StoredProcedureName = StoredProcedures.ClaimCitApplication;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Project", Project);
+            Parameters.Add("@Unit", Unit);
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+        public int GiveUpCitApplication(int Citizen, int Project, int Unit)
+        {
+            string StoredProcedureName = StoredProcedures.GiveUpCitApplication;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Project", Project);
+            Parameters.Add("@Unit", Unit);
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetUnitsOfCitApplicationsByProjectAndCitizen(int Citizen, int Project)
+        {
+            string StoredProcedureName = StoredProcedures.GetUnitsOfCitApplicationsByProjectAndCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Project", Project);
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectTransactionsByCitizen(int Citizen, int Project, int Unit, string Bank)
+        {
+            string StoredProcedureName = StoredProcedures.SelectTransactionsByCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Bank", Bank);
+            Parameters.Add("@Project", Project);
+            Parameters.Add("@Unit", Unit);
+            Parameters.Add("@Citizen", Citizen);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
         /////////////////////////////////////// Sign Up Queries /////////////////////////////////////////////
         public int SignUpBank(string name, string password, int transfees)
         {
