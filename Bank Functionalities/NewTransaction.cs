@@ -200,5 +200,11 @@ namespace Housing_Database_Project
         {
             this.Close(); 
         }
+
+        private void NewTransaction_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Owner.Show();
+        }
     }
 }

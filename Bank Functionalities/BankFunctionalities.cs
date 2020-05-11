@@ -43,7 +43,9 @@ namespace Housing_Database_Project
 
         private void Btn_ChangePass_Click(object sender, EventArgs e)
         {
-            new ChangePassword("Bank").Show(this); 
+           new ChangePassword("Bank").Show(this);
+           this.Hide(); 
+            
         }
 
         private void Confirm_Click(object sender, EventArgs e)
@@ -80,12 +82,16 @@ namespace Housing_Database_Project
 
         private void NewTransaction_Click(object sender, EventArgs e)
         {
-            new NewTransaction(name).Show(this); 
+            new NewTransaction(name).Show(this);
+            this.Hide(); 
         }
 
         private void CompletedTransactions_Click(object sender, EventArgs e)
         {
-            new ViewTransactions(name).Show(this); 
+            new ViewTransactions(name).Show(this);
+            this.Hide(); 
         }
+
+        
     }
 }

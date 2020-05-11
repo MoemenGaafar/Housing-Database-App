@@ -299,6 +299,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "NewTransaction";
             this.Text = "NewTransaction";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewTransaction_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

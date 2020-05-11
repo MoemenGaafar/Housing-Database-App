@@ -43,10 +43,10 @@
     <Compile Include="AdminFunctionalities.Designer.cs">
       <DependentUpon>AdminFunctionalities.cs</DependentUpon>
     </Compile>
-    <Compile Include="BankFunctionalities.cs">
+    <Compile Include="Bank Functionalities\BankFunctionalities.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BankFunctionalities.Designer.cs">
+    <Compile Include="Bank Functionalities\BankFunctionalities.Designer.cs">
       <DependentUpon>BankFunctionalities.cs</DependentUpon>
     </Compile>
     <Compile Include="ChangePassword.cs">
@@ -54,6 +54,24 @@
     </Compile>
     <Compile Include="ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Citizen Functionalities\CitizenApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Citizen Functionalities\CitizenApplications.Designer.cs">
+      <DependentUpon>CitizenApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Citizen Functionalities\CitizenDependents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Citizen Functionalities\CitizenDependents.Designer.cs">
+      <DependentUpon>CitizenDependents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Citizen Functionalities\CitizenPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Citizen Functionalities\CitizenPayments.Designer.cs">
+      <DependentUpon>CitizenPayments.cs</DependentUpon>
     </Compile>
     <Compile Include="CompanyFunctionalities.cs">
       <SubType>Form</SubType>
@@ -134,10 +152,10 @@
     <Compile Include="Employees Functionalities\ViewEmployees.Designer.cs">
       <DependentUpon>ViewEmployees.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewTransaction.cs">
+    <Compile Include="Bank Functionalities\NewTransaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewTransaction.Designer.cs">
+    <Compile Include="Bank Functionalities\NewTransaction.Designer.cs">
       <DependentUpon>NewTransaction.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,10 +174,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs" />
-    <Compile Include="CitizenFunctionalities.cs">
+    <Compile Include="Citizen Functionalities\CitizenFunctionalities.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CitizenFunctionalities.Designer.cs">
+    <Compile Include="Citizen Functionalities\CitizenFunctionalities.Designer.cs">
       <DependentUpon>CitizenFunctionalities.cs</DependentUpon>
     </Compile>
     <Compile Include="Sign Up Forms\SignUpBank.cs">
@@ -193,16 +211,22 @@
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="StoredProcedures.cs" />
+    <Compile Include="Citizen Functionalities\Units.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Citizen Functionalities\Units.Designer.cs">
+      <DependentUpon>Units.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewApplications.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewApplications.Designer.cs">
       <DependentUpon>ViewApplications.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewTransactions.cs">
+    <Compile Include="Bank Functionalities\ViewTransactions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewTransactions.Designer.cs">
+    <Compile Include="Bank Functionalities\ViewTransactions.Designer.cs">
       <DependentUpon>ViewTransactions.cs</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -217,11 +241,20 @@
     <EmbeddedResource Include="AdminFunctionalities.resx">
       <DependentUpon>AdminFunctionalities.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BankFunctionalities.resx">
+    <EmbeddedResource Include="Bank Functionalities\BankFunctionalities.resx">
       <DependentUpon>BankFunctionalities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Citizen Functionalities\CitizenApplications.resx">
+      <DependentUpon>CitizenApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Citizen Functionalities\CitizenDependents.resx">
+      <DependentUpon>CitizenDependents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Citizen Functionalities\CitizenPayments.resx">
+      <DependentUpon>CitizenPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompanyFunctionalities.resx">
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
@@ -265,14 +298,14 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewTransaction.resx">
+    <EmbeddedResource Include="Bank Functionalities\NewTransaction.resx">
       <DependentUpon>NewTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CitizenFunctionalities.resx">
+    <EmbeddedResource Include="Citizen Functionalities\CitizenFunctionalities.resx">
       <DependentUpon>CitizenFunctionalities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sign Up Forms\SignUpBank.resx">
@@ -293,7 +326,10 @@
     <EmbeddedResource Include="ViewApplications.resx">
       <DependentUpon>ViewApplications.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewTransactions.resx">
+    <EmbeddedResource Include="Citizen Functionalities\Units.resx">
+      <DependentUpon>Units.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bank Functionalities\ViewTransactions.resx">
       <DependentUpon>ViewTransactions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

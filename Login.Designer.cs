@@ -64,7 +64,6 @@
             this.TxtBx_username.Name = "TxtBx_username";
             this.TxtBx_username.Size = new System.Drawing.Size(148, 26);
             this.TxtBx_username.TabIndex = 7;
-            this.TxtBx_username.TextChanged += new System.EventHandler(this.TxtBx_username_TextChanged);
             // 
             // label2
             // 
@@ -77,7 +76,6 @@
             this.label2.Size = new System.Drawing.Size(83, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Username";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Btn_Login
             // 
