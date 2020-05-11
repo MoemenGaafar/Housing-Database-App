@@ -35,6 +35,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView_Projects = new System.Windows.Forms.DataGridView();
+            this.button_ViewProj = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Projects)).BeginInit();
             this.SuspendLayout();
@@ -114,15 +115,26 @@
             this.dataGridView_Projects.Size = new System.Drawing.Size(987, 322);
             this.dataGridView_Projects.TabIndex = 4;
             // 
-            // PEMP_ViewProjects
+            // button_ViewProj
+            // 
+            this.button_ViewProj.Location = new System.Drawing.Point(813, 86);
+            this.button_ViewProj.Name = "button_ViewProj";
+            this.button_ViewProj.Size = new System.Drawing.Size(128, 28);
+            this.button_ViewProj.TabIndex = 5;
+            this.button_ViewProj.Text = "Project Details";
+            this.button_ViewProj.UseVisualStyleBackColor = true;
+            this.button_ViewProj.Click += new System.EventHandler(this.button_ViewProj_Click);
+            // 
+            // EMP_ViewProjects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 509);
+            this.Controls.Add(this.button_ViewProj);
             this.Controls.Add(this.dataGridView_Projects);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Name = "PEMP_ViewProjects";
+            this.Name = "EMP_ViewProjects";
             this.Text = "PEMP_ViewProjects";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PEMP_ViewProjects_FormClosed);
             this.Load += new System.EventHandler(this.PEMP_ViewProjects_Load);
@@ -143,5 +155,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView_Projects;
+        private System.Windows.Forms.Button button_ViewProj;
     }
 }

@@ -427,6 +427,14 @@ namespace DBapplication
         //    Parameters.Add("@ClientName", clientName);
         //    return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         //}
+        public DataTable SelectCitizenByID(int id)
+        {
+            string StoredProcedureName = StoredProcedures.SelectCitizenByID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", id);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+     
         /////////////////////////////////////// P Employee Functionalities ///////////////////////////////////////////
         public DataTable SelectProjectByPEMPID(int ID, string statusFilter, string cityFilter)
         {

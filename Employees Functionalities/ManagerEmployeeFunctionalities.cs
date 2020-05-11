@@ -67,5 +67,10 @@ namespace Housing_Database_Project.Employees_Functionalities
             new ViewApplications(ID).Show(this);
             this.Hide();
         }
+
+        private void Btn_LogOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

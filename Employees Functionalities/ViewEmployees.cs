@@ -48,7 +48,7 @@ namespace Housing_Database_Project.Employees_Functionalities
 
         private void listBox_Projects_DoubleClick(object sender, EventArgs e)
         {
-            new ProjectInfo(Convert.ToInt32(listBox_Projects.SelectedValue.ToString())).Show(this);
+            new ProjectInfo(Convert.ToInt32(listBox_Projects.SelectedValue.ToString()), dt.Rows[listBox_Projects.SelectedIndex]["Project Status"].ToString()).Show(this);
         }
 
         private void ViewEmployees_FormClosed(object sender, FormClosedEventArgs e)

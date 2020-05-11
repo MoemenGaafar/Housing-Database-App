@@ -107,6 +107,5 @@ namespace DBapplication
         //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApps
         public static string SelectCitAppByMEMPID = "SelectCitAppByMEMPID";
         //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApps
-
     }
 }

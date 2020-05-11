@@ -32,8 +32,8 @@ BEGIN
 	SELECT ProjectID As "Project ID", UnitID As "Unit Number", Name As "Company",
 	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", 
 	CASE WHEN AStatus = 'W' THEN 'Waiting' WHEN AStatus = 'A' THEN 'Accepted' WHEN AStatus = 'R' THEN 'Rejected' ELSE 'Done' END As "Application Status" 
-    FROM  HousingEmployee, Company, CitApplication, Citizen, Project
-	WHERE MEmployeeID = @NationalID AND PID = ProjectID AND CitizenID = NationalID AND CID = CompanyID AND PID = Project.ID
+    FROM  Company, CitApplication, Citizen, Project
+	WHERE MEmployeeID = @NationalID AND CitizenID = NationalID AND CID = CompanyID AND ProjectID = Project.ID
 	ORDER BY ProjectID, UnitID
 END
 ELSE IF (@AStatus = 'L')
@@ -42,8 +42,8 @@ BEGIN
 	SELECT ProjectID As "Project ID", UnitID As "Unit Number", Name As "Company",
 	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", 
 	CASE WHEN AStatus = 'W' THEN 'Waiting' WHEN AStatus = 'A' THEN 'Accepted' WHEN AStatus = 'R' THEN 'Rejected' ELSE 'Done' END As "Application Status" 
-    FROM  HousingEmployee, Company, CitApplication, Citizen, Project
-	WHERE MEmployeeID = @NationalID AND PID = ProjectID AND CitizenID = NationalID AND CID = CompanyID AND PID = Project.ID
+    FROM  Company, CitApplication, Citizen, Project
+	WHERE MEmployeeID = @NationalID AND CitizenID = NationalID AND CID = CompanyID AND ProjectID = Project.ID
 	AND ProjectID = @ProjectID
 	ORDER BY ProjectID, UnitID
 END
@@ -53,8 +53,8 @@ BEGIN
 	SELECT ProjectID As "Project ID", UnitID As "Unit Number", Name As "Company",
 	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", 
 	CASE WHEN AStatus = 'W' THEN 'Waiting' WHEN AStatus = 'A' THEN 'Accepted' WHEN AStatus = 'R' THEN 'Rejected' ELSE 'Done' END As "Application Status" 
-    FROM  HousingEmployee, Company, CitApplication, Citizen, Project
-	WHERE MEmployeeID = @NationalID AND PID = ProjectID AND CitizenID = NationalID AND CID = CompanyID AND PID = Project.ID
+    FROM  Company, CitApplication, Citizen, Project
+	WHERE MEmployeeID = @NationalID AND CitizenID = NationalID AND CID = CompanyID AND ProjectID = Project.ID
 	AND AStatus = @AStatus
 	ORDER BY ProjectID, UnitID
 END
@@ -64,8 +64,8 @@ BEGIN
 	SELECT ProjectID As "Project ID", UnitID As "Unit Number", Name As "Company",
 	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", 
 	CASE WHEN AStatus = 'W' THEN 'Waiting' WHEN AStatus = 'A' THEN 'Accepted' WHEN AStatus = 'R' THEN 'Rejected' ELSE 'Done' END As "Application Status" 
-    FROM  HousingEmployee, Company, CitApplication, Citizen, Project
-	WHERE MEmployeeID = @NationalID AND PID = ProjectID AND CitizenID = NationalID AND CID = CompanyID AND PID = Project.ID
+    FROM  Company, CitApplication, Citizen, Project
+	WHERE MEmployeeID = @NationalID AND CitizenID = NationalID AND CID = CompanyID AND ProjectID = Project.ID
 	AND ProjectID = @ProjectID AND AStatus = @AStatus
 	ORDER BY ProjectID, UnitID
 END

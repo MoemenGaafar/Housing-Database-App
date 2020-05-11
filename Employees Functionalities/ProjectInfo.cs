@@ -13,7 +13,7 @@ namespace Housing_Database_Project.Employees_Functionalities
     public partial class ProjectInfo : Form
     {
         private int PID;
-        public ProjectInfo(int pid)
+        public ProjectInfo(int pid, string status)
         {
             PID = pid;
             InitializeComponent();

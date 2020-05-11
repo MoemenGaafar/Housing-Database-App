@@ -25,16 +25,19 @@ AS
 IF (@Etype = 'H')
 BEGIN
 	SET NOCOUNT ON;
-	SELECT PID As "ID" FROM HousingEmployee WHERE EID = @EID
+	SELECT PID As "ID", CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
+	FROM HousingEmployee, Project WHERE EID = @EID AND PID = ID
 END
 ELSE IF(@Etype = 'P')
 BEGIN
 	SET NOCOUNT ON;
-	SELECT ID FROM Project WHERE PEmployeeID = @EID
+	SELECT ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
+	FROM Project WHERE PEmployeeID = @EID
 END
 ELSE
 BEGIN
 	SET NOCOUNT ON;
-	SELECT ID FROM Project WHERE MEmployeeID = @EID
+	SELECT ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
+	FROM Project WHERE MEmployeeID = @EID
 END
 GO

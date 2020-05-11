@@ -82,5 +82,17 @@ namespace Housing_Database_Project.Employees_Functionalities
             if (e.CloseReason == CloseReason.UserClosing)
                 Owner.Show();
         }
+
+        private void button_ViewProj_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Projects.SelectedRows.Count == 1)
+            {
+                new ProjectInfo(Convert.ToInt32(dataGridView_Projects.SelectedRows[0].Cells["Project ID"].Value.ToString()), dataGridView_Projects.SelectedRows[0].Cells["Project Status"].Value.ToString()).Show(this);
+            }
+            else
+            {
+                MessageBox.Show("Please select ONE ENTIRE ROW!");
+            }
+        }
     }
 }
