@@ -72,5 +72,16 @@ namespace Housing_Database_Project.Employees_Functionalities
         {
             this.Close();
         }
+
+        private void ManagerEmployeeFunctionalities_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Owner.Show();
+        }
+
+        private void ManagerEmployeeFunctionalities_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

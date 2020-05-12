@@ -27,5 +27,11 @@ namespace Housing_Database_Project
             if (e.CloseReason == CloseReason.UserClosing)
                 Owner.Show();
         }
+
+        private void button_ChangePass_Click(object sender, EventArgs e)
+        {
+            new ChangePassword("Company").Show(this);
+            this.Hide();
+        }
     }
 }

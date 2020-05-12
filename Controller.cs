@@ -456,6 +456,62 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, null);
         }
 
+        public DataTable GetAllManagers()
+        {
+            string StoredProcedureName = StoredProcedures.GetAllManagers;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public DataTable GetAllHousingEmployeesNotInProject(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.GetAllHousingEmployeesNotInProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectProjectByID(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.SelectProjectByID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetNumberofComAppsByProject(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.GetNumberofComAppsByProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+
+        public DataTable SelectHousingEmpsByProject(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.SelectHousingEmpsByProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetNumberofCitAppsByProject(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.GetNumberofCitAppsByProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int AssignHousingEmployee(int pid, int eid)
+        {
+            string StoredProcedureName = StoredProcedures.AssignHousingEmployee;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            Parameters.Add("@EID", eid);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
         public DataTable GetAllCompanies()
         {
             string StoredProcedureName = StoredProcedures.GetAllCompanies;
@@ -598,31 +654,6 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
-        //public DataTable SelectTransByMEMPID(int ID, string bankName, string clientName, string client)
-        //{
-        //    string StoredProcedureName;
-        //    if (client == "Company")
-        //    {
-        //        if (ID == -1) //Admin
-        //            StoredProcedureName = StoredProcedures.SelectAllCompanyBankTransactions;
-        //        else
-        //            StoredProcedureName = StoredProcedures.SelectComTransByMEMPID;
-        //    }
-        //    else
-        //    {
-        //        if (ID == -1)
-        //            StoredProcedureName = StoredProcedures.SelectAllCitizenBankTransactions;
-        //        else
-        //            StoredProcedureName = StoredProcedures.SelectCitTransByMEMPID;
-        //    }
-
-        //    Dictionary<string, object> Parameters = new Dictionary<string, object>();
-        //    if (ID != -1)
-        //        Parameters.Add("@NationalID", ID);
-        //    Parameters.Add("@BankName", bankName);
-        //    Parameters.Add("@ClientName", clientName);
-        //    return dbMan.ExecuteReader(StoredProcedureName, Parameters);
-        //}
         public DataTable SelectCitizenByID(int id)
         {
             string StoredProcedureName = StoredProcedures.SelectCitizenByID;
@@ -693,13 +724,44 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
+        public DataTable SelectAllUnitsByProject(int pid, string statusFilter)
+        {
+            bool? status;
+            switch (statusFilter)
+            {
+                case "Sold":
+                    {
+                        status = true;
+                        break;
+                    }
+                case "Not Sold":
+                    {
+                        status = false;
+                        break;
+                    }
+                default:
+                    {
+                        status = null;
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectAllUnitsByProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            if (!(status is null))
+                Parameters.Add("@UStatus", status);
+            else
+                Parameters.Add("@UStatus", DBNull.Value);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
         /////////////////////////////////////// P Employee Functionalities ///////////////////////////////////////////
         public DataTable SelectProjectByPEMPID(int ID, string statusFilter, string cityFilter)
         {
             char status;
             switch (statusFilter)
             {
-                case "All Units Sold": 
+                case "All Units Sold":
                     {
                         status = 'F';
                         break;
@@ -732,6 +794,8 @@ namespace DBapplication
             Parameters.Add("@City", cityFilter);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
+    
+
 
         public DataTable SelectAppByEMPID(int ID, string statusFilter, int projectFilter, string type)
         {

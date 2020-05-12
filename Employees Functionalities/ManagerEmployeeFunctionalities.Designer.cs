@@ -161,6 +161,8 @@
             this.Controls.Add(this.label1);
             this.Name = "ManagerEmployeeFunctionalities";
             this.Text = "ManagerEmployeeFunctionalities";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManagerEmployeeFunctionalities_FormClosed);
+            this.Load += new System.EventHandler(this.ManagerEmployeeFunctionalities_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

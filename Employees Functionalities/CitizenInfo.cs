@@ -43,7 +43,8 @@ namespace Housing_Database_Project.Employees_Functionalities
 
         private void button_ViewDeps_Click(object sender, EventArgs e)
         {
-
+            new CitizenDependents("Employee", ID).Show(this);
+            this.Hide();
         }
     }
 }

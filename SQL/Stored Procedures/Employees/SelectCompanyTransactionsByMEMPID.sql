@@ -18,6 +18,8 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
+use monkey 
+go
 CREATE PROCEDURE SelectCompanyTransactionsByMEMPID
 	-- Add the parameters for the stored procedure here
 	@MID int,

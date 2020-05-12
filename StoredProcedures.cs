@@ -171,5 +171,22 @@ namespace DBapplication
         //INPUT: M Emp ID, Bank name, Company ID - OUTPUT: all transaction attributes
         public static string SelectCitizenTransactionsByMEMPID = "SelectCitizenTransactionsByMEMPID";
         //INPUT: M Emp ID, Bank name, Citizen ID - OUTPUT: all transaction attributes
+        public static string GetAllManagers = "GetAllManagers";
+        //INPUT: none - OUTPUT: all M Employees
+        public static string GetAllHousingEmployeesNotInProject = "GetAllHousingEmployeesNotInProject";
+        //INPUT: Project ID - OUTPUT: all H Employees not assigned to the project
+        public static string SelectHousingEmpsByProject = "SelectHousingEmpsByProject";
+        //INPUT: Project ID - OUTPUT: all H Employees assigned to the project
+        public static string SelectProjectByID = "SelectProjectByID";
+        //INPUT: Project ID - OUTPUT: other Project attrbutes
+        public static string GetNumberofComAppsByProject = "GetNumberofComAppsByProject";
+        //INPUT: Project ID - OUTPUT: Number of ComApplications to it
+        public static string GetNumberofCitAppsByProject = "GetNumberofCitAppsByProject";
+        //INPUT: Project ID - OUTPUT:  Number of CitApplications to it
+        public static string AssignHousingEmployee = "AssignHousingEmployee";
+        //INPUT: Project ID, H Emp ID - OUTPUT: Assigns him to project
+        public static string SelectAllUnitsByProject = "SelectAllUnitsByProject";
+        //INPUT: Project ID, Unit Status - OUTPUT: Units associated with this project
+        
     }
 }

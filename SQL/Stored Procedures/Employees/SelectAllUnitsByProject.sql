@@ -20,37 +20,18 @@ GO
 -- =============================================
 use Monkey 
 go
-CREATE PROCEDURE SelectUnitByHEMPID
+CREATE PROCEDURE SelectAllUnitsByProject
 	-- Add the parameters for the stored procedure here
-	@NationalID int,
-	@UStatus bit,
-	@ProjectID int
+	@PID int,
+	@UStatus bit
 AS
-IF (@UStatus is NULL AND @ProjectID = -1)
+IF (@UStatus is NULL)
 BEGIN
 	SET NOCOUNT ON;
 	SELECT DISTINCT ProjectID As "Project ID", Unit.ID As "Unit Number", Name As "Company", NoRooms As "Number of Rooms", NoRooms * PricePRoom as Price,
 	PaymentEndDate As "Payment Deadline"
     FROM HousingEmployee, Unit, Project, Company
-	WHERE EID = @NationalID AND PID = ProjectID And PID = Project.ID AND Project.CompanyID = CID
-	ORDER BY ProjectID, Unit.ID
-END
-ELSE IF (@UStatus is NULL)
-BEGIN
-	SET NOCOUNT ON;
-	SELECT DISTINCT ProjectID As "Project ID", Unit.ID As "Unit Number", Name As "Company", NoRooms As "Number of Rooms", NoRooms * PricePRoom as Price,
-	PaymentEndDate As "Payment Deadline"
-    FROM HousingEmployee, Unit, Project, Company
-	WHERE EID = @NationalID AND PID = ProjectID And PID = Project.ID AND Project.CompanyID = CID AND PID = @ProjectID
-	ORDER BY ProjectID, Unit.ID
-END
-ELSE IF (@ProjectID = -1)
-BEGIN
-	SET NOCOUNT ON;
-	SELECT DISTINCT ProjectID As "Project ID", Unit.ID As "Unit Number", Name As "Company", NoRooms As "Number of Rooms", NoRooms * PricePRoom as Price,
-	PaymentEndDate As "Payment Deadline"
-    FROM HousingEmployee, Unit, Project, Company
-	WHERE EID = @NationalID AND PID = ProjectID And PID = Project.ID AND Project.CompanyID = CID AND UStatus = @UStatus
+	WHERE PID = @PID AND PID = ProjectID And PID = Project.ID AND Project.CompanyID = CID
 	ORDER BY ProjectID, Unit.ID
 END
 ELSE
@@ -59,6 +40,6 @@ BEGIN
 	SELECT DISTINCT ProjectID As "Project ID", Unit.ID As "Unit Number", Name As "Company", NoRooms As "Number of Rooms", NoRooms * PricePRoom as Price,
 	PaymentEndDate As "Payment Deadline"
     FROM HousingEmployee, Unit, Project, Company
-	WHERE EID = @NationalID AND PID = ProjectID And PID = Project.ID AND Project.CompanyID = CID AND UStatus = @UStatus AND PID = @ProjectID
+	WHERE PID = @PID AND PID = ProjectID And PID = Project.ID AND Project.CompanyID = CID AND UStatus = @UStatus
 	ORDER BY ProjectID, Unit.ID
 END
