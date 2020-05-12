@@ -55,6 +55,7 @@
             this.textBox_RoomPrice = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button_AddUnits = new System.Windows.Forms.Button();
+            this.button_Launch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -308,11 +309,23 @@
             this.button_AddUnits.Visible = false;
             this.button_AddUnits.Click += new System.EventHandler(this.button_AddUnits_Click);
             // 
+            // button_Launch
+            // 
+            this.button_Launch.Location = new System.Drawing.Point(395, 172);
+            this.button_Launch.Name = "button_Launch";
+            this.button_Launch.Size = new System.Drawing.Size(128, 29);
+            this.button_Launch.TabIndex = 101;
+            this.button_Launch.Text = "Launch";
+            this.button_Launch.UseVisualStyleBackColor = true;
+            this.button_Launch.Visible = false;
+            this.button_Launch.Click += new System.EventHandler(this.button_Launch_Click);
+            // 
             // ProjectInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 534);
+            this.Controls.Add(this.button_Launch);
             this.Controls.Add(this.button_AddUnits);
             this.Controls.Add(this.textBox_RoomPrice);
             this.Controls.Add(this.label7);
@@ -377,5 +390,6 @@
         private System.Windows.Forms.TextBox textBox_RoomPrice;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button_AddUnits;
+        private System.Windows.Forms.Button button_Launch;
     }
 }

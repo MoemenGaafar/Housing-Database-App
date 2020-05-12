@@ -797,7 +797,7 @@ namespace DBapplication
     
 
 
-        public DataTable SelectAppByEMPID(int ID, string statusFilter, int projectFilter, string type)
+        public DataTable SelectAppByID(int ID, string statusFilter, int projectFilter, string type)
         {
             char status;
             switch (statusFilter)
@@ -832,11 +832,17 @@ namespace DBapplication
 
             if (type == "Projects")
                 StoredProcedureName = StoredProcedures.SelectComAppByPEMPID;
-            else 
+            else if (type == "Housing")
                 StoredProcedureName = StoredProcedures.SelectCitAppByHEMPID;
+            else
+                StoredProcedureName = StoredProcedures.SelectComAppByCompanyID;
+
 
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
-            Parameters.Add("@NationalID", ID);
+            if (type == "Company")
+                Parameters.Add("@CID", ID);
+            else
+                Parameters.Add("@NationalID", ID);
             Parameters.Add("@AStatus", status);
             Parameters.Add("@ProjectID", projectFilter);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
@@ -1017,6 +1023,43 @@ namespace DBapplication
             Parameters.Add("@CID", ID);
             Parameters.Add("@BankName", bankName);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+        public int ChangeComApplicationStatusByCompanyID(int pid, int cid, char newStatus)
+        {
+            string StoredProcedureName = StoredProcedures.ChangeComApplicationStatusByCompanyID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            Parameters.Add("@CID", cid);
+            Parameters.Add("@NewStatus", newStatus);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectPostedProjects(int minRoomPrice, string city)
+        {
+            string StoredProcedureName = StoredProcedures.SelectPostedProjects;
+
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@MinRoomPrice", minRoomPrice);
+            Parameters.Add("@City", city);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int ApplyToProject(int pid, int cid, int bid)
+        {
+            string StoredProcedureName = StoredProcedures.ApplyToProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            Parameters.Add("@CID", cid);
+            Parameters.Add("@BiddingPrice", bid);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int LaunchProject(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.LaunchProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
         public void TerminateConnection()

@@ -194,9 +194,15 @@ namespace DBapplication
         //INPUT: Project ID, Number of Rooms - OUTPUT: Adds ONE unit to the project
         public static string SelectTransByCompanyID = "SelectTransByCompanyID";
         //INPUT: Company ID, Bank Name - OUTPUT: All Company Transactions
-        
-
-
-
+        public static string SelectComAppByCompanyID = "SelectComAppByCompanyID";
+        //INPUT: Company ID, Project ID, Application Status - OUTPUT: All Company Applications
+        public static string ChangeComApplicationStatusByCompanyID = "ChangeComApplicationStatusByCompanyID";
+        //INPUT: Company ID, Project ID, Application Status - OUTPUT: Changes it to Status
+        public static string SelectPostedProjects = "SelectPostedProjects";
+        //INPUT: Minimum Bidding Price, City - OUTPUT: Posted Projects
+        public static string ApplyToProject = "ApplyToProject";
+        //INPUT: Company ID, Project ID, Bidding Price - OUTPUT: Apply to Project
+        public static string LaunchProject = "LaunchProject";
+        //INPUT: Project ID - OUTPUT: Change Project Status from Started to Launched
     }
 }

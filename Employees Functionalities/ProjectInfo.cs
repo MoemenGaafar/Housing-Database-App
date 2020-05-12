@@ -26,7 +26,7 @@ namespace Housing_Database_Project.Employees_Functionalities
             InitializeComponent();
         }
 
-        private void ProjectInfo_Load(object sender, EventArgs e)
+        private void LoadInfo()
         {
             dt = controllerObj.GetAllProjectEmployees();
             comboBox_ProjectsEmp.DataSource = dt;
@@ -59,7 +59,7 @@ namespace Housing_Database_Project.Employees_Functionalities
                         label_numApps.Text = data.Rows[0]["Number of Applications"].ToString();
                         break;
                     }
-                case "Started": 
+                case "Started":
                     {
                         label_Company.Visible = true;
                         textBox_Company.Visible = true;
@@ -68,7 +68,8 @@ namespace Housing_Database_Project.Employees_Functionalities
                         label_StartDate.Visible = true;
                         dateTimePicker_StartDate.Visible = true;
                         dateTimePicker_StartDate.Value = Convert.ToDateTime(dt.Rows[0]["Starting Date"]);
-                        break; 
+                        if (Type == "Company" || Type == "Admin") button_Launch.Visible = true;
+                        break;
                     }
                 case "Launched":
                     {
@@ -142,12 +143,16 @@ namespace Housing_Database_Project.Employees_Functionalities
                     }
             }
 
-
             if (Type == "Company")
             {
                 label_numApps.Visible = false;
-                label_numApps.Visible = false;
+                label_numAppsBeta.Visible = false;
             }
+        }
+
+        private void ProjectInfo_Load(object sender, EventArgs e)
+        {
+            LoadInfo();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -190,6 +195,21 @@ namespace Housing_Database_Project.Employees_Functionalities
         private void button_AddUnits_Click(object sender, EventArgs e)
         {
             new AddUnits(PID).Show();
+        }
+
+        private void button_Launch_Click(object sender, EventArgs e)
+        {
+            int r = controllerObj.LaunchProject(PID);
+
+            if (r > 0)
+            {
+                LoadInfo();
+
+            }
+            else
+            {
+                MessageBox.Show("Error Launching Project..");
+            }
         }
     }
 }

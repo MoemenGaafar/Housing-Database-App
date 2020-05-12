@@ -30,7 +30,8 @@ IF (@AStatus = 'L' AND @ProjectID = -1)
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ProjectID As "Project ID", UnitID As "Unit Number", Name As "Company",
-	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", AStatus As "Application Status"
+	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", 
+	CASE WHEN AStatus = 'W' THEN 'Waiting' WHEN AStatus = 'A' THEN 'Accepted' WHEN AStatus = 'R' THEN 'Rejected' ELSE 'Done' END As "Application Status"
     FROM  HousingEmployee, Company, CitApplication, Citizen, Project
 	WHERE EID = @NationalID AND PID = ProjectID AND CitizenID = NationalID AND CID = CompanyID AND PID = Project.ID
 	ORDER BY ProjectID, UnitID
@@ -39,7 +40,8 @@ ELSE IF (@AStatus = 'L')
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ProjectID As "Project ID", UnitID As "Unit Number", Name As "Company",
-	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", AStatus As "Application Status"
+	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", 
+	CASE WHEN AStatus = 'W' THEN 'Waiting' WHEN AStatus = 'A' THEN 'Accepted' WHEN AStatus = 'R' THEN 'Rejected' ELSE 'Done' END As "Application Status"
     FROM  HousingEmployee, Company, CitApplication, Citizen, Project
 	WHERE EID = @NationalID AND PID = ProjectID AND CitizenID = NationalID AND CID = CompanyID AND PID = Project.ID
 	AND ProjectID = @ProjectID
@@ -49,7 +51,8 @@ ELSE IF (@ProjectID = -1)
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ProjectID As "Project ID", UnitID As "Unit Number", Name As "Company",
-	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", AStatus As "Application Status"
+	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", 
+	CASE WHEN AStatus = 'W' THEN 'Waiting' WHEN AStatus = 'A' THEN 'Accepted' WHEN AStatus = 'R' THEN 'Rejected' ELSE 'Done' END As "Application Status"
     FROM  HousingEmployee, Company, CitApplication, Citizen, Project
 	WHERE EID = @NationalID AND PID = ProjectID AND CitizenID = NationalID AND CID = CompanyID AND PID = Project.ID
 	AND AStatus = @AStatus
@@ -59,7 +62,8 @@ ELSE
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ProjectID As "Project ID", UnitID As "Unit Number", Name As "Company",
-	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", AStatus As "Application Status"
+	FirstName + ' ' + LastName As "Citizen Name", Citizen.NationalID as "Citizen ID", 
+	CASE WHEN AStatus = 'W' THEN 'Waiting' WHEN AStatus = 'A' THEN 'Accepted' WHEN AStatus = 'R' THEN 'Rejected' ELSE 'Done' END As "Application Status"
     FROM  HousingEmployee, Company, CitApplication, Citizen, Project
 	WHERE EID = @NationalID AND PID = ProjectID AND CitizenID = NationalID AND CID = CompanyID AND PID = Project.ID
 	AND ProjectID = @ProjectID AND AStatus = @AStatus

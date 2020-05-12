@@ -79,11 +79,23 @@
     <Compile Include="Company Functionalities\AddUnits.Designer.cs">
       <DependentUpon>AddUnits.cs</DependentUpon>
     </Compile>
+    <Compile Include="Company Functionalities\ApplyToProjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company Functionalities\ApplyToProjects.Designer.cs">
+      <DependentUpon>ApplyToProjects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Company Functionalities\CompanyFunctionalities.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Company Functionalities\CompanyFunctionalities.Designer.cs">
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company Functionalities\SetBiddingPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company Functionalities\SetBiddingPrice.Designer.cs">
+      <DependentUpon>SetBiddingPrice.cs</DependentUpon>
     </Compile>
     <Compile Include="DBManager.cs" />
     <Compile Include="Employees Functionalities\CitizenInfo.cs">
@@ -265,8 +277,14 @@
     <EmbeddedResource Include="Company Functionalities\AddUnits.resx">
       <DependentUpon>AddUnits.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Company Functionalities\ApplyToProjects.resx">
+      <DependentUpon>ApplyToProjects.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Company Functionalities\CompanyFunctionalities.resx">
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company Functionalities\SetBiddingPrice.resx">
+      <DependentUpon>SetBiddingPrice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employees Functionalities\CitizenInfo.resx">
       <DependentUpon>CitizenInfo.cs</DependentUpon>
