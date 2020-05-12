@@ -26,7 +26,7 @@ namespace Housing_Database_Project.Company_Functionalities
 
         private void ApplyToProjects_Load(object sender, EventArgs e)
         {
-            dt = controllerObj.SelectPostedProjects(0, "All"); //Room Price of 0 means All Room Prices
+            dt = controllerObj.SelectPostedProjects(ID, 0, "All"); //Room Price of 0 means All Room Prices
             dataGridView_Projects.DataSource = dt;
             dataGridView_Projects.Refresh();
 
@@ -39,6 +39,9 @@ namespace Housing_Database_Project.Company_Functionalities
                     comboBox_City.Items.Add(val);
                 }
             }
+
+            dt = controllerObj.GetNumberofCompanyApplications(ID);
+            label_NumApps.Text = dt.Rows[0]["Number of Applications"].ToString();
         }
 
         private void button_Retrieve_Click(object sender, EventArgs e)
@@ -47,14 +50,17 @@ namespace Housing_Database_Project.Company_Functionalities
 
             if (String.IsNullOrWhiteSpace(textBox_RoomPrice.Text))
             {
-                dt = controllerObj.SelectPostedProjects(0, comboBox_City.SelectedItem.ToString()); //Room Price of 0 means All Room Prices
+                dt = controllerObj.SelectPostedProjects(ID, 0, comboBox_City.SelectedItem.ToString()); //Room Price of 0 means All Room Prices
             }
             else
             {
-                dt = controllerObj.SelectPostedProjects(Convert.ToInt32(textBox_RoomPrice.Text), comboBox_City.SelectedItem.ToString());
+                dt = controllerObj.SelectPostedProjects(ID, Convert.ToInt32(textBox_RoomPrice.Text), comboBox_City.SelectedItem.ToString());
             }
             dataGridView_Projects.DataSource = dt;
             dataGridView_Projects.Refresh();
+
+            dt = controllerObj.GetNumberofCompanyApplications(ID);
+            label_NumApps.Text = dt.Rows[0]["Number of Applications"].ToString();
         }
 
         private void button_ViewProj_Click(object sender, EventArgs e)
@@ -71,20 +77,37 @@ namespace Housing_Database_Project.Company_Functionalities
 
         private void button_Apply_Click(object sender, EventArgs e)
         {
-            if (dataGridView_Projects.SelectedRows.Count == 1)
+            dt = controllerObj.GetNumberofCompanyApplications(ID);
+            if (Convert.ToInt32(dt.Rows[0]["Number of Applications"].ToString()) < 3)
             {
-                new SetBiddingPrice(Convert.ToInt32(dataGridView_Projects.SelectedRows[0].Cells["Project ID"].Value.ToString()), ID).Show();
+                if (dataGridView_Projects.SelectedRows.Count == 1)
+                {
+                    new SetBiddingPrice(Convert.ToInt32(dataGridView_Projects.SelectedRows[0].Cells["Project ID"].Value.ToString()), ID).Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please select ONE ENTIRE ROW!");
+                }
             }
             else
-            {
-                MessageBox.Show("Please select ONE ENTIRE ROW!");
-            }
+                MessageBox.Show("Your Company Cannot Apply to More Than THREE Projects at a time!");
         }
 
         private void ApplyToProjects_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
                 Owner.Show();
+        }
+
+        private void ApplyToProjects_Activated(object sender, EventArgs e)
+        {
+            if (comboBox_City.SelectedIndex == -1) comboBox_City.SelectedItem = "All";
+            dt = controllerObj.SelectPostedProjects(ID, 0, comboBox_City.SelectedItem.ToString());
+            dataGridView_Projects.DataSource = dt;
+            dataGridView_Projects.Refresh();
+
+            dt = controllerObj.GetNumberofCompanyApplications(ID);
+            label_NumApps.Text = dt.Rows[0]["Number of Applications"].ToString();
         }
     }
 }

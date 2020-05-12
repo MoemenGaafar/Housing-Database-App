@@ -19,6 +19,7 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE SelectPostedProjects
+    @CID int,
 	@MinRoomPrice int,
 	@City varchar(50)
 AS
@@ -27,27 +28,27 @@ BEGIN
 	SET NOCOUNT ON;
 	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager"
 	FROM Project, Employee
-	WHERE MEmployeeID = NationalID AND PStatus = 'P'
+	WHERE MEmployeeID = NationalID AND PStatus = 'P' AND ID not in (SELECT ProjectID FROM ComApplication WHERE CompanyID = @CID)
 END
 ELSE IF (@MinRoomPrice = 0)
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager"
 	FROM Project, Employee
-	WHERE MEmployeeID = NationalID AND PStatus = 'P' AND City = @City
+	WHERE MEmployeeID = NationalID AND PStatus = 'P' AND City = @City AND ID not in (SELECT ProjectID FROM ComApplication WHERE CompanyID = @CID)
 END
 ELSE IF (@City = 'All')
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager"
 	FROM Project, Employee
-	WHERE MEmployeeID = NationalID AND PStatus = 'P' AND PricePRoom >= @MinRoomPrice
+	WHERE MEmployeeID = NationalID AND PStatus = 'P' AND PricePRoom >= @MinRoomPrice AND ID not in (SELECT ProjectID FROM ComApplication WHERE CompanyID = @CID)
 END
 ELSE
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager"
 	FROM Project, Employee
-	WHERE MEmployeeID = NationalID AND PStatus = 'P' AND PricePRoom >= @MinRoomPrice AND City = @City
+	WHERE MEmployeeID = NationalID AND PStatus = 'P' AND PricePRoom >= @MinRoomPrice AND City = @City AND ID not in (SELECT ProjectID FROM ComApplication WHERE CompanyID = @CID)
 END
 GO

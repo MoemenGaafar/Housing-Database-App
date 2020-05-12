@@ -94,6 +94,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SetBiddingPrice";
             this.Text = "SetBiddingPrice";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SetBiddingPrice_FormClosed);
             this.Load += new System.EventHandler(this.SetBiddingPrice_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

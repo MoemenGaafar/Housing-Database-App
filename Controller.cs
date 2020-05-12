@@ -1066,6 +1066,15 @@ namespace DBapplication
             Parameters.Add("@BankName", bankName);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
+        public DataTable GetNumberofCompanyApplications(int cid)
+        {
+            string StoredProcedureName = StoredProcedures.GetNumberofCompanyApplications;
+
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", cid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+        
         public int ChangeComApplicationStatusByCompanyID(int pid, int cid, char newStatus)
         {
             string StoredProcedureName = StoredProcedures.ChangeComApplicationStatusByCompanyID;
@@ -1076,11 +1085,12 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
-        public DataTable SelectPostedProjects(int minRoomPrice, string city)
+        public DataTable SelectPostedProjects(int cid, int minRoomPrice, string city)
         {
             string StoredProcedureName = StoredProcedures.SelectPostedProjects;
 
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", cid);
             Parameters.Add("@MinRoomPrice", minRoomPrice);
             Parameters.Add("@City", city);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);

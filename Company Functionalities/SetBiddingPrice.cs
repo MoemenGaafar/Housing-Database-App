@@ -30,6 +30,11 @@ namespace Housing_Database_Project.Company_Functionalities
             else MessageBox.Show("Error Submitting Application..");
         }
 
+        private void SetBiddingPrice_FormClosed(object sender, FormClosedEventArgs e)
+        {
+ 
+        }
+
         private void SetBiddingPrice_Load(object sender, EventArgs e)
         {
             label_ProjID.Text = PID.ToString();

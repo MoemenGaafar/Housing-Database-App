@@ -217,5 +217,8 @@ namespace DBapplication
         //INPUT: Company ID, Project ID, Bidding Price - OUTPUT: Apply to Project
         public static string LaunchProject = "LaunchProject";
         //INPUT: Project ID - OUTPUT: Change Project Status from Started to Launched
+        public static string GetNumberofCompanyApplications = "GetNumberofCompanyApplications";
+        //INPUT: Company ID - OUTPUT: Number of ComApplications associated to it
+        
     }
 }
