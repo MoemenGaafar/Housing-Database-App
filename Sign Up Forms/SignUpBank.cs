@@ -19,6 +19,13 @@ namespace Housing_Database_Project.Sign_Up_Forms
         {
             controllerObj = new Controller();
             InitializeComponent();
+            foreach (Control c in Controls)
+                c.Hide();
+            title.Show();
+            L1.Show();
+            button_Back.Show();
+            Verify.Show();
+            Access.Show(); 
         }
 
         private void button_Back_Click(object sender, EventArgs e)
@@ -44,7 +51,7 @@ namespace Housing_Database_Project.Sign_Up_Forms
                 MessageBox.Show("Please fill all the required fields!");
             else if (textBox_Pass.Text != textBox_PassAgain.Text)
                 MessageBox.Show("Passwords must match!");
-            else if (Convert.ToInt32(textBox_TransFees) > 256 || Convert.ToInt32(textBox_TransFees) < 0)
+            else if (Convert.ToInt32(textBox_TransFees.Text) > 256 || Convert.ToInt32(textBox_TransFees.Text) < 0)
                 MessageBox.Show("Transaction Fees cannot be negative or more than 256 EGP!");
             else
             {
@@ -53,6 +60,22 @@ namespace Housing_Database_Project.Sign_Up_Forms
                     MessageBox.Show("Bank Signed Up Successfully!");
                 else
                     MessageBox.Show("Error Encoutered While Signing up...");
+            }
+        }
+
+        private void Verify_Click(object sender, EventArgs e)
+        {
+            string Pass = Convert.ToString(controllerObj.GetAccess("Bank").Rows[0][0]);
+            if (Access.Text != Pass)
+                MessageBox.Show("Incorrect Pass code.");
+            else
+            {
+                foreach (Control c in Controls)
+                    c.Show();
+                L1.Hide();
+                button_Back.Hide();
+                Verify.Hide();
+                Access.Hide();
             }
         }
     }

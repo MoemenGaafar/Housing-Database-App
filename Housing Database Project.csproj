@@ -180,6 +180,12 @@
     <Compile Include="Citizen Functionalities\CitizenFunctionalities.Designer.cs">
       <DependentUpon>CitizenFunctionalities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sign Up Forms\SignUpAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sign Up Forms\SignUpAdmin.Designer.cs">
+      <DependentUpon>SignUpAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sign Up Forms\SignUpBank.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Citizen Functionalities\CitizenFunctionalities.resx">
       <DependentUpon>CitizenFunctionalities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sign Up Forms\SignUpAdmin.resx">
+      <DependentUpon>SignUpAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sign Up Forms\SignUpBank.resx">
       <DependentUpon>SignUpBank.cs</DependentUpon>

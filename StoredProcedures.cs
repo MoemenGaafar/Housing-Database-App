@@ -26,6 +26,8 @@ namespace DBapplication
         //Input: All Parameters - OUTPUT: Inserts and returns more than 0 if successful
         public static string Insert_Employee = "Insert_Employee";
         //Input: All Parameters - OUTPUT: Inserts and returns more than 0 if successful
+        public static string Insert_Admin = "Insert_Admin";
+        //Input: All Parameters - OUTPUT: Inserts and returns more than 0 if successful
 
         public static string ChangePassword_Citizen = "ChangePassword_Citizen";
         //INPUT: National ID, Password - OUTPUT: none
@@ -110,12 +112,20 @@ namespace DBapplication
 
         public static string SelectAllUnits = "SelectAllUnits";
         //INPUT: none - OUTPUT: All available Unit attributes 
+        public static string SelectProjectCities = "SelectProjectCities";
+        //INPUT: none - OUTPUT: Distinct project locations 
+        public static string SelectProjectsByCity = "SelectProjectsByCity";
+        //INPUT: locations - OUTPUT: Project IDs
+        public static string SelectUnitsByCity = "SelectUnitsByCity";
+        //InputL Locations - OUTPUT: All available Unit attributes, city, and price filtered by project location
         public static string SelectUnitsByProject = "SelectUnitsByProject";
-        //INPUT: project # - OUTPUT: All available Unit attributes
+        //INPUT: project # - OUTPUT: All available Unit attributes, city, and price filtered by project
         public static string SelectUnitsByPrice = "SelectUnitsByPrice";
-        //INPUT: max price - OUTPUT: All available Unit attributes
+        //INPUT: max price - OUTPUT: All available Unit attributes, city, and price filtered by price
         public static string SelectUnitsByProjectAndPrice = "SelectUnitsByProjectAndPrice";
-        //INPUT: project # and max price - OUTPUT: All available Unit attributes
+        //INPUT: project # and max price - OUTPUT: All available Unit attributes, city, and price filtered by project and price
+        public static string SelectUnitsByPriceAndCity = "SelectUnitsByPriceAndCity";
+        //INPUT: max price and city - OUTPUT: All available Unit attributes, city, and price filtered by city and price
 
         public static string CountCitApplicationsbyCitizen = "CountCitApplicationsbyCitizen";
         //INPUT: CitizenID - OUTPUT: all CitApplication attributes and price
@@ -155,6 +165,9 @@ namespace DBapplication
         //INPUT: citizen ID, Dependent Name, newName - OUTPUT: none
         public static string AlterDependentBirthdate = "AlterDependentBirthdate";
         //INPUT: citizen ID, Dependent Name, Birthdate - OUTPUT: none
+
+        public static string GetAccess = "GetAccess";
+        //INPUT: Entity - OUTPUT: Pass
 
     }
 }

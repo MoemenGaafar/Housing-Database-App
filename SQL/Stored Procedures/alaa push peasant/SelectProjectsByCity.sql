@@ -18,24 +18,17 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE Insert_Employee
+CREATE PROCEDURE SelectProjectsByCity
+
 	-- Add the parameters for the stored procedure here
-	@NationalID	int, 
-	@Password varchar(50),
-	@FirstName	varchar(50),
-	@LastName varchar(50),
-	@Sex char(1), 
-	@EType char(1),
-	@StartDate date,
-	@NoCompleteProj int,
-	@NoCurrentProj int
+	@City varchar(50) 
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	INSERT INTO Employee
-	Values(@NationalID,@Password,@FirstName,@LastName,@Sex,@EType,@StartDate,@NoCompleteProj,@NoCurrentProj)
+	SELECT ID from Project Where City = @City 
 END
 GO

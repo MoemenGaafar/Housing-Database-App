@@ -42,6 +42,10 @@ namespace Housing_Database_Project
             ProjectSort.DataSource = dp;
             ProjectSort.DisplayMember = "ID";
             ProjectSort.ValueMember = "ID";
+            DataTable dC = controllerObj.SelectProjectCities();
+            City.DataSource = dC;
+            City.DisplayMember = "City";
+            City.ValueMember = "City"; 
 
             for (int intCount = 0; intCount < dt.Rows.Count; intCount++)
             {
@@ -54,7 +58,9 @@ namespace Housing_Database_Project
             }
             Unit.Hide();
             LabelUnit.Hide(); 
-            Submit.Hide(); 
+            Submit.Hide();
+            City.SelectedIndex = -1;
+            ProjectSort.SelectedIndex = -1; 
 
         }
 
@@ -76,9 +82,13 @@ namespace Housing_Database_Project
                 }
                 if (!isNumber)
                     MessageBox.Show("Please insert a valid price");
-                else if (ProjectSort.SelectedIndex == -1)
+                else if (ProjectSort.SelectedIndex == -1 && City.SelectedIndex == -1)
                 {
                     U = controllerObj.SelectUnitsByPrice(Convert.ToInt32(Price.Text));
+                }
+                else if (ProjectSort.SelectedIndex == -1)
+                {
+                    U = controllerObj.SelectUnitsByPriceAndCity(Convert.ToInt32(Price.Text), Convert.ToString(City.SelectedValue));
                 }
                 else
                 {
@@ -87,9 +97,13 @@ namespace Housing_Database_Project
             }
             else
             {
-                if (ProjectSort.SelectedIndex == -1)
+                if (ProjectSort.SelectedIndex == -1 && City.SelectedIndex == -1)
                 {
                     U = controllerObj.SelectAllUnits();
+                }
+                if (ProjectSort.SelectedIndex == -1)
+                {
+                    U = controllerObj.SelectUnitsByCity(Convert.ToString(City.Text)); 
                 }
                 else
                 {
@@ -128,8 +142,7 @@ namespace Housing_Database_Project
 
         private void ProjectApply_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int p = Convert.ToInt32(ProjectApply.SelectedItem); 
-            DataTable du = controllerObj.GetUnsoldUnitsOfProject(p);
+            DataTable du = controllerObj.GetUnsoldUnitsOfProject(Convert.ToInt32(ProjectApply.SelectedItem));
             Unit.DataSource = du;
             Unit.DisplayMember = "ID";
             Unit.ValueMember = "ID";
@@ -148,6 +161,18 @@ namespace Housing_Database_Project
         {
             if (e.CloseReason == CloseReason.UserClosing)
                 Owner.Show();
+        }
+
+        private void Filter_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(City.Text))
+            {
+                DataTable dL = controllerObj.SelectProjectsByCity(Convert.ToString(City.Text));
+                ProjectSort.DataSource = dL;
+                ProjectSort.DisplayMember = "ID";
+                ProjectSort.ValueMember = "ID";
+                ProjectSort.Refresh();
+            }
         }
     }
 }

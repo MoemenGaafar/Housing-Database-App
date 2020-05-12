@@ -18,6 +18,7 @@ namespace Housing_Database_Project.Sign_Up_Forms
         {
             controllerObj = new Controller();
             InitializeComponent();
+            
         }
 
         private void SignUpCitizen_Load(object sender, EventArgs e)
@@ -69,5 +70,7 @@ namespace Housing_Database_Project.Sign_Up_Forms
                     MessageBox.Show("Error Encoutered While Signing up...");
             }
         }
+
+        
     }
 }

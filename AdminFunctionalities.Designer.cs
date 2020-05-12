@@ -31,38 +31,138 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminFunctionalities));
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_LogOut = new System.Windows.Forms.Button();
+            this.Admins = new System.Windows.Forms.Button();
+            this.Companies = new System.Windows.Forms.Button();
+            this.Password = new System.Windows.Forms.Button();
+            this.Employees = new System.Windows.Forms.Button();
+            this.Citizens = new System.Windows.Forms.Button();
+            this.Applications = new System.Windows.Forms.Button();
+            this.Transactions = new System.Windows.Forms.Button();
+            this.Projects = new System.Windows.Forms.Button();
+            this.Access = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(118, 73);
+            this.label1.Location = new System.Drawing.Point(133, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 17);
+            this.label1.Size = new System.Drawing.Size(119, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Welcome Virgin";
             // 
             // Btn_LogOut
             // 
-            this.Btn_LogOut.Location = new System.Drawing.Point(13, 439);
-            this.Btn_LogOut.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_LogOut.Location = new System.Drawing.Point(15, 549);
+            this.Btn_LogOut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Btn_LogOut.Name = "Btn_LogOut";
-            this.Btn_LogOut.Size = new System.Drawing.Size(100, 28);
+            this.Btn_LogOut.Size = new System.Drawing.Size(112, 35);
             this.Btn_LogOut.TabIndex = 13;
             this.Btn_LogOut.Text = "Log out";
             this.Btn_LogOut.UseVisualStyleBackColor = true;
             this.Btn_LogOut.Click += new System.EventHandler(this.Btn_LogOut_Click);
             // 
+            // Admins
+            // 
+            this.Admins.Location = new System.Drawing.Point(16, 205);
+            this.Admins.Name = "Admins";
+            this.Admins.Size = new System.Drawing.Size(205, 34);
+            this.Admins.TabIndex = 14;
+            this.Admins.Text = "Manage Adminstrators";
+            this.Admins.UseVisualStyleBackColor = true;
+            // 
+            // Companies
+            // 
+            this.Companies.Location = new System.Drawing.Point(16, 334);
+            this.Companies.Name = "Companies";
+            this.Companies.Size = new System.Drawing.Size(205, 35);
+            this.Companies.TabIndex = 15;
+            this.Companies.Text = "Manage Companies";
+            this.Companies.UseVisualStyleBackColor = true;
+            // 
+            // Password
+            // 
+            this.Password.Location = new System.Drawing.Point(16, 507);
+            this.Password.Name = "Password";
+            this.Password.Size = new System.Drawing.Size(189, 34);
+            this.Password.TabIndex = 16;
+            this.Password.Text = "Change Password";
+            this.Password.UseVisualStyleBackColor = true;
+            // 
+            // Employees
+            // 
+            this.Employees.Location = new System.Drawing.Point(16, 245);
+            this.Employees.Name = "Employees";
+            this.Employees.Size = new System.Drawing.Size(205, 35);
+            this.Employees.TabIndex = 17;
+            this.Employees.Text = "Manage Employees";
+            this.Employees.UseVisualStyleBackColor = true;
+            // 
+            // Citizens
+            // 
+            this.Citizens.Location = new System.Drawing.Point(15, 375);
+            this.Citizens.Name = "Citizens";
+            this.Citizens.Size = new System.Drawing.Size(205, 35);
+            this.Citizens.TabIndex = 18;
+            this.Citizens.Text = "Manage Citizens";
+            this.Citizens.UseVisualStyleBackColor = true;
+            // 
+            // Applications
+            // 
+            this.Applications.Location = new System.Drawing.Point(16, 416);
+            this.Applications.Name = "Applications";
+            this.Applications.Size = new System.Drawing.Size(205, 35);
+            this.Applications.TabIndex = 19;
+            this.Applications.Text = "Manage Applications";
+            this.Applications.UseVisualStyleBackColor = true;
+            // 
+            // Transactions
+            // 
+            this.Transactions.Location = new System.Drawing.Point(15, 457);
+            this.Transactions.Name = "Transactions";
+            this.Transactions.Size = new System.Drawing.Size(205, 35);
+            this.Transactions.TabIndex = 20;
+            this.Transactions.Text = "Manage Transactions";
+            this.Transactions.UseVisualStyleBackColor = true;
+            // 
+            // Projects
+            // 
+            this.Projects.Location = new System.Drawing.Point(16, 286);
+            this.Projects.Name = "Projects";
+            this.Projects.Size = new System.Drawing.Size(205, 35);
+            this.Projects.TabIndex = 21;
+            this.Projects.Text = "Manage Projects";
+            this.Projects.UseVisualStyleBackColor = true;
+            // 
+            // Access
+            // 
+            this.Access.Location = new System.Drawing.Point(16, 165);
+            this.Access.Name = "Access";
+            this.Access.Size = new System.Drawing.Size(205, 34);
+            this.Access.TabIndex = 22;
+            this.Access.Text = "Manage Access";
+            this.Access.UseVisualStyleBackColor = true;
+            // 
             // AdminFunctionalities
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(359, 480);
+            this.ClientSize = new System.Drawing.Size(404, 600);
+            this.Controls.Add(this.Access);
+            this.Controls.Add(this.Projects);
+            this.Controls.Add(this.Transactions);
+            this.Controls.Add(this.Applications);
+            this.Controls.Add(this.Citizens);
+            this.Controls.Add(this.Employees);
+            this.Controls.Add(this.Password);
+            this.Controls.Add(this.Companies);
+            this.Controls.Add(this.Admins);
             this.Controls.Add(this.Btn_LogOut);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AdminFunctionalities";
             this.Text = "AdminFunctionalities";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminFunctionalities_FormClosed);
@@ -76,5 +176,14 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Btn_LogOut;
+        private System.Windows.Forms.Button Admins;
+        private System.Windows.Forms.Button Companies;
+        private System.Windows.Forms.Button Password;
+        private System.Windows.Forms.Button Employees;
+        private System.Windows.Forms.Button Citizens;
+        private System.Windows.Forms.Button Applications;
+        private System.Windows.Forms.Button Transactions;
+        private System.Windows.Forms.Button Projects;
+        private System.Windows.Forms.Button Access;
     }
 }

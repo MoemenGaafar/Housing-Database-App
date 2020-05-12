@@ -21,6 +21,13 @@ primary key (HUsername),
 foreign key (HUsername) references Administrator,
 )
 
+Create table Access 
+(
+Entity varchar(50),
+Pass varchar(50) not null,
+primary key(Entity)
+)
+
 create table Citizen
 (
 NationalID	int, 
@@ -187,6 +194,13 @@ values
 insert into HighAdministrator
 values 
 ('Beshoy')
+
+insert into Access 
+values
+('Admin', 'BiggestMonkey'),
+('Employee', 'BigMonkey'),
+('Bank', 'SmallMonkey'),
+('Company', 'SmallestMonkey')
  
 insert into Citizen
 values 

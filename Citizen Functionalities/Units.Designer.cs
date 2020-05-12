@@ -44,32 +44,36 @@
             this.MaxApplications = new System.Windows.Forms.Label();
             this.Manage = new System.Windows.Forms.Button();
             this.YourApplications = new System.Windows.Forms.Label();
+            this.City = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Filter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 71);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 126);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(703, 249);
+            this.dataGridView1.Size = new System.Drawing.Size(831, 249);
             this.dataGridView1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 20);
+            this.label1.Size = new System.Drawing.Size(150, 22);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Filters:";
+            this.label1.Text = "Available Units:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 38);
+            this.label2.Location = new System.Drawing.Point(244, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 20);
             this.label2.TabIndex = 2;
@@ -78,7 +82,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(334, 38);
+            this.label3.Location = new System.Drawing.Point(37, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 20);
             this.label3.TabIndex = 3;
@@ -87,7 +91,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 332);
+            this.label4.Location = new System.Drawing.Point(33, 387);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 20);
             this.label4.TabIndex = 4;
@@ -96,7 +100,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 405);
+            this.label5.Location = new System.Drawing.Point(31, 460);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 20);
             this.label5.TabIndex = 5;
@@ -105,7 +109,7 @@
             // LabelUnit
             // 
             this.LabelUnit.AutoSize = true;
-            this.LabelUnit.Location = new System.Drawing.Point(334, 405);
+            this.LabelUnit.Location = new System.Drawing.Point(341, 460);
             this.LabelUnit.Name = "LabelUnit";
             this.LabelUnit.Size = new System.Drawing.Size(42, 20);
             this.LabelUnit.TabIndex = 6;
@@ -114,7 +118,7 @@
             // Unit
             // 
             this.Unit.FormattingEnabled = true;
-            this.Unit.Location = new System.Drawing.Point(402, 402);
+            this.Unit.Location = new System.Drawing.Point(409, 457);
             this.Unit.Name = "Unit";
             this.Unit.Size = new System.Drawing.Size(121, 28);
             this.Unit.TabIndex = 7;
@@ -122,7 +126,7 @@
             // ProjectApply
             // 
             this.ProjectApply.FormattingEnabled = true;
-            this.ProjectApply.Location = new System.Drawing.Point(98, 405);
+            this.ProjectApply.Location = new System.Drawing.Point(105, 460);
             this.ProjectApply.Name = "ProjectApply";
             this.ProjectApply.Size = new System.Drawing.Size(121, 28);
             this.ProjectApply.TabIndex = 8;
@@ -131,21 +135,21 @@
             // ProjectSort
             // 
             this.ProjectSort.FormattingEnabled = true;
-            this.ProjectSort.Location = new System.Drawing.Point(402, 35);
+            this.ProjectSort.Location = new System.Drawing.Point(105, 81);
             this.ProjectSort.Name = "ProjectSort";
             this.ProjectSort.Size = new System.Drawing.Size(121, 28);
             this.ProjectSort.TabIndex = 9;
             // 
             // Price
             // 
-            this.Price.Location = new System.Drawing.Point(148, 35);
+            this.Price.Location = new System.Drawing.Point(366, 81);
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(122, 26);
             this.Price.TabIndex = 10;
             // 
             // View
             // 
-            this.View.Location = new System.Drawing.Point(578, 33);
+            this.View.Location = new System.Drawing.Point(504, 81);
             this.View.Name = "View";
             this.View.Size = new System.Drawing.Size(108, 30);
             this.View.TabIndex = 11;
@@ -155,7 +159,7 @@
             // 
             // Submit
             // 
-            this.Submit.Location = new System.Drawing.Point(578, 450);
+            this.Submit.Location = new System.Drawing.Point(585, 505);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(108, 30);
             this.Submit.TabIndex = 12;
@@ -166,7 +170,7 @@
             // MaxApplications
             // 
             this.MaxApplications.AutoSize = true;
-            this.MaxApplications.Location = new System.Drawing.Point(94, 332);
+            this.MaxApplications.Location = new System.Drawing.Point(101, 387);
             this.MaxApplications.Name = "MaxApplications";
             this.MaxApplications.Size = new System.Drawing.Size(19, 20);
             this.MaxApplications.TabIndex = 13;
@@ -174,7 +178,7 @@
             // 
             // Manage
             // 
-            this.Manage.Location = new System.Drawing.Point(367, 450);
+            this.Manage.Location = new System.Drawing.Point(374, 505);
             this.Manage.Name = "Manage";
             this.Manage.Size = new System.Drawing.Size(189, 34);
             this.Manage.TabIndex = 14;
@@ -185,17 +189,47 @@
             // YourApplications
             // 
             this.YourApplications.AutoSize = true;
-            this.YourApplications.Location = new System.Drawing.Point(94, 363);
+            this.YourApplications.Location = new System.Drawing.Point(101, 418);
             this.YourApplications.Name = "YourApplications";
             this.YourApplications.Size = new System.Drawing.Size(19, 20);
             this.YourApplications.TabIndex = 15;
             this.YourApplications.Text = "()";
             // 
+            // City
+            // 
+            this.City.FormattingEnabled = true;
+            this.City.Location = new System.Drawing.Point(105, 47);
+            this.City.Name = "City";
+            this.City.Size = new System.Drawing.Size(121, 28);
+            this.City.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(42, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 20);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "City:";
+            // 
+            // Filter
+            // 
+            this.Filter.Location = new System.Drawing.Point(248, 45);
+            this.Filter.Name = "Filter";
+            this.Filter.Size = new System.Drawing.Size(108, 30);
+            this.Filter.TabIndex = 18;
+            this.Filter.Text = "Filter";
+            this.Filter.UseVisualStyleBackColor = true;
+            this.Filter.Click += new System.EventHandler(this.Filter_Click);
+            // 
             // Units
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 496);
+            this.ClientSize = new System.Drawing.Size(883, 548);
+            this.Controls.Add(this.Filter);
+            this.Controls.Add(this.City);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.YourApplications);
             this.Controls.Add(this.Manage);
             this.Controls.Add(this.MaxApplications);
@@ -240,5 +274,8 @@
         private System.Windows.Forms.Label MaxApplications;
         private System.Windows.Forms.Button Manage;
         private System.Windows.Forms.Label YourApplications;
+        private System.Windows.Forms.ComboBox City;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button Filter;
     }
 }

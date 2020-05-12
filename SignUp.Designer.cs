@@ -37,9 +37,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(34, 18);
+            this.label4.Location = new System.Drawing.Point(38, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(169, 29);
+            this.label4.Size = new System.Drawing.Size(199, 36);
             this.label4.TabIndex = 20;
             this.label4.Text = "Sign Up Form";
             // 
@@ -50,30 +50,33 @@
             "Bank",
             "Citizen",
             "Company",
-            "Employee"});
-            this.comboBox_AccType.Location = new System.Drawing.Point(39, 89);
+            "Employee",
+            "Admin"});
+            this.comboBox_AccType.Location = new System.Drawing.Point(44, 111);
+            this.comboBox_AccType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox_AccType.Name = "comboBox_AccType";
-            this.comboBox_AccType.Size = new System.Drawing.Size(164, 24);
+            this.comboBox_AccType.Size = new System.Drawing.Size(184, 28);
             this.comboBox_AccType.TabIndex = 23;
             this.comboBox_AccType.SelectedIndexChanged += new System.EventHandler(this.comboBox_AccType_SelectedIndexChanged);
             // 
             // acctypeLabel
             // 
             this.acctypeLabel.AutoSize = true;
-            this.acctypeLabel.Location = new System.Drawing.Point(57, 69);
+            this.acctypeLabel.Location = new System.Drawing.Point(64, 86);
             this.acctypeLabel.Name = "acctypeLabel";
-            this.acctypeLabel.Size = new System.Drawing.Size(125, 17);
+            this.acctypeLabel.Size = new System.Drawing.Size(139, 20);
             this.acctypeLabel.TabIndex = 24;
             this.acctypeLabel.Text = "Pick Account Type";
             // 
             // SignUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 142);
+            this.ClientSize = new System.Drawing.Size(279, 178);
             this.Controls.Add(this.acctypeLabel);
             this.Controls.Add(this.comboBox_AccType);
             this.Controls.Add(this.label4);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SignUp";
             this.Text = "SignUp";
             this.Load += new System.EventHandler(this.SignUp_Load);
