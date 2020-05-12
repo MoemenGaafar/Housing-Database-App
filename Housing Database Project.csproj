@@ -37,10 +37,10 @@
     <None Include="Properties\Settings.settings" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminFunctionalities.cs">
+    <Compile Include="Admin Functionalities\AdminFunctionalities.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminFunctionalities.Designer.cs">
+    <Compile Include="Admin Functionalities\AdminFunctionalities.Designer.cs">
       <DependentUpon>AdminFunctionalities.cs</DependentUpon>
     </Compile>
     <Compile Include="Bank Functionalities\BankFunctionalities.cs">
@@ -250,7 +250,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AdminFunctionalities.resx">
+    <EmbeddedResource Include="Admin Functionalities\AdminFunctionalities.resx">
       <DependentUpon>AdminFunctionalities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bank Functionalities\BankFunctionalities.resx">
