@@ -49,7 +49,7 @@ namespace Housing_Database_Project.Employees_Functionalities
 
         private void button_ViewUnits_Click(object sender, EventArgs e)
         {
-            new EMP_ViewUnits(ID).Show(this);
+            new EMP_ViewUnits(ID, "Employee").Show(this);
             this.Hide();
         }
 

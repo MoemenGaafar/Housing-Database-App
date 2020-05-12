@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.listBox_Projects = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_Title = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView_Companies = new System.Windows.Forms.DataGridView();
             this.button_ViewProjs = new System.Windows.Forms.Button();
@@ -46,15 +46,15 @@
             this.listBox_Projects.TabIndex = 1;
             this.listBox_Projects.DoubleClick += new System.EventHandler(this.listBox_Projects_DoubleClick);
             // 
-            // label1
+            // label_Title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(444, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 29);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "All Companies";
+            this.label_Title.AutoSize = true;
+            this.label_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Title.Location = new System.Drawing.Point(444, 9);
+            this.label_Title.Name = "label_Title";
+            this.label_Title.Size = new System.Drawing.Size(169, 29);
+            this.label_Title.TabIndex = 2;
+            this.label_Title.Text = "All Companies";
             // 
             // label3
             // 
@@ -95,7 +95,7 @@
             this.Controls.Add(this.button_ViewProjs);
             this.Controls.Add(this.dataGridView_Companies);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_Title);
             this.Controls.Add(this.listBox_Projects);
             this.Name = "ViewCompanies";
             this.Text = "ViewCompanies";
@@ -109,7 +109,7 @@
 
         #endregion
         private System.Windows.Forms.ListBox listBox_Projects;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_Title;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView_Companies;
         private System.Windows.Forms.Button button_ViewProjs;

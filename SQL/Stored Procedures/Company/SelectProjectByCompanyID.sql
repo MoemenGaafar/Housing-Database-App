@@ -20,9 +20,9 @@ GO
 -- =============================================
 use Monkey 
 go
-CREATE PROCEDURE SelectProjectByPEMPID
+CREATE PROCEDURE SelectProjectByCompanyID
 	-- Add the parameters for the stored procedure here
-	@NationalID int,
+	@CID int,
 	@PStatus char(1),
 	@City varchar(50)
 AS
@@ -31,16 +31,16 @@ BEGIN
 	SET NOCOUNT ON;
 	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager",
 		   CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status",
-		    Name As "Company", StartingDate As "Starting Date", LaunchingDate As "Launching Date"
-     FROM Employee, Project LEFT OUTER JOIN Company ON CID = CompanyID  WHERE NationalID = MEmployeeID AND PEmployeeID = @NationalID
+		   StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM Project, Company, Employee  WHERE NationalID = MEmployeeID AND CID = @CID AND CID = CompanyID
 END
 ELSE IF (@PStatus = 'A')
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager",
 		   CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status",
-		    Name As "Company", StartingDate As "Starting Date", LaunchingDate As "Launching Date"
-     FROM Employee, Project LEFT OUTER JOIN Company ON CID = CompanyID  WHERE NationalID = MEmployeeID AND PEmployeeID = @NationalID
+		   StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM Project, Company, Employee  WHERE NationalID = MEmployeeID AND CID = @CID AND CID = CompanyID
 	 AND City = @City
 END
 ELSE IF (@City = 'All')
@@ -48,16 +48,16 @@ BEGIN
 	SET NOCOUNT ON;
 	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager",
 		   CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status",
-		    Name As "Company", StartingDate As "Starting Date", LaunchingDate As "Launching Date"
-     FROM Employee, Project LEFT OUTER JOIN Company ON CID = CompanyID  WHERE NationalID = MEmployeeID AND PEmployeeID = @NationalID
+		   StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM Project, Company, Employee  WHERE NationalID = MEmployeeID AND CID = @CID AND CID = CompanyID
 	 AND PStatus = @PStatus
 END
 ELSE
 BEGIN
 	SET NOCOUNT ON;
-    SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager",
+   SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager",
 		   CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status",
-		    Name As "Company", StartingDate As "Starting Date", LaunchingDate As "Launching Date"
-     FROM Employee, Project LEFT OUTER JOIN Company ON CID = CompanyID  WHERE NationalID = MEmployeeID AND PEmployeeID = @NationalID
+		   StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM Project, Company, Employee  WHERE NationalID = MEmployeeID AND CID = @CID AND CID = CompanyID
 	 AND PStatus = @PStatus AND City = @City
 END

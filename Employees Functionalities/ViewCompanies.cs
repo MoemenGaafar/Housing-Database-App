@@ -13,17 +13,26 @@ namespace Housing_Database_Project.Employees_Functionalities
 {
     public partial class ViewCompanies : Form
     {
+        private int ID;
         private Controller controllerObj;
         private DataTable dt;
-        public ViewCompanies()
+        public ViewCompanies(int id)
         {
+            ID = id;
             controllerObj = new Controller();
             InitializeComponent();
         }
 
         private void ViewCompanies_Load(object sender, EventArgs e)
         {
-            dt = controllerObj.GetAllCompanies();
+            if (ID == -1) //Admin
+                dt = controllerObj.GetAllCompanies();
+            else
+            {
+                dt = controllerObj.SelectCompaniesByMEMPID(ID);
+                label_Title.Text = "Affiliated Companies";
+            }
+
             dataGridView_Companies.DataSource = dt;
             dataGridView_Companies.Refresh();
         }
@@ -31,7 +40,10 @@ namespace Housing_Database_Project.Employees_Functionalities
 
         private void listBox_Projects_DoubleClick(object sender, EventArgs e)
         {
-            new ProjectInfo(Convert.ToInt32(listBox_Projects.SelectedValue.ToString())).Show(this);
+            string Type;
+            if (ID == -1) Type = "Admin";
+            else Type = "Manager";
+            new ProjectInfo(Convert.ToInt32(listBox_Projects.SelectedValue.ToString()), dt.Rows[listBox_Projects.SelectedIndex]["Project Status"].ToString()).Show(this);
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -43,12 +55,25 @@ namespace Housing_Database_Project.Employees_Functionalities
         {
             if (dataGridView_Companies.SelectedRows.Count == 1)
             {
-                dt = controllerObj.SelectProjectByCompany(Convert.ToInt32(dataGridView_Companies.SelectedRows[0].Cells["Company ID"].Value));
-                if (!(dt is null))
+                if (ID == -1) //Admin
+                    dt = controllerObj.SelectProjectByCompany(Convert.ToInt32(dataGridView_Companies.SelectedRows[0].Cells["Company ID"].Value));
+                else
+                    dt = controllerObj.SelectProjectByCompanyMEMPID(ID, Convert.ToInt32(dataGridView_Companies.SelectedRows[0].Cells["Company ID"].Value));
+
+                if (dt is null)
+                {
+                    label3.Visible = false;
+                    listBox_Projects.DataSource = null;
+                    listBox_Projects.Items.Clear();
+                    listBox_Projects.Items.Add("No Assigned Projects");
+                }
+                else
+                {
                     label3.Visible = true;
-                listBox_Projects.DataSource = dt;
-                listBox_Projects.ValueMember = "ID";
-                listBox_Projects.Refresh();
+                    listBox_Projects.DataSource = dt;
+                    listBox_Projects.ValueMember = "ID";
+                    listBox_Projects.Refresh();
+                }
             }
             else
             {

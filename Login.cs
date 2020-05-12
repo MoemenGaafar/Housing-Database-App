@@ -79,8 +79,7 @@ namespace Housing_Database_Project
                     found = controllerObj.CheckPassword_Company(Convert.ToInt32(TxtBx_username.Text), TxtBx_pass.Text);
                     if (found != null)
                     {
-                        CompanyFunctionalities CF2 = new CompanyFunctionalities();
-                        CF2.Show(this);
+                        new CompanyFunctionalities(Convert.ToInt32(found.Rows[0]["CID"])).Show(this);
                         this.Hide();
                     }
                 }

@@ -29,32 +29,39 @@ AS
 IF (@PStatus = 'A' AND @City = 'All')
 BEGIN
 	SET NOCOUNT ON;
-	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager", Name As "Company",
-	       StartingDate As "Starting Date", LaunchingDate As "Launching Date"
-     FROM Project, HousingEmployee, Employee, Company
-	 WHERE NationalID = MEmployeeID AND CID = CompanyID AND EID = @NationalID AND PID = Project.ID
+	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager",
+	 CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status",
+	 Name As "Company", StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM HousingEmployee, Employee, Project LEFT OUTER JOIN Company ON CID = CompanyID
+	 WHERE NationalID = MEmployeeID AND EID = @NationalID AND PID = Project.ID
 END
 ELSE IF (@PStatus = 'A')
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager", Name As "Company",
-	       StartingDate As "Starting Date", LaunchingDate As "Launching Date"
-     FROM Project, HousingEmployee, Employee, Company WHERE NationalID = MEmployeeID AND CID = CompanyID
-	 AND City = @City AND EID = @NationalID AND PID = Project.ID
+	 CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status",
+	 Name As "Company", StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM HousingEmployee, Employee, Project LEFT OUTER JOIN Company ON CID = CompanyID
+	 WHERE NationalID = MEmployeeID AND EID = @NationalID AND PID = Project.ID
+	 AND City = @City
 END
 ELSE IF (@City = 'All')
 BEGIN
 	SET NOCOUNT ON;
-	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager", Name As "Company",
-	       StartingDate As "Starting Date", LaunchingDate As "Launching Date"
-     FROM Project, HousingEmployee, Employee, Company WHERE NationalID = MEmployeeID AND CID = CompanyID  
-	 AND PStatus = @PStatus AND EID = @NationalID AND PID = Project.ID
+		SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager",
+	 CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status",
+	 Name As "Company", StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM HousingEmployee, Employee, Project LEFT OUTER JOIN Company ON CID = CompanyID
+	 WHERE NationalID = MEmployeeID AND EID = @NationalID AND PID = Project.ID
+	 AND PStatus = @PStatus
 END
 ELSE
 BEGIN
 	SET NOCOUNT ON;
-    SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager", Name As "Company",
-	       StartingDate As "Starting Date", LaunchingDate As "Launching Date"
-     FROM Project, HousingEmployee, Employee, Company WHERE NationalID = MEmployeeID AND CID = CompanyID
-	 AND PStatus = @PStatus AND City = @City AND EID = @NationalID AND PID = Project.ID
+   	SELECT ID As "Project ID", City, PricePRoom As "Room Price",  FirstName + ' ' +LastName As "Manager",
+	 CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status",
+	 Name As "Company", StartingDate As "Starting Date", LaunchingDate As "Launching Date"
+     FROM HousingEmployee, Employee, Project LEFT OUTER JOIN Company ON CID = CompanyID
+	 WHERE NationalID = MEmployeeID AND EID = @NationalID AND PID = Project.ID
+	 AND PStatus = @PStatus AND City = @City
 END

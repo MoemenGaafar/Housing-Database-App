@@ -18,13 +18,12 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SelectProjectByCompany
-   @CID int
-	
+CREATE PROCEDURE AddUnitToProject
+	@PID int,
+	@NumRooms int
 AS
 BEGIN
-	SET NOCOUNT ON;
-	Select ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	From Project where CompanyID = @CID
+    
+    INSERT INTO Unit Values(@PID, (SELECT Count(*) From Unit Where ProjectID = @PID) +1, 0, @NumRooms, NULL)
 END
 GO

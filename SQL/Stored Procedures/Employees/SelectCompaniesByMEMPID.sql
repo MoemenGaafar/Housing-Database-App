@@ -18,13 +18,14 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SelectProjectByCompany
-   @CID int
-	
+CREATE PROCEDURE SelectCompaniesByMEMPID
+	@NationalID int
 AS
 BEGIN
 	SET NOCOUNT ON;
-	Select ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	From Project where CompanyID = @CID
+	Select DISTINCT CID As "Company ID", Name AS "Company", NoCompleteProj As "Number of Completed Projects", Rating, AvgProjectCost As "Average Project Cost"
+	From Company, Project
+	Where MEmployeeID = @NationalID AND CID = CompanyID
+	ORDER BY CID
 END
 GO

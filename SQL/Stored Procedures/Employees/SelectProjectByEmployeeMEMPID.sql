@@ -18,7 +18,8 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SelectProjectByEmployee
+CREATE PROCEDURE SelectProjectByEmployeeMEMPID
+    @MID int,
 	@EID int,
 	@Etype char(1)
 AS
@@ -26,18 +27,18 @@ IF (@Etype = 'H')
 BEGIN
 	SET NOCOUNT ON;
 	SELECT PID As "ID", CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	FROM HousingEmployee, Project WHERE EID = @EID AND PID = ID
+	FROM HousingEmployee, Project WHERE EID = @EID AND PID = ID AND MEmployeeID = @MID
 END
 ELSE IF(@Etype = 'P')
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	FROM Project WHERE PEmployeeID = @EID
+	FROM Project WHERE PEmployeeID = @EID AND MEmployeeID = @MID
 END
 ELSE
 BEGIN
 	SET NOCOUNT ON;
 	SELECT ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	FROM Project WHERE MEmployeeID = @EID
+	FROM Project WHERE MEmployeeID = @EID AND MEmployeeID = @MID
 END
 GO

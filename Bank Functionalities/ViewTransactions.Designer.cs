@@ -38,6 +38,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label_Bank = new System.Windows.Forms.Label();
             this.comboBox_Bank = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,11 +142,22 @@
             this.comboBox_Bank.Visible = false;
             this.comboBox_Bank.SelectedIndexChanged += new System.EventHandler(this.comboBox_Bank_SelectedIndexChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(156, 78);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(139, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Enter \"All\" to View All";
+            this.label3.Visible = false;
+            // 
             // ViewTransactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 360);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox_Bank);
             this.Controls.Add(this.label_Bank);
             this.Controls.Add(this.dataGridView1);
@@ -178,5 +190,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label_Bank;
         private System.Windows.Forms.ComboBox comboBox_Bank;
+        private System.Windows.Forms.Label label3;
     }
 }

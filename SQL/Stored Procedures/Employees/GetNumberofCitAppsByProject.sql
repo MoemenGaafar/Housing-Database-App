@@ -18,13 +18,16 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SelectProjectByCompany
-   @CID int
-	
+CREATE PROCEDURE GetNumberofCitAppsByProject 
+	-- Add the parameters for the stored procedure here
+	@PID int
 AS
 BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-	Select ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	From Project where CompanyID = @CID
+
+    -- Insert statements for procedure here
+	SELECT Count(*) As "Number of Applications" FROM CitApplication WHERE @PID = ProjectID
 END
 GO

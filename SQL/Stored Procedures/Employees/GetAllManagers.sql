@@ -18,13 +18,19 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SelectProjectByCompany
-   @CID int
-	
+use Monkey
+go
+CREATE PROCEDURE GetAllManagers 
+	-- Add the parameters for the stored procedure here
 AS
 BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-	Select ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	From Project where CompanyID = @CID
+
+    -- Insert statements for procedure here
+	Select FirstName+' '+LastName As "Employee Name", NationalID As "National ID", Sex, StartDate As "Start Date",
+	 NoCompleteProj As "Number of Completed Projects", NoCurrentProj As "Number of Current Projects" 
+	 From Employee Where EType = 'M'
 END
 GO

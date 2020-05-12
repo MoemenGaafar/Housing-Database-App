@@ -18,13 +18,12 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SelectProjectByCompany
-   @CID int
-	
+CREATE PROCEDURE AssignHousingEmployee
+	-- Add the parameters for the stored procedure here
+	@PID int,
+	@EID int
 AS
 BEGIN
-	SET NOCOUNT ON;
-	Select ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	From Project where CompanyID = @CID
+	INSERT INTO HousingEmployee Values(@PID, @EID)
 END
 GO

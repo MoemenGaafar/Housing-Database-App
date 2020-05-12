@@ -28,11 +28,15 @@ namespace Housing_Database_Project.Employees_Functionalities
         private void PEMP_ViewProjects_Load(object sender, EventArgs e)
         {
             if (Type == "Projects")
-               dt = controllerObj.SelectProjectByPEMPID(ID,"All","All");
+                dt = controllerObj.SelectProjectByPEMPID(ID, "All", "All");
             else if (Type == "Housing")
-               dt = controllerObj.SelectProjectByHEMPID(ID, "All", "All");
-            else
+                dt = controllerObj.SelectProjectByHEMPID(ID, "All", "All");
+            else if (Type == "Manager")
                 dt = controllerObj.SelectProjectByMEMPID(ID, "All", "All");
+            else if (Type == "Company")
+                dt = controllerObj.SelectProjectByCompanyID(ID, "All", "All");
+                
+            
 
 
             dataGridView_Projects.DataSource = dt;
@@ -47,40 +51,65 @@ namespace Housing_Database_Project.Employees_Functionalities
                     comboBox_City.Items.Add(val);
                 }
             }
+
+            if (Type == "Company") comboBox_Status.Items.Remove("Posted");
+
             comboBox_Status.Text = "";
             comboBox_City.Text = "";
         }
 
         private void comboBox_Status_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Type == "Projects")
-                dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
-            else if (Type == "Housing")
-                dt = controllerObj.SelectProjectByHEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
-            else
-                dt = controllerObj.SelectProjectByMEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+            if (comboBox_City.SelectedIndex != -1)
+            {
+                if (Type == "Projects")
+                    dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+                else if (Type == "Housing")
+                    dt = controllerObj.SelectProjectByHEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+                else if (Type == "Manager")
+                    dt = controllerObj.SelectProjectByMEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+                else if (Type == "Company")
+                    dt = controllerObj.SelectProjectByCompanyID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
 
-            dataGridView_Projects.DataSource = dt;
-            dataGridView_Projects.Refresh();
+                dataGridView_Projects.DataSource = dt;
+                dataGridView_Projects.Refresh();
+            }
         }
 
         private void comboBox_City_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Type == "Projects")
-                dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
-            else if (Type == "Housing")
-                dt = controllerObj.SelectProjectByHEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
-            else
-                dt = controllerObj.SelectProjectByMEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+            if (comboBox_Status.SelectedIndex != -1)
+            {
+                if (Type == "Projects")
+                    dt = controllerObj.SelectProjectByPEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+                else if (Type == "Housing")
+                    dt = controllerObj.SelectProjectByHEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+                else if (Type == "Manager")
+                    dt = controllerObj.SelectProjectByMEMPID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
+                else if (Type == "Company")
+                    dt = controllerObj.SelectProjectByCompanyID(ID, (string)comboBox_Status.SelectedItem, (string)comboBox_City.SelectedItem);
 
-            dataGridView_Projects.DataSource = dt;
-            dataGridView_Projects.Refresh();
+                dataGridView_Projects.DataSource = dt;
+                dataGridView_Projects.Refresh();
+            }
         }
 
         private void PEMP_ViewProjects_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
                 Owner.Show();
+        }
+
+        private void button_ViewProj_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Projects.SelectedRows.Count == 1)
+            {
+                new ProjectInfo(Convert.ToInt32(dataGridView_Projects.SelectedRows[0].Cells["Project ID"].Value.ToString()), Type).Show(this);
+            }
+            else
+            {
+                MessageBox.Show("Please select ONE ENTIRE ROW!");
+            }
         }
     }
 }

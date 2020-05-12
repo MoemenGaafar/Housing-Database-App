@@ -18,13 +18,22 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SelectProjectByCompany
-   @CID int
-	
+CREATE PROCEDURE SelectTransByCompanyID
+	@CID int,
+	@BankName varchar(50)
 AS
+IF (@BankName = 'All')
 BEGIN
 	SET NOCOUNT ON;
-	Select ID, CASE WHEN PStatus = 'P' THEN 'Posted' WHEN PStatus = 'S' THEN 'Started' WHEN PStatus = 'L' THEN 'Launched' ELSE 'All units sold' END As "Project Status"
-	From Project where CompanyID = @CID
+	SELECT TID As "Transaction ID", BankName As "Bank", Amount, FirstName+' '+LastName As "Responsible Employee"
+	From ComTransaction, Employee
+	Where CompanyID = @CID AND EmployeeID = NationalID
+END
+ELSE
+BEGIN
+	SET NOCOUNT ON;
+	SELECT TID As "Transaction ID", BankName As "Bank", Amount, FirstName+' '+LastName As "Responsible Employee"
+	From ComTransaction, Employee
+	Where CompanyID = @CID AND EmployeeID = NationalID AND @BankName = BankName
 END
 GO

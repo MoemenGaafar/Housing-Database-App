@@ -498,6 +498,62 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, null);
         }
 
+        public DataTable GetAllManagers()
+        {
+            string StoredProcedureName = StoredProcedures.GetAllManagers;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public DataTable GetAllHousingEmployeesNotInProject(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.GetAllHousingEmployeesNotInProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectProjectByID(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.SelectProjectByID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetNumberofComAppsByProject(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.GetNumberofComAppsByProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+
+        public DataTable SelectHousingEmpsByProject(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.SelectHousingEmpsByProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetNumberofCitAppsByProject(int pid)
+        {
+            string StoredProcedureName = StoredProcedures.GetNumberofCitAppsByProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int AssignHousingEmployee(int pid, int eid)
+        {
+            string StoredProcedureName = StoredProcedures.AssignHousingEmployee;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            Parameters.Add("@EID", eid);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
         public DataTable GetAllCompanies()
         {
             string StoredProcedureName = StoredProcedures.GetAllCompanies;
@@ -516,7 +572,6 @@ namespace DBapplication
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
             Parameters.Add("@CID", cid);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
-
         }
 
         public DataTable SelectProjectByEmployee(int eid, string type)
@@ -641,38 +696,114 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
-        //public DataTable SelectTransByMEMPID(int ID, string bankName, string clientName, string client)
-        //{
-        //    string StoredProcedureName;
-        //    if (client == "Company")
-        //    {
-        //        if (ID == -1) //Admin
-        //            StoredProcedureName = StoredProcedures.SelectAllCompanyBankTransactions;
-        //        else
-        //            StoredProcedureName = StoredProcedures.SelectComTransByMEMPID;
-        //    }
-        //    else
-        //    {
-        //        if (ID == -1)
-        //            StoredProcedureName = StoredProcedures.SelectAllCitizenBankTransactions;
-        //        else
-        //            StoredProcedureName = StoredProcedures.SelectCitTransByMEMPID;
-        //    }
+        public DataTable SelectCitizenByID(int id)
+        {
+            string StoredProcedureName = StoredProcedures.SelectCitizenByID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", id);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
 
-        //    Dictionary<string, object> Parameters = new Dictionary<string, object>();
-        //    if (ID != -1)
-        //        Parameters.Add("@NationalID", ID);
-        //    Parameters.Add("@BankName", bankName);
-        //    Parameters.Add("@ClientName", clientName);
-        //    return dbMan.ExecuteReader(StoredProcedureName, Parameters);
-        //}
+        public DataTable SelectCompaniesByMEMPID(int id)
+        {
+            string StoredProcedureName = StoredProcedures.SelectCompaniesByMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", id);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectProjectByCompanyMEMPID(int pid, int cid)
+        {
+            string StoredProcedureName = StoredProcedures.SelectProjectByCompanyMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            Parameters.Add("@CID", cid);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectEmployeesByMEMPID(int id)
+        {
+            string StoredProcedureName = StoredProcedures.SelectEmployeesByMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", id);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectProjectByEmployeeMEMPID(int MID, int EID, string type)
+        {
+            char Etype;
+            switch (type)
+            {
+                case "Housing": Etype = 'H'; break;
+                case "Projects": Etype = 'P'; break;
+                default: Etype = 'M'; break;
+            }
+            string StoredProcedureName = StoredProcedures.SelectProjectByEmployeeMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@MID", MID);
+            Parameters.Add("@EID", EID);
+            Parameters.Add("@EType", Etype);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectCompanyTransactionsByMEMPID(int MID, string bankName, int companyID)
+        {
+            string StoredProcedureName = StoredProcedures.SelectCompanyTransactionsByMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@MID", MID);
+            Parameters.Add("@BankName", bankName);
+            Parameters.Add("@CompanyID", companyID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectCitizenTransactionsByMEMPID(int MID, string bankName, int citizenID)
+        {
+            string StoredProcedureName = StoredProcedures.SelectCitizenTransactionsByMEMPID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@MID", MID);
+            Parameters.Add("@BankName", bankName);
+            Parameters.Add("@CitizenID", citizenID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectAllUnitsByProject(int pid, string statusFilter)
+        {
+            bool? status;
+            switch (statusFilter)
+            {
+                case "Sold":
+                    {
+                        status = true;
+                        break;
+                    }
+                case "Not Sold":
+                    {
+                        status = false;
+                        break;
+                    }
+                default:
+                    {
+                        status = null;
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectAllUnitsByProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            if (!(status is null))
+                Parameters.Add("@UStatus", status);
+            else
+                Parameters.Add("@UStatus", DBNull.Value);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
         /////////////////////////////////////// P Employee Functionalities ///////////////////////////////////////////
         public DataTable SelectProjectByPEMPID(int ID, string statusFilter, string cityFilter)
         {
             char status;
             switch (statusFilter)
             {
-                case "All Units Sold": 
+                case "All Units Sold":
                     {
                         status = 'F';
                         break;
@@ -705,6 +836,8 @@ namespace DBapplication
             Parameters.Add("@City", cityFilter);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
+    
+
 
         public DataTable SelectAppByEMPID(int ID, string statusFilter, int projectFilter, string type)
         {
@@ -867,6 +1000,65 @@ namespace DBapplication
             Parameters.Add("@CitizenID", citizenID);
             Parameters.Add("@NewStatus", newStatus);
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        /////////////////////////////////////// Company Functionalities ///////////////////////////////////////////
+        public DataTable SelectProjectByCompanyID(int ID, string statusFilter, string cityFilter)
+        {
+            char status;
+            switch (statusFilter)
+            {
+                case "All Units Sold":
+                    {
+                        status = 'F';
+                        break;
+                    }
+                case "Posted":
+                    {
+                        status = 'P';
+                        break;
+                    }
+                case "Started":
+                    {
+                        status = 'S';
+                        break;
+                    }
+                case "Launched":
+                    {
+                        status = 'L';
+                        break;
+                    }
+                default:
+                    {
+                        status = 'A';
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectProjectByCompanyID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", ID);
+            Parameters.Add("@PStatus", status);
+            Parameters.Add("@City", cityFilter);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int AddUnitToProject(int pid, int numRooms)
+        {
+            string StoredProcedureName = StoredProcedures.AddUnitToProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            Parameters.Add("@NumRooms", numRooms);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectTransByCompanyID(int ID, string bankName)
+        {
+            string StoredProcedureName = StoredProcedures.SelectTransByCompanyID;
+
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", ID);
+            Parameters.Add("@BankName", bankName);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
         public void TerminateConnection()

@@ -90,6 +90,7 @@
             this.Btn_LogOut.TabIndex = 19;
             this.Btn_LogOut.Text = "Log out";
             this.Btn_LogOut.UseVisualStyleBackColor = true;
+            this.Btn_LogOut.Click += new System.EventHandler(this.Btn_LogOut_Click);
             // 
             // label1
             // 
@@ -160,6 +161,8 @@
             this.Controls.Add(this.label1);
             this.Name = "ManagerEmployeeFunctionalities";
             this.Text = "ManagerEmployeeFunctionalities";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManagerEmployeeFunctionalities_FormClosed);
+            this.Load += new System.EventHandler(this.ManagerEmployeeFunctionalities_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

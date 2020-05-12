@@ -108,7 +108,8 @@ namespace DBapplication
         public static string SelectComAppByMEMPID = "SelectComAppByMEMPID";
         //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApps
         public static string SelectCitAppByMEMPID = "SelectCitAppByMEMPID";
-        //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApps
+        //INPUT: Project ID, Status, M Emp ID - Output: All associated CitApp
+
 
         public static string SelectAllUnits = "SelectAllUnits";
         //INPUT: none - OUTPUT: All available Unit attributes 
@@ -166,8 +167,46 @@ namespace DBapplication
         public static string AlterDependentBirthdate = "AlterDependentBirthdate";
         //INPUT: citizen ID, Dependent Name, Birthdate - OUTPUT: none
 
-        public static string GetAccess = "GetAccess";
-        //INPUT: Entity - OUTPUT: Pass
+        public static string SelectCitizenByID = "SelectCitizenByID";
+        //INPUT: Citizen ID - Output: Everything
+        public static string SelectCompaniesByMEMPID = "SelectCompaniesByMEMPID";
+        //INPUT: M Emp ID - Output: Companies affiliated with his projects
+        public static string SelectProjectByCompanyMEMPID = "SelectProjectByCompanyMEMPID";
+        //INPUT: M Emp ID, Company ID - Output: Projects affiliated to them
+        public static string SelectEmployeesByMEMPID = "SelectEmployeesByMEMPID";
+        //INPUT: M Emp ID - Output: Employees affiliated with his projects
+        public static string SelectProjectByEmployeeMEMPID = "SelectProjectByEmployeeMEMPID";
+        //INPUT: M Emp ID, P or H Employee ID - Output: Projects affiliated to them
+        public static string SelectCompanyTransactionsByMEMPID = "SelectCompanyTransactionsByMEMPID";
+        //INPUT: M Emp ID, Bank name, Company ID - OUTPUT: all transaction attributes
+        public static string SelectCitizenTransactionsByMEMPID = "SelectCitizenTransactionsByMEMPID";
+        //INPUT: M Emp ID, Bank name, Citizen ID - OUTPUT: all transaction attributes
+        public static string GetAllManagers = "GetAllManagers";
+        //INPUT: none - OUTPUT: all M Employees
+        public static string GetAllHousingEmployeesNotInProject = "GetAllHousingEmployeesNotInProject";
+        //INPUT: Project ID - OUTPUT: all H Employees not assigned to the project
+        public static string SelectHousingEmpsByProject = "SelectHousingEmpsByProject";
+        //INPUT: Project ID - OUTPUT: all H Employees assigned to the project
+        public static string SelectProjectByID = "SelectProjectByID";
+        //INPUT: Project ID - OUTPUT: other Project attrbutes
+        public static string GetNumberofComAppsByProject = "GetNumberofComAppsByProject";
+        //INPUT: Project ID - OUTPUT: Number of ComApplications to it
+        public static string GetNumberofCitAppsByProject = "GetNumberofCitAppsByProject";
+        //INPUT: Project ID - OUTPUT:  Number of CitApplications to it
+        public static string AssignHousingEmployee = "AssignHousingEmployee";
+        //INPUT: Project ID, H Emp ID - OUTPUT: Assigns him to project
+        public static string SelectAllUnitsByProject = "SelectAllUnitsByProject";
+        //INPUT: Project ID, Unit Status - OUTPUT: Units associated with this project
+
+        public static string SelectProjectByCompanyID = "SelectProjectByCompanyID";
+        //INPUT: Company ID, Project Status, City - OUTPUT: Project Details
+        public static string AddUnitToProject = "AddUnitToProject";
+        //INPUT: Project ID, Number of Rooms - OUTPUT: Adds ONE unit to the project
+        public static string SelectTransByCompanyID = "SelectTransByCompanyID";
+        //INPUT: Company ID, Bank Name - OUTPUT: All Company Transactions
+        
+
+
 
     }
 }

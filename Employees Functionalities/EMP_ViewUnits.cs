@@ -1,4 +1,5 @@
 ﻿using DBapplication;
+using Housing_Database_Project.Company_Functionalities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,30 +16,44 @@ namespace Housing_Database_Project.Employees_Functionalities
     {
         private Controller controllerObj;
         private int ID;
+        private string Type; //Employee, Project, Company
         private DataTable dt;
-        public EMP_ViewUnits(int id)
+        public EMP_ViewUnits(int id, string type)
         {
             ID = id;
+            Type = type;
             controllerObj = new Controller();
             InitializeComponent();
         }
 
         private void EMP_ViewUnits_Load(object sender, EventArgs e)
         {
-            dt = controllerObj.SelectUnitByHEMPID(ID, "All", -1);
+            if (Type == "Employee")
+            {
+                dt = controllerObj.SelectUnitByHEMPID(ID, "All", -1);
+                comboBox_Project.Items.Add("All");
+                for (int intCount = 0; intCount < dt.Rows.Count; intCount++)
+                {
+                    var val = dt.Rows[intCount]["Project ID"].ToString();
+                    if (!comboBox_Project.Items.Contains(val))
+                    {
+                        comboBox_Project.Items.Add(val);
+                    }
+                }
+            }
+            else
+            {
+                comboBox_Project.Enabled = false;
+                comboBox_Project.Text = Convert.ToString(ID);
+                dt = controllerObj.SelectAllUnitsByProject(ID, "All");
+            }
+
+            if (Type == "Company") button_AddUnits.Visible = true;
 
             dataGridView_Units.DataSource = dt;
             dataGridView_Units.Refresh();
 
-            comboBox_Project.Items.Add("All");
-            for (int intCount = 0; intCount < dt.Rows.Count; intCount++)
-            {
-                var val = dt.Rows[intCount]["Project ID"].ToString();
-                if (!comboBox_Project.Items.Contains(val))
-                {
-                    comboBox_Project.Items.Add(val);
-                }
-            }
+           
         }
 
         private void comboBox_Status_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,7 +64,10 @@ namespace Housing_Database_Project.Employees_Functionalities
             }
             else
             {
-                dt = controllerObj.SelectUnitByHEMPID(ID, (string)comboBox_Status.SelectedItem, Convert.ToInt32(comboBox_Project.SelectedItem));
+                if (Type == "Employee")
+                    dt = controllerObj.SelectUnitByHEMPID(ID, (string)comboBox_Status.SelectedItem, Convert.ToInt32(comboBox_Project.SelectedItem));
+                else
+                    dt = controllerObj.SelectAllUnitsByProject(ID, (string)comboBox_Status.SelectedItem);
             }
             dataGridView_Units.DataSource = dt;
             dataGridView_Units.Refresh();
@@ -67,6 +85,11 @@ namespace Housing_Database_Project.Employees_Functionalities
             }
             dataGridView_Units.DataSource = dt;
             dataGridView_Units.Refresh();
+        }
+
+        private void button_AddUnits_Click(object sender, EventArgs e)
+        {
+            new AddUnits(ID).Show();
         }
     }
 
