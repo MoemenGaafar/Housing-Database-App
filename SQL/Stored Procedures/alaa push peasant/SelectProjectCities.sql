@@ -18,21 +18,15 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE Insert_Company
+CREATE PROCEDURE SelectProjectCities 
 	-- Add the parameters for the stored procedure here
-	@Password varchar(50),  
-	@Name varchar(50), 
-	@NoCompleteProj int, 
-	@NoCurrentProj int,
-	@Rating tinyint, 
-	@AvgProjectCost int 
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	INSERT INTO Company 
-	Values(@Password, @Name, @NoCompleteProj, @NoCurrentProj, @Rating, @AvgProjectCost)
+	SELECT Distinct City From Project
 END
 GO

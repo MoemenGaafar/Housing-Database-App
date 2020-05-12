@@ -19,6 +19,13 @@ namespace Housing_Database_Project.Sign_Up_Forms
         {
             controllerObj = new Controller();
             InitializeComponent();
+            foreach (Control c in Controls)
+                c.Hide();
+            title.Show();
+            L1.Show();
+            button_Back.Show();
+            Verify.Show();
+            Access.Show();
         }
 
         private void checkBox_Devil_CheckedChanged(object sender, EventArgs e)
@@ -40,8 +47,7 @@ namespace Housing_Database_Project.Sign_Up_Forms
 
         private void Btn_SignUp_Click(object sender, EventArgs e)
         {
-            if (TxtBx_Nationalid.Text == "" || textBox_Firstname.Text == "" || textBox_Lastname.Text == "" || textBox_CurrProj.Text == ""
-              || textBox_CompProj.Text == "" || TxtBx_pass.Text == "" || !(radioButton_Male.Checked || radioButton_Female.Checked)
+            if (TxtBx_Nationalid.Text == "" || textBox_Firstname.Text == "" || textBox_Lastname.Text == "" || TxtBx_pass.Text == "" || !(radioButton_Male.Checked || radioButton_Female.Checked)
               || !(radioButton_Manager.Checked || radioButton_Housing.Checked || radioButton_Projects.Checked))
                 MessageBox.Show("Please fill all the required fields!");
             else if (TxtBx_pass.Text != TxtBox_PassAgain.Text)
@@ -58,12 +64,28 @@ namespace Housing_Database_Project.Sign_Up_Forms
                 else type = 'H';
 
                 int r = controllerObj.SignUpEmployee(Convert.ToInt32(TxtBx_Nationalid.Text), TxtBx_pass.Text, textBox_Firstname.Text, textBox_Lastname.Text, sex,
-                   Convert.ToInt32(textBox_CompProj.Text), Convert.ToInt32(textBox_CurrProj.Text), type, dateTimePicker1.Value);
+                    type, dateTimePicker1.Value);
 
                 if (r > 0)
                     MessageBox.Show("Employee Signed Up Successfully!");
                 else
                     MessageBox.Show("Error Encoutered While Signing up...");
+            }
+        }
+
+        private void Verify_Click(object sender, EventArgs e)
+        {
+            string Pass = Convert.ToString(controllerObj.GetAccess("Employee").Rows[0][0]);
+            if (Access.Text != Pass)
+                MessageBox.Show("Incorrect Pass code.");
+            else
+            {
+                foreach (Control c in Controls)
+                    c.Show();
+                L1.Hide();
+                button_Back.Hide();
+                Verify.Hide();
+                Access.Hide();
             }
         }
     }

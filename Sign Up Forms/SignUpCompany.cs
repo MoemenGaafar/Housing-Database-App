@@ -18,6 +18,13 @@ namespace Housing_Database_Project.Sign_Up_Forms
         {
             controllerObj = new Controller();
             InitializeComponent();
+            foreach (Control c in Controls)
+                c.Hide();
+            title.Show();
+            L1.Show();
+            button_Back.Show();
+            Verify.Show();
+            Access.Show();
         }
 
         private void button_Back_Click(object sender, EventArgs e)
@@ -39,21 +46,33 @@ namespace Housing_Database_Project.Sign_Up_Forms
 
         private void Btn_SignUp_Click(object sender, EventArgs e)
         {
-            if (textBox_Name.Text == "" || textBox_Pass.Text == "" || textBox_Rating.Text == "" || textBox_CurrProj.Text == "" || textBox_CompProj.Text == ""
-                || textBox_AvgCost.Text == "")
+            if (textBox_Name.Text == "" || textBox_Pass.Text == "")
                 MessageBox.Show("Please fill all the required fields!");
             else if (textBox_Pass.Text != textBox_PassAgain.Text)
                 MessageBox.Show("Passwords must match!");
-            else if (Convert.ToInt32(textBox_Rating.Text) > 100)
-                MessageBox.Show("Ratings must be between 0 and 100! (not 100 factorial)");
             else
             {
-                int r = controllerObj.SignUpCompany(textBox_Name.Text, textBox_Pass.Text, Convert.ToInt32(textBox_Rating.Text), 
-                    Convert.ToInt32(textBox_CompProj.Text), Convert.ToInt32(textBox_CompProj.Text), Convert.ToInt32(textBox_AvgCost.Text));
+                int r = controllerObj.SignUpCompany(textBox_Name.Text, textBox_Pass.Text);
                 if (r > 0)
                     MessageBox.Show("Company Signed Up Successfully!");
                 else
                     MessageBox.Show("Error Encoutered While Signing up...");
+            }
+        }
+
+        private void Verify_Click(object sender, EventArgs e)
+        {
+            string Pass = Convert.ToString(controllerObj.GetAccess("Company").Rows[0][0]);
+            if (Access.Text != Pass)
+                MessageBox.Show("Incorrect Pass code.");
+            else
+            {
+                foreach (Control c in Controls)
+                    c.Show();
+                L1.Hide();
+                button_Back.Hide();
+                Verify.Hide();
+                Access.Hide();
             }
         }
     }

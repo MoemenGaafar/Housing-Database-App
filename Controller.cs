@@ -199,6 +199,28 @@ namespace DBapplication
             return dbMan.ExecuteReader(StoredProcedureName, null);
         }
 
+        public DataTable SelectProjectCities()
+        {
+            string StoredProcedureName = StoredProcedures.SelectProjectCities;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public DataTable SelectProjectsByCity(string City)
+        {
+            string StoredProcedureName = StoredProcedures.SelectProjectsByCity;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@City", City);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectUnitsByCity(string City)
+        {
+            string StoredProcedureName = StoredProcedures.SelectUnitsByCity;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@City", City);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
         public DataTable SelectUnitsByProject(int PID)
         {
             string StoredProcedureName = StoredProcedures.SelectUnitsByProject;
@@ -221,6 +243,15 @@ namespace DBapplication
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
             Parameters.Add("@Price", Price);
             Parameters.Add("@PID", PID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectUnitsByPriceAndCity(int Price, string City)
+        {
+            string StoredProcedureName = StoredProcedures.SelectUnitsByPriceAndCity;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Price", Price);
+            Parameters.Add("@City", City);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
         }
 
@@ -391,6 +422,15 @@ namespace DBapplication
         }
 
         /////////////////////////////////////// Sign Up Queries /////////////////////////////////////////////
+        
+        public DataTable GetAccess(string Entity)
+        {
+            string StoredProcedureName = StoredProcedures.GetAccess;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Entity", Entity);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+        
         public int SignUpBank(string name, string password, int transfees)
         {
             string StoredProcedureName = StoredProcedures.Insert_Bank;
@@ -401,16 +441,12 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
-        public int SignUpCompany(string name, string password, int rating, int compproj, int currproj, int avgcost)
+        public int SignUpCompany(string name, string password)
         {
             string StoredProcedureName = StoredProcedures.Insert_Company;
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
             Parameters.Add("@Password", password);
             Parameters.Add("@Name", name);
-            Parameters.Add("@NoCompleteProj", compproj);
-            Parameters.Add("@NoCurrentProj", currproj);
-            Parameters.Add("@Rating", rating);
-            Parameters.Add("@AvgProjectCost", avgcost);
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
@@ -432,8 +468,7 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
-        public int SignUpEmployee(int id, string password, string firstname, string lastname, char sex, int compproj,
-             int currproj, char type, DateTime birthdate)
+        public int SignUpEmployee(int id, string password, string firstname, string lastname, char sex, char type, DateTime birthdate)
         {
             string StoredProcedureName = StoredProcedures.Insert_Employee;
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
@@ -444,8 +479,15 @@ namespace DBapplication
             Parameters.Add("@StartDate", birthdate);
             Parameters.Add("@EType", type);
             Parameters.Add("@Sex", sex);
-            Parameters.Add("@NoCompleteProj", compproj);
-            Parameters.Add("@NoCurrentProj", currproj);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int SignUpAdmin(string Name, string password)
+        {
+            string StoredProcedureName = StoredProcedures.Insert_Admin;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", Name);
+            Parameters.Add("@Password", password);
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 

@@ -49,6 +49,10 @@ namespace Housing_Database_Project
             {
                 new SignUpEmployee().Show(this);
             }
+            else if ((string)comboBox_AccType.SelectedItem == "Admin")
+            {
+                new SignUpAdmin().Show(this);
+            }
             comboBox_AccType.SelectedIndex = -1;
         }
     }
