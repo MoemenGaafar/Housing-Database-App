@@ -86,6 +86,7 @@
             this.button_ViewTrans.TabIndex = 30;
             this.button_ViewTrans.Text = "View Transactions";
             this.button_ViewTrans.UseVisualStyleBackColor = true;
+            this.button_ViewTrans.Click += new System.EventHandler(this.button_ViewTrans_Click);
             // 
             // button_ViewApps
             // 
@@ -104,6 +105,7 @@
             this.button_ViewProjs.TabIndex = 28;
             this.button_ViewProjs.Text = "Your Projects";
             this.button_ViewProjs.UseVisualStyleBackColor = true;
+            this.button_ViewProjs.Click += new System.EventHandler(this.button_ViewProjs_Click);
             // 
             // CompanyFunctionalities
             // 

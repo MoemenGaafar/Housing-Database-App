@@ -960,6 +960,65 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
+        /////////////////////////////////////// Company Functionalities ///////////////////////////////////////////
+        public DataTable SelectProjectByCompanyID(int ID, string statusFilter, string cityFilter)
+        {
+            char status;
+            switch (statusFilter)
+            {
+                case "All Units Sold":
+                    {
+                        status = 'F';
+                        break;
+                    }
+                case "Posted":
+                    {
+                        status = 'P';
+                        break;
+                    }
+                case "Started":
+                    {
+                        status = 'S';
+                        break;
+                    }
+                case "Launched":
+                    {
+                        status = 'L';
+                        break;
+                    }
+                default:
+                    {
+                        status = 'A';
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectProjectByCompanyID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", ID);
+            Parameters.Add("@PStatus", status);
+            Parameters.Add("@City", cityFilter);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int AddUnitToProject(int pid, int numRooms)
+        {
+            string StoredProcedureName = StoredProcedures.AddUnitToProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PID", pid);
+            Parameters.Add("@NumRooms", numRooms);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectTransByCompanyID(int ID, string bankName)
+        {
+            string StoredProcedureName = StoredProcedures.SelectTransByCompanyID;
+
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", ID);
+            Parameters.Add("@BankName", bankName);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
         public void TerminateConnection()
         {
             dbMan.CloseConnection();

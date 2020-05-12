@@ -35,6 +35,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button_AddUnits = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Units)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -112,11 +113,23 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "All Units";
             // 
+            // button_AddUnits
+            // 
+            this.button_AddUnits.Location = new System.Drawing.Point(794, 92);
+            this.button_AddUnits.Name = "button_AddUnits";
+            this.button_AddUnits.Size = new System.Drawing.Size(128, 29);
+            this.button_AddUnits.TabIndex = 101;
+            this.button_AddUnits.Text = "Add Units";
+            this.button_AddUnits.UseVisualStyleBackColor = true;
+            this.button_AddUnits.Visible = false;
+            this.button_AddUnits.Click += new System.EventHandler(this.button_AddUnits_Click);
+            // 
             // EMP_ViewUnits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 509);
+            this.Controls.Add(this.button_AddUnits);
             this.Controls.Add(this.dataGridView_Units);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -140,5 +153,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_AddUnits;
     }
 }

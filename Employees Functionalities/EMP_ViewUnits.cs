@@ -1,4 +1,5 @@
 ﻿using DBapplication;
+using Housing_Database_Project.Company_Functionalities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace Housing_Database_Project.Employees_Functionalities
     {
         private Controller controllerObj;
         private int ID;
-        private string Type; //Employee, Project
+        private string Type; //Employee, Project, Company
         private DataTable dt;
         public EMP_ViewUnits(int id, string type)
         {
@@ -46,6 +47,8 @@ namespace Housing_Database_Project.Employees_Functionalities
                 comboBox_Project.Text = Convert.ToString(ID);
                 dt = controllerObj.SelectAllUnitsByProject(ID, "All");
             }
+
+            if (Type == "Company") button_AddUnits.Visible = true;
 
             dataGridView_Units.DataSource = dt;
             dataGridView_Units.Refresh();
@@ -82,6 +85,11 @@ namespace Housing_Database_Project.Employees_Functionalities
             }
             dataGridView_Units.DataSource = dt;
             dataGridView_Units.Refresh();
+        }
+
+        private void button_AddUnits_Click(object sender, EventArgs e)
+        {
+            new AddUnits(ID).Show();
         }
     }
 

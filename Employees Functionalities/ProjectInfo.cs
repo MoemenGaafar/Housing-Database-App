@@ -1,4 +1,5 @@
 ﻿using DBapplication;
+using Housing_Database_Project.Company_Functionalities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -108,6 +109,10 @@ namespace Housing_Database_Project.Employees_Functionalities
                             comboBox_HousingEmps.DisplayMember = "Employee Name";
                             comboBox_HousingEmps.ValueMember = "National ID";
                         }
+                        else if (Type == "Company" || Type == "Admin")
+                        {
+                            button_AddUnits.Visible = true;
+                        }
                         break;
                     }
                 default:
@@ -153,7 +158,7 @@ namespace Housing_Database_Project.Employees_Functionalities
 
         private void button_ViewUnits_Click(object sender, EventArgs e)
         {
-            new EMP_ViewUnits(PID, "Project").Show(this);
+            new EMP_ViewUnits(PID, Type).Show(this);
             this.Hide();
         }
 
@@ -180,6 +185,11 @@ namespace Housing_Database_Project.Employees_Functionalities
             }
             else
                 MessageBox.Show("Please select a housing employee first!");
+        }
+
+        private void button_AddUnits_Click(object sender, EventArgs e)
+        {
+            new AddUnits(PID).Show();
         }
     }
 }

@@ -73,10 +73,16 @@
     <Compile Include="Citizen Functionalities\CitizenPayments.Designer.cs">
       <DependentUpon>CitizenPayments.cs</DependentUpon>
     </Compile>
-    <Compile Include="CompanyFunctionalities.cs">
+    <Compile Include="Company Functionalities\AddUnits.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CompanyFunctionalities.Designer.cs">
+    <Compile Include="Company Functionalities\AddUnits.Designer.cs">
+      <DependentUpon>AddUnits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company Functionalities\CompanyFunctionalities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company Functionalities\CompanyFunctionalities.Designer.cs">
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
     </Compile>
     <Compile Include="DBManager.cs" />
@@ -256,7 +262,10 @@
     <EmbeddedResource Include="Citizen Functionalities\CitizenPayments.resx">
       <DependentUpon>CitizenPayments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CompanyFunctionalities.resx">
+    <EmbeddedResource Include="Company Functionalities\AddUnits.resx">
+      <DependentUpon>AddUnits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company Functionalities\CompanyFunctionalities.resx">
       <DependentUpon>CompanyFunctionalities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employees Functionalities\CitizenInfo.resx">
@@ -333,5 +342,6 @@
       <DependentUpon>ViewTransactions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -187,6 +187,16 @@ namespace DBapplication
         //INPUT: Project ID, H Emp ID - OUTPUT: Assigns him to project
         public static string SelectAllUnitsByProject = "SelectAllUnitsByProject";
         //INPUT: Project ID, Unit Status - OUTPUT: Units associated with this project
+
+        public static string SelectProjectByCompanyID = "SelectProjectByCompanyID";
+        //INPUT: Company ID, Project Status, City - OUTPUT: Project Details
+        public static string AddUnitToProject = "AddUnitToProject";
+        //INPUT: Project ID, Number of Rooms - OUTPUT: Adds ONE unit to the project
+        public static string SelectTransByCompanyID = "SelectTransByCompanyID";
+        //INPUT: Company ID, Bank Name - OUTPUT: All Company Transactions
         
+
+
+
     }
 }

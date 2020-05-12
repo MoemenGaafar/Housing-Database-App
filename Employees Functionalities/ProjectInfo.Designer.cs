@@ -54,6 +54,7 @@
             this.comboBox_ProjectsEmp = new System.Windows.Forms.ComboBox();
             this.textBox_RoomPrice = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.button_AddUnits = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -196,9 +197,9 @@
             // 
             // button_ViewUnits
             // 
-            this.button_ViewUnits.Location = new System.Drawing.Point(373, 245);
+            this.button_ViewUnits.Location = new System.Drawing.Point(395, 245);
             this.button_ViewUnits.Name = "button_ViewUnits";
-            this.button_ViewUnits.Size = new System.Drawing.Size(150, 29);
+            this.button_ViewUnits.Size = new System.Drawing.Size(128, 29);
             this.button_ViewUnits.TabIndex = 89;
             this.button_ViewUnits.Text = "View Units";
             this.button_ViewUnits.UseVisualStyleBackColor = true;
@@ -296,11 +297,23 @@
             this.label7.TabIndex = 98;
             this.label7.Text = "Room Price";
             // 
+            // button_AddUnits
+            // 
+            this.button_AddUnits.Location = new System.Drawing.Point(250, 245);
+            this.button_AddUnits.Name = "button_AddUnits";
+            this.button_AddUnits.Size = new System.Drawing.Size(128, 29);
+            this.button_AddUnits.TabIndex = 100;
+            this.button_AddUnits.Text = "Add Units";
+            this.button_AddUnits.UseVisualStyleBackColor = true;
+            this.button_AddUnits.Visible = false;
+            this.button_AddUnits.Click += new System.EventHandler(this.button_AddUnits_Click);
+            // 
             // ProjectInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 534);
+            this.Controls.Add(this.button_AddUnits);
             this.Controls.Add(this.textBox_RoomPrice);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox_ProjectsEmp);
@@ -363,5 +376,6 @@
         private System.Windows.Forms.ComboBox comboBox_ProjectsEmp;
         private System.Windows.Forms.TextBox textBox_RoomPrice;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button_AddUnits;
     }
 }
