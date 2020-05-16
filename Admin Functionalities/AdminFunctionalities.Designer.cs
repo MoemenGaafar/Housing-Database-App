@@ -82,6 +82,7 @@
             this.Companies.TabIndex = 15;
             this.Companies.Text = "Manage Companies";
             this.Companies.UseVisualStyleBackColor = true;
+            this.Companies.Click += new System.EventHandler(this.Companies_Click);
             // 
             // Password
             // 

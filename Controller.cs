@@ -1501,6 +1501,45 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
+        public DataTable SelectCompanyByID(int CID)
+        {
+            string StoredProcedureName = StoredProcedures.SelectCompanyByID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", CID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int UpdateCompanyRating(int CID, int Rating)
+        {
+            string StoredProcedureName = StoredProcedures.UpdateCompanyRating;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", CID);
+            Parameters.Add("@Rating", Rating);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int UpdateCompany(int CID, string Name, string Password, int NoCompleteProj, int NoCurrentProj, int Rating, int AvgProjectCost)
+        {
+            string StoredProcedureName = StoredProcedures.UpdateCompany;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", CID);
+            Parameters.Add("@Name", Name);
+            Parameters.Add("@Password", Password);
+            Parameters.Add("@NoCompleteProj", NoCompleteProj);
+            Parameters.Add("@NoCurrentProj", NoCurrentProj);
+            Parameters.Add("@AvgProjectCost", AvgProjectCost);
+            Parameters.Add("@Rating", Rating);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int DeleteCompany(int CID)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteCompany;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@CID", CID);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
         public void TerminateConnection()
         {
             dbMan.CloseConnection();

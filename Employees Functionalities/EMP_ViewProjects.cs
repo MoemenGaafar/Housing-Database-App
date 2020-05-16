@@ -205,7 +205,8 @@ namespace Housing_Database_Project.Employees_Functionalities
                     if (found > 0 && found2 > 0)
                     {
                         MessageBox.Show("Status changed Successfully! Starting and/or launching date were set to today. You can Alter them through the Edit button.");
-                        RefreshGrid(); 
+                        RefreshGrid();
+                        newStatus.SelectedIndex = -1;
                     }
                     else
                         MessageBox.Show("Error encoutered. Action aborted");

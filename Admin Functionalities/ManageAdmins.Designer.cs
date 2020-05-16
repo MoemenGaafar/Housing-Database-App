@@ -128,7 +128,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(488, 20);
             this.label4.TabIndex = 9;
-            this.label4.Text = "(Note that by this action, you will not become high admin any longer.)";
+            this.label4.Text = "(Note that by this action, you will not be high admin any longer.)";
             // 
             // Add
             // 

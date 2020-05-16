@@ -172,6 +172,11 @@
             // ComPrice
             // 
             this.ComPrice.Location = new System.Drawing.Point(138, 106);
+            this.ComPrice.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
             this.ComPrice.Name = "ComPrice";
             this.ComPrice.Size = new System.Drawing.Size(120, 26);
             this.ComPrice.TabIndex = 3;

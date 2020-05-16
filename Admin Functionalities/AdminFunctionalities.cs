@@ -91,5 +91,11 @@ namespace Housing_Database_Project
             new Housing_Database_Project.Employees_Functionalities.ViewEmployees(-1).Show(this);
             this.Hide(); 
         }
+
+        private void Companies_Click(object sender, EventArgs e)
+        {
+            new Housing_Database_Project.Employees_Functionalities.ViewCompanies(-1).Show(this);
+            this.Hide(); 
+        }
     }
 }

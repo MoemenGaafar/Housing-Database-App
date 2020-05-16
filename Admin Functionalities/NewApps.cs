@@ -68,62 +68,70 @@ namespace Housing_Database_Project
 
         private void ComAdd_Click(object sender, EventArgs e)
         {
-            if (ComCompany.SelectedIndex == -1 || ComProject.SelectedIndex == -1 || ComPrice.Value > 0)
-                MessageBox.Show("Please fill all required fields first.");
-            DataTable C = controllerObj.CountCitApplicationsbyCitizen(Convert.ToInt32(CitCitizen.Text));
-            int count = Convert.ToInt32(C.Rows[0][0]);
-            if (count >= 3)
-            {
-                bool Choice;
-                using (Force force = new Force())
-                {
-                    force.ShowDialog(this);
-                    Choice = force.choice;
-                }
-                if (Choice == false)
-                    return;
-            }
-            int done = controllerObj.CreateCitApplication(Convert.ToInt32(CitProject.SelectedValue), Convert.ToInt32(CitUnit.SelectedValue), Convert.ToInt32(CitCitizen.SelectedValue));
-            if (done > 0)
-            {
-                MessageBox.Show("Application added successfully. ");
-                ViewApplications f = new ViewApplications(-1);
-                f.Show(this.Owner.Owner);
-                this.Owner.Close();
-                this.Close();
-            }
+            if (ComCompany.SelectedIndex == -1 || ComProject.SelectedIndex == -1 )
+                MessageBox.Show("Please fill all required fields first with appropriate values.");
             else
-                MessageBox.Show("An error occured. Make sure no application to this project way filled for this company before.");
-        }
+            {
+                DataTable C = controllerObj.GetNumberofCompanyApplications(Convert.ToInt32(ComCompany.SelectedValue));
+                int count = Convert.ToInt32(C.Rows[0][0]);
+                if (count >= 3)
+                {
+                    bool Choice;
+                    using (Force force = new Force())
+                    {
+                        force.ShowDialog(this);
+                        Choice = force.choice;
+                    }
+                    if (Choice == false)
+                        return;
+                }
 
+                int done = controllerObj.ApplyToProject(Convert.ToInt32(ComProject.SelectedValue), Convert.ToInt32(ComCompany.SelectedValue), Convert.ToInt32(ComPrice.Value));
+
+                if (done > 0)
+                {
+                    MessageBox.Show("Application added successfully. ");
+                    ViewApplications f = new ViewApplications(-1);
+                    f.Show(this.Owner.Owner);
+                    this.Owner.Close();
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("An error occured. Make sure no application to this project way filled for this company before.");
+
+            }
+        }
         private void CitAdd_Click(object sender, EventArgs e)
         {
             if (CitCitizen.SelectedIndex == -1 || CitUnit.SelectedIndex == -1 || CitProject.SelectedIndex == -1)
-                MessageBox.Show("Please fill all required fields first."); 
-            DataTable C = controllerObj.CountCitApplicationsbyCitizen(Convert.ToInt32(CitCitizen.Text));
-            int count = Convert.ToInt32(C.Rows[0][0]);
-            if (count >= 3)
-            {
-                bool Choice; 
-                using (Force force = new Force())
-                {
-                    force.ShowDialog(this);
-                    Choice = force.choice;
-                }
-                if (Choice == false)
-                    return; 
-            }
-            int done = controllerObj.CreateCitApplication(Convert.ToInt32(CitProject.SelectedValue), Convert.ToInt32(CitUnit.SelectedValue), Convert.ToInt32(CitCitizen.SelectedValue));
-            if (done > 0)
-            {
-                MessageBox.Show("Application added successfully..");
-                ViewApplications f = new ViewApplications(-1);
-                f.Show(this.Owner.Owner);
-                this.Owner.Close(); 
-                this.Close(); 
-            }
+                MessageBox.Show("Please fill all required fields first.");
             else
-                MessageBox.Show("An error occured. Make sure no other application to this unit is filled for this citizen.");
+            {
+                DataTable C = controllerObj.CountCitApplicationsbyCitizen(Convert.ToInt32(CitCitizen.Text));
+                int count = Convert.ToInt32(C.Rows[0][0]);
+                if (count >= 3)
+                {
+                    bool Choice;
+                    using (Force force = new Force())
+                    {
+                        force.ShowDialog(this);
+                        Choice = force.choice;
+                    }
+                    if (Choice == false)
+                        return;
+                }
+                int done = controllerObj.CreateCitApplication(Convert.ToInt32(CitProject.SelectedValue), Convert.ToInt32(CitUnit.SelectedValue), Convert.ToInt32(CitCitizen.SelectedValue));
+                if (done > 0)
+                {
+                    MessageBox.Show("Application added successfully..");
+                    ViewApplications f = new ViewApplications(-1);
+                    f.Show(this.Owner.Owner);
+                    this.Owner.Close();
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("An error occured. Make sure no other application to this unit is filled for this citizen.");
+            }
         }
     }
 }

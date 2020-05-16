@@ -156,6 +156,7 @@ namespace Housing_Database_Project.Employees_Functionalities
                 textBox_Company.DataSource = dc;
                 textBox_Company.DisplayMember = "Name";
                 textBox_Company.ValueMember = "CID";
+                button_Launch.Visible = false; 
 
             }
         }

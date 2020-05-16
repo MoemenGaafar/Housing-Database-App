@@ -41,6 +41,19 @@
             this.Verify = new System.Windows.Forms.Button();
             this.L1 = new System.Windows.Forms.Label();
             this.Access = new System.Windows.Forms.TextBox();
+            this.Complete = new System.Windows.Forms.NumericUpDown();
+            this.Current = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Save = new System.Windows.Forms.Button();
+            this.Cost = new System.Windows.Forms.NumericUpDown();
+            this.Rating = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.Complete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Current)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cost)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rating)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Back
@@ -108,7 +121,7 @@
             // checkBox_Devil
             // 
             this.checkBox_Devil.AutoSize = true;
-            this.checkBox_Devil.Location = new System.Drawing.Point(22, 257);
+            this.checkBox_Devil.Location = new System.Drawing.Point(24, 303);
             this.checkBox_Devil.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox_Devil.Name = "checkBox_Devil";
             this.checkBox_Devil.Size = new System.Drawing.Size(567, 24);
@@ -129,7 +142,7 @@
             // Btn_SignUp
             // 
             this.Btn_SignUp.Enabled = false;
-            this.Btn_SignUp.Location = new System.Drawing.Point(245, 303);
+            this.Btn_SignUp.Location = new System.Drawing.Point(247, 349);
             this.Btn_SignUp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Btn_SignUp.Name = "Btn_SignUp";
             this.Btn_SignUp.Size = new System.Drawing.Size(112, 35);
@@ -181,13 +194,107 @@
             this.Access.Size = new System.Drawing.Size(148, 26);
             this.Access.TabIndex = 73;
             // 
+            // Complete
+            // 
+            this.Complete.Location = new System.Drawing.Point(203, 270);
+            this.Complete.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.Complete.Name = "Complete";
+            this.Complete.Size = new System.Drawing.Size(120, 26);
+            this.Complete.TabIndex = 89;
+            // 
+            // Current
+            // 
+            this.Current.Location = new System.Drawing.Point(188, 231);
+            this.Current.Name = "Current";
+            this.Current.Size = new System.Drawing.Size(120, 26);
+            this.Current.TabIndex = 88;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 270);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 20);
+            this.label3.TabIndex = 87;
+            this.label3.Text = "Complete Projects Count";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 231);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 20);
+            this.label2.TabIndex = 86;
+            this.label2.Text = "Current Projects Count";
+            // 
+            // Save
+            // 
+            this.Save.Location = new System.Drawing.Point(462, 349);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(106, 35);
+            this.Save.TabIndex = 90;
+            this.Save.Text = "Save Changes";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Visible = false;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
+            // 
+            // Cost
+            // 
+            this.Cost.Location = new System.Drawing.Point(482, 270);
+            this.Cost.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.Cost.Name = "Cost";
+            this.Cost.Size = new System.Drawing.Size(120, 26);
+            this.Cost.TabIndex = 94;
+            // 
+            // Rating
+            // 
+            this.Rating.Location = new System.Drawing.Point(467, 231);
+            this.Rating.Name = "Rating";
+            this.Rating.Size = new System.Drawing.Size(120, 26);
+            this.Rating.TabIndex = 93;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(336, 272);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 20);
+            this.label1.TabIndex = 92;
+            this.label1.Text = "Average Proj. Cost";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(405, 233);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 20);
+            this.label4.TabIndex = 91;
+            this.label4.Text = "Rating";
+            // 
             // SignUpCompany
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(633, 347);
+            this.ClientSize = new System.Drawing.Size(633, 396);
+            this.Controls.Add(this.Cost);
+            this.Controls.Add(this.Rating);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Save);
+            this.Controls.Add(this.Complete);
+            this.Controls.Add(this.Current);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Verify);
             this.Controls.Add(this.L1);
             this.Controls.Add(this.Access);
@@ -205,6 +312,10 @@
             this.Name = "SignUpCompany";
             this.Text = "SignUpCompany";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SignUpCompany_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.Complete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Current)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cost)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rating)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,5 +336,14 @@
         private System.Windows.Forms.Button Verify;
         private System.Windows.Forms.Label L1;
         private System.Windows.Forms.TextBox Access;
+        private System.Windows.Forms.NumericUpDown Complete;
+        private System.Windows.Forms.NumericUpDown Current;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Save;
+        private System.Windows.Forms.NumericUpDown Cost;
+        private System.Windows.Forms.NumericUpDown Rating;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
     }
 }

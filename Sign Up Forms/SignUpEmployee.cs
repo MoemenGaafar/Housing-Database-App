@@ -59,6 +59,7 @@ namespace Housing_Database_Project.Sign_Up_Forms
             TxtBox_PassAgain.Hide();
             checkBox_Devil.Hide();
             Save.Visible = true;
+            TxtBx_pass.PasswordChar = '\0'; 
 
             DataTable dt = controllerObj.SelectEmployeeByID(ID);
             TxtBx_Nationalid.Text = Convert.ToString(dt.Rows[0]["National ID"]);
@@ -114,8 +115,20 @@ namespace Housing_Database_Project.Sign_Up_Forms
                 else if (radioButton_Projects.Checked) type = 'P';
                 else type = 'H';
 
+                int cm, cr; 
+                if (Admin)
+                {
+                    cm = Convert.ToInt32(Complete.Value);
+                    cr = Convert.ToInt32(Current.Value); 
+                }
+                else
+                {
+                    cm = 0;
+                    cr = 0; 
+                }
+
                 int r = controllerObj.SignUpEmployee(Convert.ToInt32(TxtBx_Nationalid.Text), TxtBx_pass.Text, textBox_Firstname.Text, textBox_Lastname.Text, sex,
-                    type, dateTimePicker1.Value, 0, 0);
+                    type, dateTimePicker1.Value, cm, cr);
 
                 if (r > 0)
                 {

@@ -301,6 +301,16 @@ namespace DBapplication
         //INPUT: Project ID - OUTPUT: Change Project Status from Started to Launched
         public static string GetNumberofCompanyApplications = "GetNumberofCompanyApplications";
         //INPUT: Company ID - OUTPUT: Number of ComApplications associated to it
-        
+
+        public static string SelectCompanyByID = "SelectCompanyByID";
+        //INPUT: Company ID - OUTPUT: All Company attributes
+        public static string UpdateCompanyRating = "UpdateCompanyRating";
+        //INPUT: Company ID, new rating - OUTPUT: none
+        public static string UpdateCompany = "UpdateCompany";
+        //INPUT: Company ID, all new attributes - OUTPUT: none
+        public static string DeleteCompany = "DeleteCompany";
+        //INPUT: Company ID - OUTPUT: none
+
+
     }
 }
