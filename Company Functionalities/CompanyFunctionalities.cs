@@ -1,4 +1,5 @@
-﻿using Housing_Database_Project.Employees_Functionalities;
+﻿using Housing_Database_Project.Company_Functionalities;
+using Housing_Database_Project.Employees_Functionalities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,6 +49,23 @@ namespace Housing_Database_Project
         {
             new EMP_ViewTrans(ID, "Company").Show(this);
             this.Hide();
+        }
+
+        private void button_ViewApps_Click(object sender, EventArgs e)
+        {
+            new EMP_ViewApps(ID, "Company").Show(this);
+            this.Hide();
+        }
+
+        private void button_ApplyProjs_Click(object sender, EventArgs e)
+        {
+            new ApplyToProjects(ID).Show(this);
+            this.Hide();
+        }
+
+        private void CompanyFunctionalities_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

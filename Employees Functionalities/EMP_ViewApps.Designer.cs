@@ -37,7 +37,6 @@
             this.label_Title = new System.Windows.Forms.Label();
             this.button_Accept = new System.Windows.Forms.Button();
             this.button_Reject = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.button_ViewCit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Apps)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -138,15 +137,6 @@
             this.button_Reject.UseVisualStyleBackColor = true;
             this.button_Reject.Click += new System.EventHandler(this.button_Reject_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(352, 156);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(317, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "W: Waiting - A: Accepted - R: Rejected - D: Done";
-            // 
             // button_ViewCit
             // 
             this.button_ViewCit.Location = new System.Drawing.Point(835, 37);
@@ -164,7 +154,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 509);
             this.Controls.Add(this.button_ViewCit);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.button_Reject);
             this.Controls.Add(this.button_Accept);
             this.Controls.Add(this.dataGridView_Apps);
@@ -193,7 +182,6 @@
         private System.Windows.Forms.Label label_Title;
         private System.Windows.Forms.Button button_Accept;
         private System.Windows.Forms.Button button_Reject;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button_ViewCit;
     }
 }

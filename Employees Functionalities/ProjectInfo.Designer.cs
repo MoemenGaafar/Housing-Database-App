@@ -57,6 +57,7 @@
             this.textBox_RoomPrice = new System.Windows.Forms.NumericUpDown();
             this.textBox_Company = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.textBox_RoomPrice)).BeginInit();
+            this.button_Launch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -338,10 +339,23 @@
             this.textBox_Company.TabIndex = 103;
             this.textBox_Company.Visible = false;
             // 
+            // button_Launch
+            // 
+            this.button_Launch.Location = new System.Drawing.Point(395, 172);
+            this.button_Launch.Name = "button_Launch";
+            this.button_Launch.Size = new System.Drawing.Size(128, 29);
+            this.button_Launch.TabIndex = 101;
+            this.button_Launch.Text = "Launch";
+            this.button_Launch.UseVisualStyleBackColor = true;
+            this.button_Launch.Visible = false;
+            this.button_Launch.Click += new System.EventHandler(this.button_Launch_Click);
+            // 
             // ProjectInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(563, 534);
+            this.Controls.Add(this.button_Launch);
             this.ClientSize = new System.Drawing.Size(633, 668);
             this.Controls.Add(this.textBox_Company);
             this.Controls.Add(this.textBox_RoomPrice);
@@ -411,5 +425,6 @@
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.NumericUpDown textBox_RoomPrice;
         private System.Windows.Forms.ComboBox textBox_Company;
+        private System.Windows.Forms.Button button_Launch;
     }
 }

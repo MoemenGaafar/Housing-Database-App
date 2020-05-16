@@ -67,6 +67,7 @@
             this.button_ApplyProjs.TabIndex = 33;
             this.button_ApplyProjs.Text = "Apply to Projects";
             this.button_ApplyProjs.UseVisualStyleBackColor = true;
+            this.button_ApplyProjs.Click += new System.EventHandler(this.button_ApplyProjs_Click);
             // 
             // button_ChangePass
             // 
@@ -96,6 +97,7 @@
             this.button_ViewApps.TabIndex = 29;
             this.button_ViewApps.Text = "View Applications";
             this.button_ViewApps.UseVisualStyleBackColor = true;
+            this.button_ViewApps.Click += new System.EventHandler(this.button_ViewApps_Click);
             // 
             // button_ViewProjs
             // 
@@ -124,6 +126,7 @@
             this.Name = "CompanyFunctionalities";
             this.Text = "CompanyFunctionalities";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CompanyFunctionalities_FormClosed);
+            this.Load += new System.EventHandler(this.CompanyFunctionalities_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
