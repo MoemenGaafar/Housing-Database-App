@@ -52,7 +52,7 @@ namespace Housing_Database_Project.Sign_Up_Forms
                 MessageBox.Show("Passwords must match!");
             else
             {
-                int r = controllerObj.SignUpCompany(textBox_Name.Text, textBox_Pass.Text);
+                int r = controllerObj.SignUpCompany(textBox_Name.Text, textBox_Pass.Text, 0, 0, 0 , 0);
                 if (r > 0)
                     MessageBox.Show("Company Signed Up Successfully!");
                 else

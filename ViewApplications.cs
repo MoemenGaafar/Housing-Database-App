@@ -15,13 +15,28 @@ namespace Housing_Database_Project
     public partial class ViewApplications : Form
     {
         private Controller controllerObj;
-        private int ID;
+        private int ID; // -1 if admin, EID if employee
         private DataTable dt;
         public ViewApplications(int id)
         {
             ID = id;
             controllerObj = new Controller();
             InitializeComponent();
+            if (ID == -1)
+            {
+                button_ViewCit.Hide();
+                label6.Visible = true;
+                ChangePrice.Visible = true;
+                ConfirmPrice.Visible = true;
+            }
+            else
+            {
+                Delete.Hide();
+                Add.Hide();
+                ConfirmStatus.Hide();
+                label5.Hide();
+                ChangeStatus.Hide();
+            }
         }
 
         private void ViewApplications_Load(object sender, EventArgs e)
@@ -75,7 +90,22 @@ namespace Housing_Database_Project
         {
             comboBox_Status.SelectedIndex = 0;
             comboBox_ProjectID.SelectedIndex = 0;
-            if (comboBox_From.SelectedIndex == 1) button_ViewCit.Enabled = true;
+            if (comboBox_From.SelectedIndex == 1)
+            {
+                button_ViewCit.Enabled = true;
+                label6.Visible = false;
+                ChangePrice.Visible = false;
+                ConfirmPrice.Visible = false;
+            }
+            else
+            {
+                if (ID == -1)
+                {
+                    label6.Visible = true;
+                    ChangePrice.Visible = true;
+                    ConfirmPrice.Visible = true;
+                }
+            }
 
             if ((string)comboBox_ProjectID.SelectedItem == "All")
             {
@@ -116,5 +146,138 @@ namespace Housing_Database_Project
             if (e.CloseReason == CloseReason.UserClosing)
                 Owner.Show();
         }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+            new NewApps().Show(this);
+            this.Hide(); 
+        }
+
+        private void ConfirmStatus_Click(object sender, EventArgs e)
+        {
+            if (ChangeStatus.SelectedIndex == -1)
+                MessageBox.Show("Please select a valid new status");
+            else if (dataGridView_Apps.SelectedRows.Count != 1)
+                MessageBox.Show("Please select one row to perform action on.");
+            else
+            {
+                int p = -1;
+                if (comboBox_ProjectID.Text != "All")
+                    p = Convert.ToInt32(comboBox_ProjectID.Text);
+
+                char status = 'W';
+                if (ChangeStatus.SelectedIndex == 0)
+                    status = 'W'; 
+                else if (ChangeStatus.SelectedIndex == 1)
+                    status = 'A';
+                else if (ChangeStatus.SelectedIndex == 2)
+                    status = 'R';
+                else if (ChangeStatus.SelectedIndex == 3)
+                    status = 'D';
+
+                
+                if (comboBox_From.SelectedIndex == 1)
+                {
+                    int done = controllerObj.ChangeCitApplicationStatus(Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Project ID"].Value), Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Unit Number"].Value), Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Citizen National ID"].Value), status);
+                    if (done > 0)
+                    {
+                        MessageBox.Show("Status Changes successfully.");
+                        dt = controllerObj.SelectAppByMEMPID(ID, comboBox_Status.Text, p, "Citizen"); 
+                        dataGridView_Apps.DataSource = dt;
+                        dataGridView_Apps.Refresh();
+                    }
+                    else
+                        MessageBox.Show("An error occured.");
+                }
+                else if (comboBox_From.SelectedIndex == 0)
+                {
+                    int done = controllerObj.ChangeComApplicationStatus(Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Project ID"].Value), Convert.ToString(dataGridView_Apps.SelectedRows[0].Cells["Company Name"].Value), status);
+                    if (done > 0)
+                    {
+                        MessageBox.Show("Status Changes successfully.");
+                        dt = controllerObj.SelectAppByMEMPID(ID, comboBox_Status.Text, p, "Company"); 
+                        dataGridView_Apps.DataSource = dt;
+                        dataGridView_Apps.Refresh();
+                    }
+                    else
+                        MessageBox.Show("An error occured.");
+                }
+            }
+
+
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Apps.SelectedRows.Count != 1)
+                MessageBox.Show("Please select one row to perform action on.");
+            else
+            {
+                int p = -1;
+                if (comboBox_ProjectID.Text != "All")
+                    p = Convert.ToInt32(comboBox_ProjectID.Text); 
+
+                if (comboBox_From.SelectedIndex == 1)
+                {
+                    int done = controllerObj.DeleteCitApplication(Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Citizen National ID"].Value), Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Project ID"].Value), Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Unit Number"].Value));
+                    if (done > 0)
+                    {
+                        MessageBox.Show("Application deleted successfully.");
+                        dt = controllerObj.SelectAppByMEMPID(ID, comboBox_Status.Text, p, "Citizen"); 
+                        dataGridView_Apps.DataSource = dt;
+                        dataGridView_Apps.Refresh();
+                    }
+                    else
+                        MessageBox.Show("An error occured.");
+                }
+                else if (comboBox_From.SelectedIndex == 0)
+                {
+                    int done = controllerObj.DeleteComApplication(Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Project ID"].Value), Convert.ToString(dataGridView_Apps.SelectedRows[0].Cells["Company Name"].Value));
+                    if (done > 0)
+                    {
+                        MessageBox.Show("Application deleted successfully.");
+                        dt = controllerObj.SelectAppByMEMPID(ID, comboBox_Status.Text, p, "Company"); 
+                        dataGridView_Apps.DataSource = dt;
+                        dataGridView_Apps.Refresh();
+                    }
+                    else
+                        MessageBox.Show("An error occured.");
+                }
+            }
+        }
+
+        private void ConfirmPrice_Click(object sender, EventArgs e)
+        {
+            if (ChangePrice.Value <= 0)
+                MessageBox.Show("Please select a valid bidding price");
+            else
+            {
+                if (dataGridView_Apps.SelectedRows.Count != 1)
+                    MessageBox.Show("Please select one row to perform action on.");
+                else
+                {
+                    int p = -1;
+                    if (comboBox_ProjectID.Text != "All")
+                        p = Convert.ToInt32(comboBox_ProjectID.Text);
+                    int done = controllerObj.ChangeBiddingPrice(Convert.ToInt32(dataGridView_Apps.SelectedRows[0].Cells["Project ID"].Value), Convert.ToString(dataGridView_Apps.SelectedRows[0].Cells["Company Name"].Value), Convert.ToInt32(ChangePrice.Value));
+                    if (done > 0)
+                    {
+                        MessageBox.Show("Bidding Price Changed Successfully.");
+                        dt = controllerObj.SelectAppByMEMPID(ID, comboBox_Status.Text, p, "Company");
+                        dataGridView_Apps.DataSource = dt;
+                        dataGridView_Apps.Refresh();
+                    }
+                    else
+                        MessageBox.Show("An error occured.");
+
+
+
+
+                }
+
+            }
+        }
+
+       
     }
 }

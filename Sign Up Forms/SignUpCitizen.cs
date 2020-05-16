@@ -14,8 +14,10 @@ namespace Housing_Database_Project.Sign_Up_Forms
     public partial class SignUpCitizen : Form
     {
         private Controller controllerObj;
-        public SignUpCitizen()
+        public bool Admin = false; 
+        public SignUpCitizen(bool a = false)
         {
+            Admin = a; 
             controllerObj = new Controller();
             InitializeComponent();
             
@@ -41,6 +43,7 @@ namespace Housing_Database_Project.Sign_Up_Forms
         {
                 if (e.CloseReason == CloseReason.UserClosing)
                     Owner.Show();
+                
         }
 
         private void Btn_SignUp_Click(object sender, EventArgs e)
@@ -64,8 +67,16 @@ namespace Housing_Database_Project.Sign_Up_Forms
                 int r = controllerObj.SignUpCitizen(Convert.ToInt32(TxtBx_Nationalid.Text), TxtBx_pass.Text, textBox_Firstname.Text, textBox_Lastname.Text, sex,
                    Convert.ToInt32(textBox_Salary.Text), ownsOther, textBox_City.Text, dateTimePicker1.Value, Convert.ToInt32(textBox_PriceAccom.Text));
 
-                if (r > 0) 
+                if (r > 0)
+                {
                     MessageBox.Show("Citizen Signed Up Successfully!");
+                    if (Admin)
+                    {
+                        new ViewCitizens().Show(this.Owner.Owner);
+                        this.Owner.Close();
+                        this.Close(); 
+                    }
+                }
                 else
                     MessageBox.Show("Error Encoutered While Signing up...");
             }

@@ -64,6 +64,8 @@ namespace DBapplication
         public static string SelectCitizenBankTransactions = "SelectCitizenBankTransactions";
         //INPUT: Bank name and Citizen ID- Output: all ComTransaction attributes
 
+        public static string SelectProjectAdmin = "SelectProjectAdmin";
+        //INPUT:city, status  - OUTPUT: All Projects
         public static string SelectProjectByPEMPID = "SelectProjectByPEMPID";
         //INPUT: P Employee National ID, Filters - OUTPUT: All Projects assigned to him
         public static string SelectComAppByPEMPID = "SelectComAppByPEMPID";
@@ -207,7 +209,83 @@ namespace DBapplication
         //INPUT: Project ID, Number of Rooms - OUTPUT: Adds ONE unit to the project
         public static string SelectTransByCompanyID = "SelectTransByCompanyID";
         //INPUT: Company ID, Bank Name - OUTPUT: All Company Transactions
-        
+
+        public static string DeleteCitTransaction = "DeleteCitTransaction";
+        //INPUT: transaction's ID - OUTPUT: none 
+        public static string DeleteComTransaction = "DeleteComTransaction";
+        //INPUT: transaction's ID - OUTPUT: none 
+        public static string GetCitTransaction = "GetCitTransaction";
+        //INPUT: transaction's ID - OUTPUT: all transaction attributes 
+        public static string GetComTransaction = "GetComTransaction";
+        //INPUT: transaction's ID - OUTPUT: all transaction attributes 
+        public static string EditCitTransaction = "EditCitTransaction";
+        //INPUT: transaction's ID - OUTPUT: all transaction attributes 
+        public static string EditComTransaction = "EditComTransaction";
+        //INPUT: transaction's ID - OUTPUT: all transaction attributes 
+        public static string GetAccessTable = "GetAccessTable";
+        //INPUT: none - OUTPUT: all access table 
+        public static string EditAccess = "EditAccess";
+        //INPUT: none - OUTPUT: all access table 
+        public static string IsHighAdmin = "IsHighAdmin";
+        //INPUT: admin username - OUTPUT: 0 or 1 if it's high admin
+        public static string SelectAdmins = "SelectAdmins";
+        //INPUT: none - OUTPUT: admin attributes
+        public static string AddAdmin = "AddAdmin";
+        //INPUT: admin attributes - OUTPUT: none
+        public static string DeleteAdmin = "DeleteAdmin";
+        //INPUT: admin username- OUTPUT: none
+        public static string ChangeAdminPassword = "ChangeAdminPassword";
+        //INPUT: admin username and new password - OUTPUT: none
+        public static string MakeHighAdmin = "MakeHighAdmin";
+        //INPUT: admin username  - OUTPUT: none
+        public static string GetAllCitizens = "GetAllCitizens";
+        //INPUT: none  - OUTPUT: all citizen attributes
+        public static string DeleteComApplication = "DeleteComApplication";
+        //INPUT: project ID, Company ID  - OUTPUT: all citizen attributes
+
+        public static string DeleteProject = "DeleteProject";
+        //INPUT: project ID  - OUTPUT: none
+        public static string ChangeProjectStatus = "ChangeProjectStatus";
+        //INPUT: project ID, new status  - OUTPUT: none
+        public static string AssignCompany = "AssignCompany";
+        //INPUT: project ID, company ID  - OUTPUT: none
+        public static string UpdateProject = "UpdateProject";
+        //INPUT: all project attributes except status  - OUTPUT: none
+        public static string DeleteUnit = "DeleteUnit";
+        //INPUT: project ID, Unit ID  - OUTPUT: none
+        public static string UnsellUnit = "UnsellUnit";
+        //INPUT: project ID, Unit ID  - OUTPUT: none
+        public static string SelectAllManagerEmployees = "SelectAllManagerEmployees";
+        //INPUT: none  - OUTPUT: all employee attributes
+        public static string SelectAllHousingEmployees = "SelectAllHousingEmployees";
+        //INPUT: none  - OUTPUT: all employee attributes
+        public static string SelectAllProjectsEmployees = "SelectAllProjectsEmployees";
+        //INPUT: none  - OUTPUT: all employee attributes
+
+        public static string ChangeBiddingPrice = "ChangeBiddingPrice";
+        //INPUT: project ID, company ID  - OUTPUT: none
+        public static string DeleteCitizen = "DeleteCitizen";
+        //INPUT: Citizen ID  - OUTPUT: none
+        public static string UpdateCitizen = "UpdateCitizen";
+        //INPUT: Citizen ID, all new attributes  - OUTPUT: none
+
+        public static string GetAllBanks = "GetAllBanks";
+        //INPUT: none  - OUTPUT: all bank attributes
+        public static string SelectBankByName = "SelectBankByName";
+        //INPUT: none  - OUTPUT: all bank attributes
+        public static string UpdateBank = "UpdateBank";
+        //INPUT: bank name and new attributes  - OUTPUT: none
+        public static string DeleteBank = "DeleteBank";
+        //INPUT: bank name - OUTPUT: none
+
+        public static string SelectEmployeeByID = "SelectEmployeeByID";
+        //INPUT: none  - OUTPUT: all employee attributes
+        public static string UpdateEmployee = "UpdateEmployee";
+        //INPUT: employee ID and new attributes  - OUTPUT: none
+        public static string DeleteEmployee = "DeleteEmployee";
+        //INPUT: bank name - OUTPUT: none
+
+
 
 
 

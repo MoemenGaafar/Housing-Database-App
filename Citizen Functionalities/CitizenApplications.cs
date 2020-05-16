@@ -35,6 +35,9 @@ namespace Housing_Database_Project
             ProjectAccept.ValueMember = "ProjectID";
             UnitAccept.ValueMember = "UnitID";
 
+            DataTable C = controllerObj.SelectCitizenByID(ID); 
+            CitizenID.Text = Convert.ToString(C.Rows[0]["First Name"]) + Convert.ToString(C.Rows[0]["Last Name"]);
+
         }
 
         private void CitizenApplications_Load(object sender, EventArgs e)
@@ -109,6 +112,16 @@ namespace Housing_Database_Project
 
                     ProjectAccept.ValueMember = "ProjectID";
                     UnitAccept.ValueMember = "UnitID";
+
+                    DataTable A1 = controllerObj.GetCitApplicationsByCitizen(ID);
+
+                    dataGridView1.DataSource = A1;
+
+                    ProjectDelete.DataSource = A1;
+                    UnitDelete.DataSource = A1;
+
+                    ProjectDelete.ValueMember = "ProjectID";
+                    UnitDelete.ValueMember = "UnitID";
                 }
                 else
                     MessageBox.Show("Error Occurred! Action aborted.");

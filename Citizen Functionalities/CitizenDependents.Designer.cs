@@ -62,6 +62,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.BirthdateNew = new System.Windows.Forms.DateTimePicker();
+            this.CitizenID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,9 +79,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 20);
+            this.label1.Size = new System.Drawing.Size(135, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Dependents:";
             // 
@@ -367,6 +369,15 @@
             this.BirthdateNew.Size = new System.Drawing.Size(270, 26);
             this.BirthdateNew.TabIndex = 33;
             // 
+            // CitizenID
+            // 
+            this.CitizenID.AutoSize = true;
+            this.CitizenID.Location = new System.Drawing.Point(162, 13);
+            this.CitizenID.Name = "CitizenID";
+            this.CitizenID.Size = new System.Drawing.Size(13, 20);
+            this.CitizenID.TabIndex = 34;
+            this.CitizenID.Text = " ";
+            // 
             // CitizenDependents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -374,6 +385,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(966, 574);
+            this.Controls.Add(this.CitizenID);
             this.Controls.Add(this.BirthdateNew);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.Confirm3);
@@ -454,5 +466,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DateTimePicker BirthdateNew;
+        private System.Windows.Forms.Label CitizenID;
     }
 }

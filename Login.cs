@@ -98,7 +98,8 @@ namespace Housing_Database_Project
                     found = controllerObj.CheckPassword_Admin(TxtBx_username.Text, TxtBx_pass.Text);
                     if (found != null)
                     {
-                        AdminFunctionalities AF = new AdminFunctionalities();
+                        int isHigh = Convert.ToInt32(controllerObj.IsHighAdmin(TxtBx_username.Text).Rows[0][0]); 
+                        AdminFunctionalities AF = new AdminFunctionalities(isHigh);
                         AF.Show(this);
                         this.Hide();
                     }

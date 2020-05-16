@@ -43,6 +43,7 @@
             this.L1 = new System.Windows.Forms.Label();
             this.Access = new System.Windows.Forms.TextBox();
             this.Verify = new System.Windows.Forms.Button();
+            this.Save = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Back
@@ -205,6 +206,17 @@
             this.Verify.UseVisualStyleBackColor = true;
             this.Verify.Click += new System.EventHandler(this.Verify_Click);
             // 
+            // Save
+            // 
+            this.Save.Location = new System.Drawing.Point(408, 300);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(106, 35);
+            this.Save.TabIndex = 70;
+            this.Save.Text = "Save Changes";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Visible = false;
+            this.Save.Click += new System.EventHandler(this.Save_Click_1);
+            // 
             // SignUpBank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -212,6 +224,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(676, 347);
+            this.Controls.Add(this.Save);
             this.Controls.Add(this.Verify);
             this.Controls.Add(this.L1);
             this.Controls.Add(this.Access);
@@ -253,5 +266,6 @@
         private System.Windows.Forms.Label L1;
         private System.Windows.Forms.TextBox Access;
         private System.Windows.Forms.Button Verify;
+        private System.Windows.Forms.Button Save;
     }
 }

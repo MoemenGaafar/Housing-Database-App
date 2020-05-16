@@ -13,7 +13,7 @@ namespace Housing_Database_Project.Employees_Functionalities
 {
     public partial class ViewEmployees : Form
     {
-        private int ID;
+        private int ID; //Manger ID or -1 if Admin
         private Controller controllerObj;
         private DataTable dt;
         public ViewEmployees(int id)
@@ -26,14 +26,33 @@ namespace Housing_Database_Project.Employees_Functionalities
         private void ViewEmployees_Load(object sender, EventArgs e)
         {
             if (ID == -1) //Admin
+            {
                 dt = controllerObj.GetAllEmployees();
+                Add.Visible = true;
+                Delete.Visible = true; 
+            }
             else
             {
                 label_Title.Text = "Your Employees";
                 dt = controllerObj.SelectEmployeesByMEMPID(ID);
+                Info.Hide();
             }
             dataGridView_Employees.DataSource = dt;
             dataGridView_Employees.Refresh();
+            EmployeeName.DataSource = dt;
+            EmployeeName.DisplayMember = "Name";
+            EmployeeName.ValueMember = "National ID"; 
+
+        }
+
+        private void RefreshGrid()
+        {
+            DataTable C;
+            C = controllerObj.GetAllEmployees();
+            dataGridView_Employees.DataSource = C;
+            EmployeeName.DataSource = C;
+            EmployeeName.DisplayMember = "Name";
+            EmployeeName.ValueMember = "National ID";
         }
 
         private void button_ViewProjs_Click(object sender, EventArgs e)
@@ -79,6 +98,41 @@ namespace Housing_Database_Project.Employees_Functionalities
         {
             if (e.CloseReason == CloseReason.UserClosing)
                 Owner.Show();
+        }
+        
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Employees.SelectedRows.Count != 1)
+                MessageBox.Show("Please select one row to perform action on.");
+            else
+            {
+                int done = controllerObj.DeleteEmployee(Convert.ToInt32(dataGridView_Employees.SelectedRows[0].Cells["National ID"].Value));
+                if (done > 0)
+                {
+                    MessageBox.Show("Employee deleted successfully.");     
+                    RefreshGrid();           
+                }
+                else
+                    MessageBox.Show("An error occured.");
+            }
+        }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+            new Housing_Database_Project.Sign_Up_Forms.SignUpEmployee(true).Show(this);
+            this.Hide(); 
+        }
+
+        private void Info_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Employees.SelectedRows.Count != 1)
+                MessageBox.Show("Please select one row to perform action on.");
+            else
+            {
+                new Housing_Database_Project.Sign_Up_Forms.SignUpEmployee(Convert.ToInt32(dataGridView_Employees.SelectedRows[0].Cells["National ID"].Value)).Show(this);
+                this.Hide();
+            }
         }
     }
 }

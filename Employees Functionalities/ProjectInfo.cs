@@ -109,7 +109,7 @@ namespace Housing_Database_Project.Employees_Functionalities
                             comboBox_HousingEmps.DisplayMember = "Employee Name";
                             comboBox_HousingEmps.ValueMember = "National ID";
                         }
-                        else if (Type == "Company" || Type == "Admin")
+                        if (Type == "Company" || Type == "Admin")
                         {
                             button_AddUnits.Visible = true;
                         }
@@ -147,6 +147,16 @@ namespace Housing_Database_Project.Employees_Functionalities
             {
                 label_numApps.Visible = false;
                 label_numApps.Visible = false;
+            }
+
+            if (Type == "Admin")              
+            {
+                Save.Visible = true; 
+                DataTable dc = controllerObj.SelectAllCompanies();
+                textBox_Company.DataSource = dc;
+                textBox_Company.DisplayMember = "Name";
+                textBox_Company.ValueMember = "CID";
+
             }
         }
 
@@ -190,6 +200,55 @@ namespace Housing_Database_Project.Employees_Functionalities
         private void button_AddUnits_Click(object sender, EventArgs e)
         {
             new AddUnits(PID).Show();
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            char Status; 
+            int CID;
+            DateTime SD, LD; 
+            
+            switch (dt.Rows[0]["Project Status"].ToString())
+            {
+                case "Posted":
+                    {
+                        Status = 'P'; 
+                        CID = 0;
+                        SD = DateTime.Now;
+                        LD = DateTime.Now;
+
+                        break;
+                    }
+                case "Started":
+                    {
+                        Status = 'S';
+                        CID = Convert.ToInt32(textBox_Company.SelectedValue);
+                        SD = Convert.ToDateTime(dateTimePicker_StartDate.Value);
+                        LD = DateTime.Now; 
+
+                        break;
+                    }
+                default:
+                    {
+                        Status = 'L'; 
+                        CID = Convert.ToInt32(textBox_Company.SelectedValue);
+                        SD = Convert.ToDateTime(dateTimePicker_StartDate.Value);
+                        LD = Convert.ToDateTime(dateTimePicker_LaunchDate.Value);
+                        break;
+                    }
+                                     
+            }
+
+            int done = controllerObj.UpdateProject(Status, PID, textBox_City.Text, Convert.ToInt32(comboBox_Manager.SelectedValue), Convert.ToInt32(comboBox_ProjectsEmp.SelectedValue), Convert.ToInt32(textBox_RoomPrice.Text), CID, SD, LD);
+            if (done > 0)
+            {
+                MessageBox.Show("Project updated successfully!");
+                new EMP_ViewProjects(-1, "Admin").Show(this.Owner.Owner);
+                this.Owner.Close();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Error updating project");
         }
     }
 }

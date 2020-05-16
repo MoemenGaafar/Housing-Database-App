@@ -174,5 +174,7 @@ namespace Housing_Database_Project
                 ProjectSort.Refresh();
             }
         }
+
+        
     }
 }

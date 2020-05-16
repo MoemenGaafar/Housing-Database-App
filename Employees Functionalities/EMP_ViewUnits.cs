@@ -15,8 +15,8 @@ namespace Housing_Database_Project.Employees_Functionalities
     public partial class EMP_ViewUnits : Form
     {
         private Controller controllerObj;
-        private int ID;
-        private string Type; //Employee, Project, Company
+        private int ID; //Project ID 
+        private string Type; //Employee, Project, Company, Admin
         private DataTable dt;
         public EMP_ViewUnits(int id, string type)
         {
@@ -48,7 +48,16 @@ namespace Housing_Database_Project.Employees_Functionalities
                 dt = controllerObj.SelectAllUnitsByProject(ID, "All");
             }
 
-            if (Type == "Company") button_AddUnits.Visible = true;
+            if (Type == "Company" || Type == "Admin") button_AddUnits.Visible = true;
+            if (Type == "Admin")
+            {
+                Delete.Visible = true;
+                Status.Visible = true;
+                DataTable C = controllerObj.GetAllCitizens();
+                Citizen.DataSource = C;
+                Citizen.DisplayMember = "NationalID";
+                Citizen.ValueMember = "NationalID";
+            }
 
             dataGridView_Units.DataSource = dt;
             dataGridView_Units.Refresh();
@@ -90,6 +99,90 @@ namespace Housing_Database_Project.Employees_Functionalities
         private void button_AddUnits_Click(object sender, EventArgs e)
         {
             new AddUnits(ID).Show();
+        }
+
+        private void Status_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Units.SelectedRows.Count == 1)
+            {
+                if(dataGridView_Units.SelectedRows[0].Cells["Status"].Value.ToString() == "Not Sold")
+                {
+                    label2.Visible = true;
+                    Citizen.Visible = true;
+                    Confirm.Visible = true;
+                    MessageBox.Show("Please select the citizen buying this unit.");
+                }
+                else
+                {
+                    int done = controllerObj.UnsellUnit(ID, Convert.ToInt32(dataGridView_Units.SelectedRows[0].Cells["Unit Number"].Value.ToString()));
+                    if (done > 0)
+                    {
+                        MessageBox.Show("Unit status changed to Unsold.");
+                        string s = String.IsNullOrWhiteSpace(comboBox_Status.Text) ? "All" : comboBox_Status.Text;
+                        dt = controllerObj.SelectAllUnitsByProject(ID, s);
+                        dataGridView_Units.DataSource = dt;
+                        dataGridView_Units.Refresh();
+                    }
+                    else
+                        MessageBox.Show("Error encoutered. Action aborted");
+                }
+           
+            }
+            else
+            {
+                MessageBox.Show("Please select ONE ENTIRE ROW!");
+            }
+
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Units.SelectedRows.Count == 1)
+            {
+                int done = controllerObj.DeleteUnit(ID, Convert.ToInt32(dataGridView_Units.SelectedRows[0].Cells["Unit Number"].Value.ToString()));
+                if (done > 0)
+                {
+                    MessageBox.Show("Unit deleted Successfully!");
+                    string s = String.IsNullOrWhiteSpace(comboBox_Status.Text) ? "All" : comboBox_Status.Text; 
+                    dt = controllerObj.SelectAllUnitsByProject(ID, s);
+                    dataGridView_Units.DataSource = dt;
+                    dataGridView_Units.Refresh();
+                }
+                else
+                    MessageBox.Show("Error encoutered. Action aborted");
+            }
+            else
+            {
+                MessageBox.Show("Please select ONE ENTIRE ROW!");
+            }
+        }
+
+        private void Confirm_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Units.SelectedRows.Count == 1)
+            {
+                if (Citizen.SelectedIndex != -1)
+                {
+                    int done = controllerObj.ClaimCitApplication(Convert.ToInt32(Citizen.SelectedValue), ID, Convert.ToInt32(dataGridView_Units.SelectedRows[0].Cells["Unit Number"].Value.ToString()));
+                    if (done > 0)
+                    {
+                        MessageBox.Show("Unit status changed to Sold.");
+                        string s = String.IsNullOrWhiteSpace(comboBox_Status.Text) ? "All" : comboBox_Status.Text;
+                        dt = controllerObj.SelectAllUnitsByProject(ID, s);
+                        dataGridView_Units.DataSource = dt;
+                        dataGridView_Units.Refresh();
+                    }
+                    else
+                        MessageBox.Show("Error encoutered. Action aborted");
+                }
+                else
+                    MessageBox.Show("Please select a valid citizen ID");
+
+            }
+            else
+            {
+                MessageBox.Show("Please select ONE ENTIRE ROW!");
+            }
         }
     }
 

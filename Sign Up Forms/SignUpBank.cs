@@ -15,17 +15,49 @@ namespace Housing_Database_Project.Sign_Up_Forms
     public partial class SignUpBank : Form
     {
         private Controller controllerObj;
-        public SignUpBank()
+        private bool Admin = false;
+        private string Name; 
+        public SignUpBank(bool a = false)
+        {
+            Admin = a;
+          
+            controllerObj = new Controller();
+            InitializeComponent();
+            if (!Admin)
+            {
+                foreach (Control c in Controls)
+                    c.Hide();
+                title.Show();
+                L1.Show();
+                button_Back.Show();
+                Verify.Show();
+                Access.Show();
+            }
+            else
+            {
+                L1.Hide();
+                Verify.Hide();
+                Access.Hide();
+            }
+        }
+        public SignUpBank(string n)
         {
             controllerObj = new Controller();
             InitializeComponent();
-            foreach (Control c in Controls)
-                c.Hide();
-            title.Show();
-            L1.Show();
-            button_Back.Show();
-            Verify.Show();
-            Access.Show(); 
+            Name = n;
+            L1.Hide();
+            Verify.Hide();
+            Access.Hide();
+            Btn_SignUp.Hide();
+            label3.Hide();
+            textBox_PassAgain.Hide();
+            checkBox_Devil.Hide(); 
+            Save.Visible = true;
+
+            DataTable C = controllerObj.SelectBankByName(Name);
+            textBox_Name.Text = Convert.ToString(C.Rows[0]["Name"]);
+            textBox_Pass.Text = Convert.ToString(C.Rows[0]["Password"]);
+            textBox_TransFees.Text = Convert.ToString(C.Rows[0]["Transfer Fees"]);
         }
 
         private void button_Back_Click(object sender, EventArgs e)
@@ -57,7 +89,15 @@ namespace Housing_Database_Project.Sign_Up_Forms
             {
                 int r = controllerObj.SignUpBank(textBox_Name.Text, textBox_Pass.Text, Convert.ToInt32(textBox_TransFees.Text));
                 if (r > 0)
+                {
                     MessageBox.Show("Bank Signed Up Successfully!");
+                    if (Admin)
+                    {
+                        new ViewBanks().Show(this.Owner.Owner);
+                        this.Owner.Close();
+                        this.Close();
+                    }
+                }
                 else
                     MessageBox.Show("Error Encoutered While Signing up...");
             }
@@ -76,7 +116,45 @@ namespace Housing_Database_Project.Sign_Up_Forms
                 button_Back.Hide();
                 Verify.Hide();
                 Access.Hide();
+                Save.Hide(); 
             }
+        }
+
+        
+        private void Save_Click_1(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(textBox_Name.Text) || String.IsNullOrWhiteSpace(textBox_Pass.Text) || String.IsNullOrWhiteSpace(textBox_TransFees.Text))
+            {
+                MessageBox.Show("Please fill all required fields.");
+            }
+            else
+            {
+                bool isNumber = true;
+                foreach (char c in textBox_TransFees.Text)
+                {
+                    if (c < '0' || c > '9')
+                        isNumber = false;
+                }
+                if (!isNumber)
+                {
+                    MessageBox.Show("Please enter a valid transfer fee.");
+                }
+                else
+                {
+                    int done = controllerObj.UpdateBank(Name, textBox_Name.Text, textBox_Pass.Text, Convert.ToInt32(textBox_TransFees.Text));
+                    if (done > 0)
+                    {
+                        MessageBox.Show("Bank information updated successfully.");
+                        new Housing_Database_Project.ViewBanks().Show(this.Owner.Owner);
+                        this.Owner.Close();
+                        this.Close();
+                    }
+                    else
+                        MessageBox.Show("Error encountered. Action aborted.");
+                }
+
+            }
+
         }
     }
 }

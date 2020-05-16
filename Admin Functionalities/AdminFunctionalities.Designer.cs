@@ -40,6 +40,7 @@
             this.Transactions = new System.Windows.Forms.Button();
             this.Projects = new System.Windows.Forms.Button();
             this.Access = new System.Windows.Forms.Button();
+            this.Banks = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -65,12 +66,13 @@
             // 
             // Admins
             // 
-            this.Admins.Location = new System.Drawing.Point(16, 205);
+            this.Admins.Location = new System.Drawing.Point(16, 170);
             this.Admins.Name = "Admins";
             this.Admins.Size = new System.Drawing.Size(205, 34);
             this.Admins.TabIndex = 14;
             this.Admins.Text = "Manage Adminstrators";
             this.Admins.UseVisualStyleBackColor = true;
+            this.Admins.Click += new System.EventHandler(this.Admins_Click);
             // 
             // Companies
             // 
@@ -89,15 +91,17 @@
             this.Password.TabIndex = 16;
             this.Password.Text = "Change Password";
             this.Password.UseVisualStyleBackColor = true;
+            this.Password.Click += new System.EventHandler(this.Password_Click);
             // 
             // Employees
             // 
-            this.Employees.Location = new System.Drawing.Point(16, 245);
+            this.Employees.Location = new System.Drawing.Point(16, 210);
             this.Employees.Name = "Employees";
             this.Employees.Size = new System.Drawing.Size(205, 35);
             this.Employees.TabIndex = 17;
             this.Employees.Text = "Manage Employees";
             this.Employees.UseVisualStyleBackColor = true;
+            this.Employees.Click += new System.EventHandler(this.Employees_Click);
             // 
             // Citizens
             // 
@@ -107,6 +111,7 @@
             this.Citizens.TabIndex = 18;
             this.Citizens.Text = "Manage Citizens";
             this.Citizens.UseVisualStyleBackColor = true;
+            this.Citizens.Click += new System.EventHandler(this.Citizens_Click);
             // 
             // Applications
             // 
@@ -116,6 +121,7 @@
             this.Applications.TabIndex = 19;
             this.Applications.Text = "Manage Applications";
             this.Applications.UseVisualStyleBackColor = true;
+            this.Applications.Click += new System.EventHandler(this.Applications_Click);
             // 
             // Transactions
             // 
@@ -125,24 +131,37 @@
             this.Transactions.TabIndex = 20;
             this.Transactions.Text = "Manage Transactions";
             this.Transactions.UseVisualStyleBackColor = true;
+            this.Transactions.Click += new System.EventHandler(this.Transactions_Click);
             // 
             // Projects
             // 
-            this.Projects.Location = new System.Drawing.Point(16, 286);
+            this.Projects.Location = new System.Drawing.Point(16, 251);
             this.Projects.Name = "Projects";
             this.Projects.Size = new System.Drawing.Size(205, 35);
             this.Projects.TabIndex = 21;
             this.Projects.Text = "Manage Projects";
             this.Projects.UseVisualStyleBackColor = true;
+            this.Projects.Click += new System.EventHandler(this.Projects_Click);
             // 
             // Access
             // 
-            this.Access.Location = new System.Drawing.Point(16, 165);
+            this.Access.Location = new System.Drawing.Point(16, 130);
             this.Access.Name = "Access";
             this.Access.Size = new System.Drawing.Size(205, 34);
             this.Access.TabIndex = 22;
             this.Access.Text = "Manage Access";
             this.Access.UseVisualStyleBackColor = true;
+            this.Access.Click += new System.EventHandler(this.Access_Click);
+            // 
+            // Banks
+            // 
+            this.Banks.Location = new System.Drawing.Point(16, 293);
+            this.Banks.Name = "Banks";
+            this.Banks.Size = new System.Drawing.Size(205, 35);
+            this.Banks.TabIndex = 23;
+            this.Banks.Text = "Manage Banks";
+            this.Banks.UseVisualStyleBackColor = true;
+            this.Banks.Click += new System.EventHandler(this.Banks_Click);
             // 
             // AdminFunctionalities
             // 
@@ -151,6 +170,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(404, 600);
+            this.Controls.Add(this.Banks);
             this.Controls.Add(this.Access);
             this.Controls.Add(this.Projects);
             this.Controls.Add(this.Transactions);
@@ -185,5 +205,6 @@
         private System.Windows.Forms.Button Transactions;
         private System.Windows.Forms.Button Projects;
         private System.Windows.Forms.Button Access;
+        private System.Windows.Forms.Button Banks;
     }
 }

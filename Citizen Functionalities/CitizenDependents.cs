@@ -50,6 +50,7 @@ namespace Housing_Database_Project
                 NameNew.Hide();
                 NameBirth.Hide();
                 BirthdateNew.Hide();
+                
             }
 
             if(type == "Employee")
@@ -76,6 +77,9 @@ namespace Housing_Database_Project
                 Relationship.Hide(); 
 
             }
+
+            DataTable C = controllerObj.SelectCitizenByID(ID);
+            CitizenID.Text = Convert.ToString(C.Rows[0]["First Name"]) + Convert.ToString(C.Rows[0]["Last Name"]);
 
         }
 
@@ -153,13 +157,13 @@ namespace Housing_Database_Project
             else
             {
                 char R = 'O';
-                if (Relationship.SelectedItem == "Child")
+                if ((string)Relationship.SelectedItem == "Child")
                     R = 'C';
-                else if (Relationship.SelectedItem == "Parent")
+                else if ((string)Relationship.SelectedItem == "Parent")
                     R = 'P';
-                else if (Relationship.SelectedItem == "Spouse")
+                else if ((string)Relationship.SelectedItem == "Spouse")
                     R = 'S';
-                else if (Relationship.SelectedItem == "Other")
+                else if ((string)Relationship.SelectedItem == "Other")
                     R = 'O';
 
                 int done = controllerObj.AddDependent(Convert.ToString(NameAdd.Text), ID, Birthdate.Value, Convert.ToInt32(Salary.Text), R);

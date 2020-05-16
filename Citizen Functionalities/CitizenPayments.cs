@@ -26,25 +26,32 @@ namespace Housing_Database_Project
             DataTable dp = controllerObj.SelectTransactionsByCitizen(ID, project, unit, bank);
             dataGridView2.DataSource = dp;
 
-            for (int intCount = 0; intCount < dp.Rows.Count; intCount++)
+            if (dp != null)
             {
-                var val = dp.Rows[intCount]["BankName"];
 
-                if (!BankView.Items.Contains(val))
+                for (int intCount = 0; intCount < dp.Rows.Count; intCount++)
                 {
-                    BankView.Items.Add(val);
+                    var val = dp.Rows[intCount]["BankName"];
+
+                    if (!BankView.Items.Contains(val))
+                    {
+                        BankView.Items.Add(val);
+                    }
+                }
+
+                for (int intCount = 0; intCount < dp.Rows.Count; intCount++)
+                {
+                    var val = dp.Rows[intCount]["ProjectID"];
+
+                    if (!ProjectView.Items.Contains(val))
+                    {
+                        ProjectView.Items.Add(val);
+                    }
                 }
             }
 
-            for (int intCount = 0; intCount < dp.Rows.Count; intCount++)
-            {
-                var val = dp.Rows[intCount]["ProjectID"];
-
-                if (!ProjectView.Items.Contains(val))
-                {
-                    ProjectView.Items.Add(val);
-                }
-            }
+            DataTable C = controllerObj.SelectCitizenByID(ID);
+            CitizenID.Text = Convert.ToString(C.Rows[0]["First Name"]) + Convert.ToString(C.Rows[0]["Last Name"]);
         }
 
        

@@ -441,12 +441,16 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
-        public int SignUpCompany(string name, string password)
+        public int SignUpCompany(string name, string password, int NoCompleteProj,int NoCurrentProj, int Rating, int AvgProjectCost)
         {
             string StoredProcedureName = StoredProcedures.Insert_Company;
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
             Parameters.Add("@Password", password);
             Parameters.Add("@Name", name);
+            Parameters.Add("@NoCompleteProj", NoCompleteProj);
+            Parameters.Add("@NoCurrentProj", NoCurrentProj);
+            Parameters.Add("@Rating", Rating);
+            Parameters.Add("@AvgProjectCost", AvgProjectCost);
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
@@ -468,7 +472,7 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
-        public int SignUpEmployee(int id, string password, string firstname, string lastname, char sex, char type, DateTime birthdate)
+        public int SignUpEmployee(int id, string password, string firstname, string lastname, char sex, char type, DateTime birthdate, int NoCompleteProj, int NoCurrentProj)
         {
             string StoredProcedureName = StoredProcedures.Insert_Employee;
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
@@ -479,6 +483,8 @@ namespace DBapplication
             Parameters.Add("@StartDate", birthdate);
             Parameters.Add("@EType", type);
             Parameters.Add("@Sex", sex);
+            Parameters.Add("@NoCompleteProj", NoCompleteProj);
+            Parameters.Add("@NoCurrentProj", NoCurrentProj);
             return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
@@ -920,6 +926,45 @@ namespace DBapplication
 
 
         /////////////////////////////////////// H Employee Functionalities ///////////////////////////////////////////
+
+        public DataTable SelectProjectAdmin(string statusFilter, string cityFilter)
+        {
+            char status;
+            switch (statusFilter)
+            {
+                case "All Units Sold":
+                    {
+                        status = 'F';
+                        break;
+                    }
+                case "Posted":
+                    {
+                        status = 'P';
+                        break;
+                    }
+                case "Started":
+                    {
+                        status = 'S';
+                        break;
+                    }
+                case "Launched":
+                    {
+                        status = 'L';
+                        break;
+                    }
+                default:
+                    {
+                        status = 'A';
+                        break;
+                    }
+            }
+            string StoredProcedureName = StoredProcedures.SelectProjectAdmin;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@PStatus", status);
+            Parameters.Add("@City", cityFilter);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
         public DataTable SelectProjectByHEMPID(int ID, string statusFilter, string cityFilter)
         {
             char status;
@@ -1059,6 +1104,348 @@ namespace DBapplication
             Parameters.Add("@CID", ID);
             Parameters.Add("@BankName", bankName);
             return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+        /// Admn functions \\\
+        
+        public int DeleteCitTransaction(long TID)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteCitTransaction;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@TID", TID);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int DeleteComTransaction(long TID)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteComTransaction;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@TID", TID);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetCitTransaction(long TID)
+        {
+            string StoredProcedureName = StoredProcedures.GetCitTransaction;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@TID", TID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetComTransaction(long TID)
+        {
+            string StoredProcedureName = StoredProcedures.GetComTransaction;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@TID", TID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int EditCitTransaction(long TID, string BankName, int EmployeeID, int CitizenID, int ProjectID, int UnitID, int Amount)
+        {
+            string StoredProcedureName = StoredProcedures.EditCitTransaction;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@TID", TID);
+            Parameters.Add("@BankName", BankName);
+            Parameters.Add("@EmployeeID", EmployeeID);
+            Parameters.Add("@CitizenID", CitizenID);
+            Parameters.Add("@ProjectID", ProjectID);
+            Parameters.Add("@UnitID", UnitID);
+            Parameters.Add("@Amount", Amount);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int EditComTransaction(long TID, string BankName, int EmployeeID, int CompanyID, int Amount)
+        {
+            string StoredProcedureName = StoredProcedures.EditComTransaction;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@TID", TID);
+            Parameters.Add("@BankName", BankName);
+            Parameters.Add("@EmployeeID", EmployeeID);
+            Parameters.Add("@CompanyID", CompanyID);
+            Parameters.Add("@Amount", Amount);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetAccessTable()
+        {
+            string StoredProcedureName = StoredProcedures.GetAccessTable;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public int EditAccess(string Entity, string Pass)
+        {
+            string StoredProcedureName = StoredProcedures.EditAccess;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Entity", Entity);
+            Parameters.Add("@Pass", Pass);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable IsHighAdmin(string Username)
+        {
+            string StoredProcedureName = StoredProcedures.IsHighAdmin;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Username", Username);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectAdmins()
+        {
+            string StoredProcedureName = StoredProcedures.SelectAdmins;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public int AddAdmin(string Username, string Password)
+        {
+            string StoredProcedureName = StoredProcedures.AddAdmin;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Username", Username);
+            Parameters.Add("@Password", Password);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int DeleteAdmin(string Username)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteAdmin;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Username", Username);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int ChangeAdminPassword(string Username, string Password)
+        {
+            string StoredProcedureName = StoredProcedures.ChangeAdminPassword;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Username", Username);
+            Parameters.Add("@Password", Password);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int MakeHighAdmin(string Username)
+        {
+            string StoredProcedureName = StoredProcedures.MakeHighAdmin;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Username", Username);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetAllCitizens()
+        {
+            string StoredProcedureName = StoredProcedures.GetAllCitizens;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public int DeleteComApplication(int Project, string Company)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteComApplication;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Company", Company);
+            Parameters.Add("@Project", Project);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int DeleteProject(int Project)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Project", Project);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int ChangeProjectStatus(int Project, string status)
+        {
+            char NewStatus = 'S';
+            switch (status)
+            {
+                case "All Units Sold":
+                    {
+                        NewStatus = 'F';
+                        break;
+                    }
+                case "Posted":
+                    {
+                        NewStatus = 'P';
+                        break;
+                    }
+                case "Started":
+                    {
+                        NewStatus = 'S';
+                        break;
+                    }
+                case "Launched":
+                    {
+                        NewStatus = 'L';
+                        break;
+                    }
+            }
+
+            string StoredProcedureName = StoredProcedures.ChangeProjectStatus;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NewStatus", NewStatus);
+            Parameters.Add("@Project", Project);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int AssignCompany(int Project, int Company)
+        {
+            string StoredProcedureName = StoredProcedures.AssignCompany;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Company", Company);
+            Parameters.Add("@Project", Project);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int UpdateProject(char Status, int ID, string City, int MEmployeeID, int PEmployeeID, int PricePRoom, int CompanyID, DateTime StartingDate, DateTime LaunchingDate)
+        {
+            string StoredProcedureName = StoredProcedures.UpdateProject;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Status", Status);
+            Parameters.Add("@ID", ID);
+            Parameters.Add("@City", City);
+            Parameters.Add("@MEmployeeID", MEmployeeID);
+            Parameters.Add("@PEmployeeID", PEmployeeID);
+            Parameters.Add("@PricePRoom", PricePRoom);
+            Parameters.Add("@CompanyID", CompanyID);
+            Parameters.Add("@StartingDate", StartingDate);
+            Parameters.Add("@LaunchingDate", LaunchingDate);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+        
+        public int DeleteUnit(int ProjectID, int ID)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteUnit;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@ProjectID", ProjectID);
+            Parameters.Add("@ID", ID);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int UnsellUnit(int ProjectID, int ID)
+        {
+            string StoredProcedureName = StoredProcedures.UnsellUnit;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@ProjectID", ProjectID);
+            Parameters.Add("@ID", ID);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectAllManagerEmployees()
+        {
+            string StoredProcedureName = StoredProcedures.SelectAllManagerEmployees;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public DataTable SelectAllProjectsEmployees()
+        {
+            string StoredProcedureName = StoredProcedures.SelectAllProjectsEmployees;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public DataTable SelectAllHousingEmployees()
+        {
+            string StoredProcedureName = StoredProcedures.SelectAllHousingEmployees;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public int ChangeBiddingPrice(int Project, string Company, int Price)
+        {
+            string StoredProcedureName = StoredProcedures.ChangeBiddingPrice;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Project", Project);
+            Parameters.Add("@Company", Company);
+            Parameters.Add("@Price", Price);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int DeleteCitizen(int NationalID)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", NationalID);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int UpdateCitizen(int OldID, int NationalID, string Password, string FirstName, string LastName, DateTime BirthDate, int Salary, char Sex, string CurentCity, bool OwnsCurrent, int CurrentAccommPrice)
+        {
+            string StoredProcedureName = StoredProcedures.UpdateCitizen;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@OldID", OldID);
+            Parameters.Add("@NationalID", NationalID);
+            Parameters.Add("@Password", Password);
+            Parameters.Add("@FirstName", FirstName);
+            Parameters.Add("@LastName", LastName);
+            Parameters.Add("@BirthDate", BirthDate);
+            Parameters.Add("@Salary", Salary);
+            Parameters.Add("@Sex", Sex);
+            Parameters.Add("@CurentCity", CurentCity);
+            Parameters.Add("@OwnsCurrent", OwnsCurrent);
+            Parameters.Add("@CurrentAccommPrice", CurrentAccommPrice);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable GetAllBanks()
+        {
+            string StoredProcedureName = StoredProcedures.GetAllBanks;
+            return dbMan.ExecuteReader(StoredProcedureName, null);
+        }
+
+        public DataTable SelectBankByName(string Name)
+        {
+            string StoredProcedureName = StoredProcedures.SelectBankByName;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", Name);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int UpdateBank(string oldName, string Name, string Password, int TranFees)
+        {
+            string StoredProcedureName = StoredProcedures.UpdateBank;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@oldName", oldName);
+            Parameters.Add("@Name", Name);
+            Parameters.Add("@Password", Password);
+            Parameters.Add("@TranFees", TranFees);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int DeleteBank(string Name)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteBank;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Name", Name);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public DataTable SelectEmployeeByID(int NationalID)
+        {
+            string StoredProcedureName = StoredProcedures.SelectEmployeeByID;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", NationalID);
+            return dbMan.ExecuteReader(StoredProcedureName, Parameters);
+        }
+
+        public int UpdateEmployee(int oldID, int NationalID, string Password, string FirstName, string LastName, char Sex, char EType, DateTime StartDate, int NoCompleteProj, int NoCurrentProj)
+        {
+            string StoredProcedureName = StoredProcedures.UpdateEmployee;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@oldID", oldID);
+            Parameters.Add("@NationalID", NationalID);
+            Parameters.Add("@Password", Password);
+            Parameters.Add("@FirstName", FirstName);
+            Parameters.Add("@LastName", LastName);
+            Parameters.Add("@Sex", Sex);
+            Parameters.Add("@EType", EType);
+            Parameters.Add("@StartDate", StartDate);
+            Parameters.Add("@NoCompleteProj", NoCompleteProj);
+            Parameters.Add("@NoCurrentProj", NoCurrentProj);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
+        }
+
+        public int DeleteEmployee(int NationalID)
+        {
+            string StoredProcedureName = StoredProcedures.DeleteEmployee;
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@NationalID", NationalID);
+            return dbMan.ExecuteNonQuery(StoredProcedureName, Parameters);
         }
 
         public void TerminateConnection()

@@ -1,3 +1,4 @@
+Use Monkey
 Create table Access 
 (
 Entity varchar(50),
@@ -7,7 +8,7 @@ primary key(Entity)
 
 insert into Access 
 values
-('Admin', 'BigestMonkey'),
+('Admin', 'BiggestMonkey'),
 ('Employee', 'BigMonkey'),
 ('Bank', 'SmallMonkey'),
 ('Company', 'SmallestMonkey')
