@@ -56,8 +56,8 @@
             this.Save = new System.Windows.Forms.Button();
             this.textBox_RoomPrice = new System.Windows.Forms.NumericUpDown();
             this.textBox_Company = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox_RoomPrice)).BeginInit();
             this.button_Launch = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox_RoomPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -341,7 +341,7 @@
             // 
             // button_Launch
             // 
-            this.button_Launch.Location = new System.Drawing.Point(395, 172);
+            this.button_Launch.Location = new System.Drawing.Point(414, 179);
             this.button_Launch.Name = "button_Launch";
             this.button_Launch.Size = new System.Drawing.Size(128, 29);
             this.button_Launch.TabIndex = 101;
@@ -354,9 +354,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 534);
-            this.Controls.Add(this.button_Launch);
             this.ClientSize = new System.Drawing.Size(633, 668);
+            this.Controls.Add(this.button_Launch);
             this.Controls.Add(this.textBox_Company);
             this.Controls.Add(this.textBox_RoomPrice);
             this.Controls.Add(this.Save);

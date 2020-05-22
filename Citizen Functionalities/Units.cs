@@ -82,11 +82,11 @@ namespace Housing_Database_Project
                 }
                 if (!isNumber)
                     MessageBox.Show("Please insert a valid price");
-                else if (ProjectSort.SelectedIndex == -1 && City.SelectedIndex == -1)
+                else if (String.IsNullOrWhiteSpace(ProjectSort.Text) && String.IsNullOrWhiteSpace(City.Text))
                 {
                     U = controllerObj.SelectUnitsByPrice(Convert.ToInt32(Price.Text));
                 }
-                else if (ProjectSort.SelectedIndex == -1)
+                else if (String.IsNullOrWhiteSpace(ProjectSort.Text))
                 {
                     U = controllerObj.SelectUnitsByPriceAndCity(Convert.ToInt32(Price.Text), Convert.ToString(City.SelectedValue));
                 }
@@ -97,11 +97,11 @@ namespace Housing_Database_Project
             }
             else
             {
-                if (ProjectSort.SelectedIndex == -1 && City.SelectedIndex == -1)
+                if (String.IsNullOrWhiteSpace(ProjectSort.Text) && String.IsNullOrWhiteSpace(City.Text))
                 {
                     U = controllerObj.SelectAllUnits();
                 }
-                if (ProjectSort.SelectedIndex == -1)
+                else if (String.IsNullOrWhiteSpace(ProjectSort.Text))
                 {
                     U = controllerObj.SelectUnitsByCity(Convert.ToString(City.Text)); 
                 }
@@ -111,7 +111,8 @@ namespace Housing_Database_Project
                 }
             }
 
-            dataGridView1.DataSource = U; 
+            dataGridView1.DataSource = U;
+            dataGridView1.Refresh(); 
             
         }
 
@@ -168,6 +169,14 @@ namespace Housing_Database_Project
             if (!String.IsNullOrWhiteSpace(City.Text))
             {
                 DataTable dL = controllerObj.SelectProjectsByCity(Convert.ToString(City.Text));
+                ProjectSort.DataSource = dL;
+                ProjectSort.DisplayMember = "ID";
+                ProjectSort.ValueMember = "ID";
+                ProjectSort.Refresh();
+            }
+            else
+            {
+                DataTable dL = controllerObj.GetAllProjectIDs();
                 ProjectSort.DataSource = dL;
                 ProjectSort.DisplayMember = "ID";
                 ProjectSort.ValueMember = "ID";
